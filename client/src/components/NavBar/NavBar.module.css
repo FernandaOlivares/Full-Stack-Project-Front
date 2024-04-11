@@ -1,0 +1,14 @@
+.navBarContainer {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 85vw;
+    height: 10.5%;
+    border-radius: 8px;
+    border: 1px solid antiquewhite;
+    padding: 1%;
+    overflow: hidden;
+    margin-top: -8%;
+  }
