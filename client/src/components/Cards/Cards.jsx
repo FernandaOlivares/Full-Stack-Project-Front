@@ -5,6 +5,7 @@ function Cards() {
     return (
       <>
         <div>
+        <h3>Soy muchas cards</h3>
         <Card></Card>
         </div>
       </>
