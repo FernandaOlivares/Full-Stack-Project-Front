@@ -1,10 +1,19 @@
-import Card from '../Card/Card'
+import Card from '../Card/Card';
+
+import styles from './Cards.module.css';
 
 function Cards() {
 
     return (
       <>
-        <div>
+        <div className={styles.cardsContainer}>
+        <Card></Card>
+        <Card></Card>
+        <Card></Card>
+        <Card></Card>
+        <Card></Card>
+        <Card></Card>
+        <Card></Card>
         <Card></Card>
         </div>
       </>

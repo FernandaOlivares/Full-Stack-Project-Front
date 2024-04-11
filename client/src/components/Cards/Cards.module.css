@@ -1,0 +1,13 @@
+.cardsContainer {
+    width: 85vw;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
+    border: 1px solid antiquewhite;
+    margin-bottom:-17%;
+    padding: 1%;
+    border-radius: 8px;
+  }

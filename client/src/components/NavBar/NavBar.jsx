@@ -1,11 +1,12 @@
+import styles from './NavBar.module.css';
+
 
 function NavBar() {
 
     return (
       <>
-        <div>
-        <h1>BIENVENIDOS A PROPIEDADES Y DISEÑO!</h1>
-        <h2>Estás en la Home</h2>
+        <div className={styles.navBarContainer}>
+        <h3>Soy una NavBar</h3>
         </div>
       </>
     )

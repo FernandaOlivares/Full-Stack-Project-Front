@@ -1,0 +1,19 @@
+.headerContainer {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 85vw;
+    height: 8.5%;
+    border-radius: 8px;
+    padding: 1%;
+    border: 1px solid antiquewhite;
+    overflow: hidden;
+    margin-top: -15%;
+    margin-left: 0;
+  }
+
+  .headerContainer h1 {
+    margin-top: 0; 
+}
