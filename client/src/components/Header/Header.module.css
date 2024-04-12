@@ -12,6 +12,8 @@
     overflow: hidden;
     margin-top: -15%;
     margin-left: 0;
+    background-color: grey;
+    z-index: 100;
   }
 
   .headerContainer h1 {
