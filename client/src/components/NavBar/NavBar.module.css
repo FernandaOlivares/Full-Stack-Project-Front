@@ -11,4 +11,6 @@
     padding: 1%;
     overflow: hidden;
     margin-top: -8%;
+    background-color: black;
+    z-index: 100;
   }
