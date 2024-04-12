@@ -1,5 +1,6 @@
 import { 
     GET_ALL_PROPERTIES,
+    GET_PROPERTY_BY_ID,
 } from '../actions/index.jsx';
 
 const initialState = {
@@ -9,7 +10,7 @@ const initialState = {
     allTypesBackup: [],
     allCategories: [],
     allCategoriesBackup: [],
-    propertiesById: [],
+    propertyById: [],
     newPropertyId: null,
     error: null,
 };
@@ -20,7 +21,15 @@ function rootReducer(state = initialState, action){
             return{
                 ...state,
                 allProperties: action.payload,
+                allPropertiesBackup: action.payload,
             }
+
+        case GET_PROPERTY_BY_ID: {
+            return {
+              ...state,
+              propertyById: action.payload, 
+            };
+          }
 
         default:
             return state;
