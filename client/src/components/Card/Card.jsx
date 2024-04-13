@@ -8,7 +8,7 @@ function Card({property}) {
     return (
       <>
         <div className={styles.card}>
-        <Link to={`home/${id}`}>
+        <Link to={`${id}`}>
         <h3>Comuna:</h3>
         <h3>{name}</h3>
         <h3>Precio:</h3>

@@ -1,10 +1,13 @@
+import PostNewPropertyForm from '../../components/Form/PostNewPropertyForm.jsx'
 
 function Create() {
 
     return (
       <>
         <div>
-        <h2>Estás en Create</h2>
+          <PostNewPropertyForm>
+          <h2>Estás en Create</h2>
+          </PostNewPropertyForm>
         </div>
       </>
     )
