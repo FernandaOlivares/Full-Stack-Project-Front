@@ -1,10 +1,17 @@
+import AdminNavBar from '../../components/NavBar/AdminNavBar.jsx'
+import PostNewPropertyForm from '../../components/Form/PostNewPropertyForm.jsx'
 
 function Create() {
 
     return (
       <>
         <div>
-        <h2>Estás en Create</h2>
+            <div>
+            <AdminNavBar/>
+            </div>
+            <div>
+            <PostNewPropertyForm/>
+            </div>
         </div>
       </>
     )
