@@ -2,7 +2,7 @@ import {
     GET_ALL_PROPERTIES,
     GET_PROPERTY_BY_ID,
     POST_NEW_PROPERTY,
-    GET_ALL_TYPES,
+    //GET_ALL_TYPES,
 } from '../actions/index.jsx';
 
 const initialState = {
@@ -40,12 +40,12 @@ function rootReducer(state = initialState, action){
         };
         }
         
-        case GET_ALL_TYPES:
+        /*case GET_ALL_TYPES:
             return {
                 ...state,
                 allTypes: action.payload,
                 allTypesBackup: action.payload,
-            };
+            };*/
 
         default:
             return state;
