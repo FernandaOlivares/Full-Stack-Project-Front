@@ -3,7 +3,7 @@ import axios from 'axios';
 export const GET_ALL_PROPERTIES = 'GET_ALL_PROPERTIES';
 export const GET_PROPERTY_BY_ID = 'GET_PROPERTY_BY_ID';
 export const POST_NEW_PROPERTY = 'POST_NEW_PROPERTY';
-export const GET_ALL_TYPES = 'GET_ALL_TYPES';
+//export const GET_ALL_TYPES = 'GET_ALL_TYPES';
 
 
 export const getAllProperties = () => {
@@ -38,7 +38,7 @@ export const getPropertyById = (id) => {
 export const postNewProperty = (payload) => {
   return async function (dispatch) {
       try {
-          const response = await axios.post('http://localhost:3001/property', payload);
+          const response = await axios.post('https://jsonplaceholder.typicode.com/posts', payload);  //http://localhost:3001/property
           dispatch({ 
               type: 'POST_NEW_PROPERTY',
               payload: response.data
@@ -51,6 +51,7 @@ export const postNewProperty = (payload) => {
   }
 };
 
+/*
 export const getAllTypes = () => {
   return async function (dispatch) {
       try {
@@ -64,3 +65,4 @@ export const getAllTypes = () => {
       }
   }
 };
+*/
