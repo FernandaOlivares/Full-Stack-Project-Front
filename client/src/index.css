@@ -1,11 +1,21 @@
+html, body {
+  height: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: whitesmoke; /* Color de fondo */
+  color: rgb(113, 107, 107); /* Color del texto */
+  overflow: visible;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: rgb(113, 107, 107);
+  background-color: whitesmoke;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
