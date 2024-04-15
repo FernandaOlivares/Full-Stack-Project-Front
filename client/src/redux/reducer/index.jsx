@@ -2,6 +2,8 @@ import {
     GET_ALL_PROPERTIES,
     GET_PROPERTY_BY_ID,
     POST_NEW_PROPERTY,
+    POST_TYPE,
+    POST_CATEGORY,
     //GET_ALL_TYPES,
 } from '../actions/index.jsx';
 
@@ -39,6 +41,20 @@ function rootReducer(state = initialState, action){
             newPropertyId: action.payload.id,
         };
         }
+
+        case POST_TYPE: {
+            return {
+                ...state,
+                allTypes: action.payload,
+            };
+            }
+
+        case POST_CATEGORY: {
+            return {
+                ...state,
+                allCategories: action.payload,
+            };
+            }
         
         /*case GET_ALL_TYPES:
             return {

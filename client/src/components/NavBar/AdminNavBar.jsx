@@ -9,8 +9,8 @@ function AdminNavBar() {
       <>
         <div className={styles.adminNavBarContainer}>
         <img src={logoPyd} alt="logoPyd" className={styles.logoPyd} />
-        <Link className={styles.homeButton} to= '/home'>Home</Link>
-        <Link className={styles.publicarButton} to= '/create'>Publicar Propiedad</Link>
+        <Link className={styles.homeButton} to= '/home'>| Home |</Link>
+        <Link className={styles.publicarButton} to= '/create'>| Publicar Propiedad | </Link>
         </div>
       </>
     )

@@ -8,12 +8,12 @@ function Create() {
     return (
       <>
         <div>
-            <div>
-            <AdminNavBar/>
-            </div>
-            <div>
-            <PostNewPropertyForm/>
-            </div>
+          <div>
+          <AdminNavBar/>
+          </div>
+          <div>
+          <PostNewPropertyForm/>
+          </div>
         </div>
       </>
     )
