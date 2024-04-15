@@ -1,5 +1,7 @@
-import AdminNavBar from '../../components/NavBar/AdminNavBar.jsx'
-import PostNewPropertyForm from '../../components/Form/PostNewPropertyForm.jsx'
+import AdminNavBar from '../../components/NavBar/AdminNavBar.jsx';
+import PostNewPropertyForm from '../../components/Form/PostNewPropertyForm.jsx';
+
+import styles from './Create.module.css';
 
 function Create() {
 

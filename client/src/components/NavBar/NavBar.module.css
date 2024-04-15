@@ -11,7 +11,7 @@
     padding: 1%;
     overflow: hidden;
     margin-top: -8%;
-    background-color: black;
+    background-color: whitesmoke;
     z-index: 100;
   }
 
@@ -22,13 +22,45 @@
     flex-direction: column;
     align-items: center;
     width: 85vw;
-    height: 10.5%;
+    height: 7%;
     border-radius: 8px;
-    border: 1px solid antiquewhite;
     padding: 1%;
     overflow: hidden;
-    margin-top: -10.5%;
-    margin-left: -35%;
-    background-color: black;
+    margin-top: -5.5%;
+    margin-left: -15%;
     z-index: 100;
+  }
+
+  .logoPyd{
+    width: 18%;
+    margin-top: 0%;
+    margin-left: -84%;
+  }
+
+  .homeButton {
+    margin-top: -3%;
+    margin-right: -8%;
+    color: rgb(113, 107, 107);
+    font-size: 0.90vw;
+    border-radius: 5px;
+    background-color: whitesmoke;
+    transition: color 0.3s;
+  }
+  
+  .homeButton:hover {
+    color: #b70303;
+  }
+
+  .publicarButton{
+    margin-top: -1.5%;
+    margin-right: -25%;
+    color: rgb(113, 107, 107);
+    font-size: 0.90vw;
+    border-radius: 5px;
+    background-color: whitesmoke;
+    transition: color 0.3s;
+  }
+  
+  .publicarButton:hover {
+    color: #b70303;
   }

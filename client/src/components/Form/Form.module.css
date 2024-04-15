@@ -1,24 +1,48 @@
-.formContainer {
-  width: 90vh;
-  margin-top: 15vh;
-  border: 1px solid antiquewhite;
+body {
+  background-color: whitesmoke;
+  margin: 0;
+  padding: 0;
+  color: rgb(113, 107, 107);
+}
+
+.pageTitle{
+margin-top: -20%;
 }
 
 .formInstructions{
-    text-align: left;
-    margin-left: 3%; 
-  }
+  text-align: center;
+  margin-top: -3%;
+}
+
+.formContainerLeft {
+  display: flex;
+  flex-direction: column; 
+  margin-top: 2%;
+  margin-left: -15vw;
+  width: 100%;
+}
+
+.formContainerRight {
+  display: flex;
+  flex-direction: column; 
+  margin-top: -70%;
+  margin-left: 30vw;
+  width: 100%;
+}
 
 .inputContainer {
     display: flex;
-    align-items: center;
-    width: 60%;
+    align-items: flex-start;
+    width: 65%;
+    border: 1px solid rgb(113, 107, 107);
+    border-radius: 25px;
 }
 
 .inputField {
-    margin-bottom: 0.6vh;
-    display: flex;
-    align-items: left;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
 }
 
 .inputField label {
@@ -30,29 +54,19 @@
 .inputField input {
     width:80%;
     padding: 8px;
-    border: 1px solid antiquewhite;
     border-radius: 5px;
+    background-color: whitesmoke;
+    color: rgb(113, 107, 107);
 }
 .inputField input:focus {
-    outline: none;
-    box-shadow: 0px 0px 0.3vw antiquewhite;
+  outline: none;
+  border: 1px solid rgb(113, 107, 107);
 }
-
-.inputField {
-    margin-bottom: 0.6vh;
-    display: flex;
-    align-items: left;
-}
-  
-  .inputField {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
-  }
   
   .labelInputContainer {
     display: flex;
     align-items: center;
+    text-align: left;
   }
   
   .labelInputContainer label {
@@ -63,37 +77,138 @@
   .inputContainer textarea {
     width: 100%;
     padding: 8px;
-    border: 1px solid antiquewhite;
-    border-radius: 5px;
+    border: 2px solid rgb(113, 107, 107);
+    border-radius: 25px;
   }
   
 .inputContainer textarea {
     resize: vertical;
+    border: 2px solid rgb(113, 107, 107);
+    background-color: whitesmoke;
 }
 
 .descriptionContainer {
-    width: 80%;
-    height: 70px;
+  width: 80%;
+  height: 70px;
+  background-color: whitesmoke;
+  margin-bottom: 2%;
 }
 
 .descriptionContainer textarea {
-    width: 100%;
-    height: 100%;
-    padding: 8px;
-    border: 1px solid antiquewhite;
-    border-radius: 5px;
+  width: 79%;
+  height: 100%;
+  padding: 8px;
+  border-radius: 25px;
+  background-color: whitesmoke;
+  color: rgb(113, 107, 107);
+  border: 2px solid rgb(113, 107, 107);
 }
 
 .descriptionContainer textarea:focus {
-  outline: none;
-  box-shadow: 0px 0px 0.3vw antiquewhite;
+outline: none;
+}
+
+
+
+.radioInputContainer{
+  display: flex;
+  justify-content: flex-start;
 }
 
 .radioContainer {
-  box-shadow: none;
+  display: flex;
+  align-items: center;
 }
 
-.radioContainer input:focus {
-  box-shadow: none;
+.label {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: -30vw; /* Ajusta el espaciado entre el label y los botones de radio */
 }
 
+.radioButton {
+  display: flex;
+  align-items: center;
+  margin-right: 10px; /* Ajusta el espaciado entre los botones de radio */
+}
+
+.buttonContainer {
+  display: inline-block;
+  margin-right: 21%;
+  margin-bottom: 10%;
+  width: 13%;
+  box-sizing: border-box;
+  position: absolute; /* Añadida propiedad de posición absoluta */
+  bottom: 0; /* Alineado en la parte inferior del contenedor */
+  right: 0; /* Alineado a la derecha del contenedor */
+  outline: none;
+}
+
+.buttonContainer:focus {
+outline: none; /* Elimina el contorno al hacer clic en el botón */
+}
+
+
+.buttonContainer button {
+  border: 1px solid transparent; /* Borde transparente por defecto */
+}
+.buttonContainer button:hover {
+  border-color: black;
+  box-shadow: 0px 0px 1.5vw silver;
+  outline: none;
+}
+
+
+.buttonContainer button:active {
+  border-color: silver;
+  box-shadow: 0px 0px 1.5vw silver;
+  outline: none;
+}
+
+.iconsContainer {
+  display: flex;
+  justify-content: space-between; /* Distribuir los elementos uniformemente */
+  align-items: flex-start;
+  width: 65%;
+  border-radius: 25px;
+  margin-bottom: 1%;
+}
+
+.swimmingPoolIcon {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
+}
+
+.storageIcon {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
+}
+
+.parkingIcon {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
+  border: 2px white;
+  background-color: white;
+}
+
+.parkingNumber{
+  width: 1vw;
+  height: 1vw;
+}
+
+.titleLabel{
+  margin-left: -57vw;
+}
+
+.othersContainer{
+  border-radius: 20px;
+  border-color: black;
+  background-color: whitesmoke;
+  color: rgb(113, 107, 107);
+}
