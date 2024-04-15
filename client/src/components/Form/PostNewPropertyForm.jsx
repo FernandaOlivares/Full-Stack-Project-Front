@@ -109,6 +109,27 @@ function PostNewPropertyForm() {
   if (!propertyInfo.address || !/^[A-Za-zÀ-ÖØ-öø-Ÿ0-9\s'-]+(?<!-[-])$/.test(propertyInfo.address.trim()) || propertyInfo.address.length < 2 || propertyInfo.address.length > 30) {
     errors.address = '*Usar solo letras, números, espacios, apóstrofes, guiones, diacríticos, de 2 a 30 caracteres';
   }
+
+  if (!propertyInfo.region) {
+    errors.region = '*Este campo es obligatorio';
+  }
+
+  if (!propertyInfo.city) {
+    errors.city = '*Este campo es obligatorio';
+  }
+
+  if (!propertyInfo.zone) {
+    errors.zone = '*Este campo es obligatorio';
+  }
+
+  if (!propertyInfo.bedrooms) {
+    errors.bedrooms = '*Este campo es obligatorio';
+  }
+
+  if (!propertyInfo.bathrooms) {
+    errors.bathrooms = '*Este campo es obligatorio';
+  }
+
     setError(errors);
     
         return Object.keys(errors).length === 0;
