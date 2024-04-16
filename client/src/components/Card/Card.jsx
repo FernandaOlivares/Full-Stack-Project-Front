@@ -2,22 +2,37 @@
 /* eslint-disable react/prop-types */
 import { Link } from 'react-router-dom';
 import styles from './Card.module.css';
+import imgNotFound from '../../assets/imgNotFound.png';
 
 function Card({property}) {
-  const{id, name, zone, bedrooms, bathrooms, price, imageDefault} = property;
-    return (
-      <>
-        <div className={styles.card}>
-        <Link to={`${id}`}>
-        <h3>Comuna:</h3>
-        <h3>{name}</h3>
-        <h3>Precio:</h3>
-        <h3>{id}</h3>
-        </Link>
+  const {id, category, type, city, zone, bedrooms, bathrooms, price, imageDefault} = property;
+  console.log('Propiedad:', property);
+  console.log('imageDefault:', imageDefault);
+  return (
+    <div className={styles.card}>
+      <Link to={`${id}`}>
+        <div>
+          {imageDefault ? (
+            <img
+              className={styles.imageFilter}
+              src={imageDefault}
+              alt={`Imagen de la propiedad`}
+            />
+          ) : (
+            <img
+              className={styles.imageFilter}
+              src={imgNotFound}
+              alt={`Imagen no encontrada`}
+            />
+          )}
         </div>
-      </>
-    )
-  }
+        <p>{category}</p>
+        <h3>{type} en las {city}, {zone}</h3>
+        <h3>{bedrooms} Dormitorios - {bathrooms} Baños</h3>
+        <h3>${price}</h3>
+      </Link>
+    </div>
+  );
+}
   
-  export default Card;
-  
+export default Card;

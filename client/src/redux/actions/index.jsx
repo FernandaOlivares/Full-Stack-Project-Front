@@ -12,7 +12,7 @@ export const POST_CATEGORY = 'POST_CATEGORY';
 export const getAllProperties = () => {
     return async function(dispatch) {
         try {
-            const response = await axios.get('https://jsonplaceholder.typicode.com/users/');
+            const response = await axios.get('http://localhost:3001/property/getProperties');
             return dispatch({
                 type: 'GET_ALL_PROPERTIES',
                 payload: response.data,
