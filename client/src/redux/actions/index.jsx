@@ -1,13 +1,20 @@
+/* eslint-disable react-refresh/only-export-components */
 import axios from 'axios';
 
+export const ADD_PROPERTY_DETAIL = 'ADD_PROPERTY_DETAIL';
+export const FILTER_CATEGORY = 'FILTER_CATEGORY';
+export const FILTER_TYPE = 'FILTER_TYPE';
 export const GET_ALL_PROPERTIES = 'GET_ALL_PROPERTIES';
 export const GET_PROPERTY_BY_ID = 'GET_PROPERTY_BY_ID';
+export const GET_PROPERTY_ZONE = 'GET_PROPERTY_ZONE';
+export const PRICE_ORDER = 'PRICE_ORDER';
 export const POST_NEW_PROPERTY = 'POST_NEW_PROPERTY';
 export const POST_TYPE = 'POST_TYPE';
 export const POST_CATEGORY = 'POST_CATEGORY';
 //export const GET_ALL_TYPES = 'GET_ALL_TYPES';
 //export const GET_ALL_CATEGORIES = 'GET_ALL_CATEGORIES';
 
+const URLfilter = "http://localhost:3001/property/filterProperties"
 
 export const getAllProperties = () => {
     return async function(dispatch) {
@@ -27,7 +34,7 @@ export const getAllProperties = () => {
 export const getPropertyById = (id) => {
     return async function (dispatch) {
       try {
-        const response = await axios.get(`https://jsonplaceholder.typicode.com/users/${id}`);
+        const response = await axios.get(`http://localhost:3001/property${id}/`);
         dispatch({
           type: 'GET_PROPERTY_BY_ID',
           payload: response.data,
@@ -38,6 +45,40 @@ export const getPropertyById = (id) => {
     };
   };
   
+  export function addProperty(zone) {
+    const endpoint = "http://localhost:3001/property?zone=" + zone;
+    return async (dispatch) => {
+      try {
+        const { data } = await axios.get(endpoint);
+        return dispatch({
+          type: GET_PROPERTY_ZONE,
+          payload: data,
+        });
+      } catch (error) {
+        alert("Property NOT FOUND!!!");//
+      }
+    };
+  }
+
+  export function addPropertyDetail(id) {
+    return async (dispatch) => {
+      console.log(id);
+      const endpoint = `http://localhost:3001/property/${id}`;
+      try {
+        const response = await axios.get(endpoint);
+        const propertyDetail = await response.data;
+  
+        dispatch({
+          type: ADD_PROPERTY_DETAIL,
+          payload: propertyDetail,
+        });
+      } catch (error) {
+        console.error("Error fetching Property details:", error.message);
+  
+      }
+    };
+  }
+
 export const postNewProperty = (payload) => {
   return async function (dispatch) {
       try {
@@ -86,7 +127,54 @@ export const postCategory = (payload) => {
   }
 };
 
+export function priceOrder(filterPrice) {
+  return async function (dispatch) {
+    try {
+      let url = URLfilter
+        const response = await axios.get(`${url}?priceOrder=${filterPrice}`);
+        dispatch({ 
+            type: 'PRICE_ORDER',
+            payload: response.data
+        });
+        
+    } catch (error) {
+        console.error('Error price order:', error);
+        throw error;
+    }
+}
+}
 
+export function filterType(type) {
+    return async function (dispatch){
+      try {
+        let url = URLfilter
+        const response = await axios.get(`${url}?type=${type}`);
+        dispatch({
+          type: 'FILTER_TYPE',
+          payload: response.data
+        });
+      
+      } catch (error) {
+        console.log(error)
+      }
+    };
+  }
+  
+  export function filterCategory(category) {
+    return async function (dispatch){
+      try {
+        let url = URLfilter
+        const response = await axios.get(`${url}?category=${category}`);
+        dispatch({
+          type: 'FILTER_CATEGORY',
+          payload: response.data
+        });
+      
+      } catch (error) {
+        console.log(error)
+      }
+    };
+  }
 
 
 
