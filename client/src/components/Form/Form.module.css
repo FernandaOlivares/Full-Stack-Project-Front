@@ -1,0 +1,217 @@
+body {
+  background-color: whitesmoke;
+  margin: 0;
+  padding: 0;
+  color: rgb(113, 107, 107);
+}
+
+.formContainer{
+  margin-top: 90vh;
+  max-width: 100%;
+}
+
+.pageTitle{
+  margin-top: -20%;
+  }
+
+.formInstructions{
+  text-align: center;
+  margin-top: -3%;
+}
+
+.formContainerRight {
+  display: flex;
+  flex-direction: column; 
+  margin-right: -50%;
+  width: 40%;
+  border: 1px solid rgb(113, 107, 107);
+}
+
+.inputContainer {
+    display: flex;
+    align-items: flex-start;
+    width: 25vw;
+    border-radius: 25px;
+}
+
+.inputField {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.inputField label {
+    margin-bottom: 3px;
+    flex: 1;
+    text-align: left;
+}
+
+.inputField input {
+    width:80%;
+    padding: 8px;
+    border-radius: 5px;
+    background-color: whitesmoke;
+    color: rgb(113, 107, 107);
+}
+.inputField input:focus {
+  outline: none;
+  border: 1px solid rgb(113, 107, 107);
+}
+  
+  .labelInputContainer {
+    display: flex;
+    align-items: center;
+    text-align: left;
+  }
+  
+  .labelInputContainer label {
+    margin-right: 10px;
+  }
+  
+  .inputContainer input,
+  .inputContainer textarea {
+    width: 100%;
+    padding: 8px;
+    border: 2px solid rgb(113, 107, 107);
+    border-radius: 25px;
+  }
+  
+.inputContainer textarea {
+    resize: vertical;
+    border: 2px solid rgb(113, 107, 107);
+    background-color: whitesmoke;
+}
+
+.descriptionContainer {
+  width: 80%;
+  height: 70px;
+  background-color: whitesmoke;
+  margin-bottom: 2%;
+}
+
+.descriptionContainer textarea {
+  width: 79%;
+  height: 100%;
+  padding: 8px;
+  border-radius: 25px;
+  background-color: whitesmoke;
+  color: rgb(113, 107, 107);
+  border: 2px solid rgb(113, 107, 107);
+}
+
+.descriptionContainer textarea:focus {
+outline: none;
+}
+
+
+
+.radioInputContainer{
+  display: flex;
+  justify-content: flex-start;
+}
+
+.radioContainer {
+  display: flex;
+  align-items: center;
+}
+
+.label {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: -30vw; /* Ajusta el espaciado entre el label y los botones de radio */
+}
+
+.radioButton {
+  display: flex;
+  align-items: center;
+  margin-right: 10px; /* Ajusta el espaciado entre los botones de radio */
+}
+
+.buttonContainer {
+  display: inline-block;
+  margin-right: 30%;
+  margin-bottom: -34%;
+  width: 13%;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  outline: none;
+}
+
+.buttonContainer:focus {
+outline: none; /* Elimina el contorno al hacer clic en el botón */
+}
+
+
+.buttonContainer button {
+  border: 1px solid transparent; /* Borde transparente por defecto */
+}
+.Container button:hover {
+  border-color: black;
+  box-shadow: 0px 0px 1.5vw silver;
+  outline: none;
+}
+
+
+.buttonContainer button:active {
+  border-color: silver;
+  box-shadow: 0px 0px 1.5vw silver;
+  outline: none;
+}
+
+.iconsContainer {
+  display: flex;
+  justify-content: space-between; /* Distribuir los elementos uniformemente */
+  align-items: flex-start;
+  width: 65%;
+  border-radius: 25px;
+  margin-bottom: 1%;
+}
+
+.swimmingPoolIcon {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
+}
+
+.storageIcon {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
+}
+
+.parkingIcon {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
+  border: 2px white;
+  background-color: white;
+}
+
+.parkingNumber{
+  width: 1vw;
+  height: 1vw;
+}
+
+.titleLabel{
+  margin-left: -57vw;
+}
+
+.othersContainer{
+  border-radius: 20px;
+  border-color: black;
+  background-color: whitesmoke;
+  color: rgb(113, 107, 107);
+}
+
+.errorMessage {
+  font-size: 13px;
+  margin-left: 10px;
+  white-space: nowrap;
+  color: #b70303;
+}

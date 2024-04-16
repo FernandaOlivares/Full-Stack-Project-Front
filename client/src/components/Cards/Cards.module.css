@@ -1,0 +1,11 @@
+.cardsContainer {
+  width: 87vw;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 10%;
+  border-radius: 8px;
+  z-index: 50;
+}

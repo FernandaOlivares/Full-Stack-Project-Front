@@ -1,13 +1,13 @@
 import {Link} from 'react-router-dom';
+
+import styles from './NavBar.module.css';
 import logoPyd from '../../assets/logoPyd.jpg';
 
-import styles from './Header.module.css';
-
-function Header() {
+function AdminNavBar() {
 
     return (
       <>
-        <div className={styles.headerContainer}>
+        <div className={styles.adminNavBarContainer}>
         <img src={logoPyd} alt="logoPyd" className={styles.logoPyd} />
         <Link className={styles.homeButton} to= '/home'>| Home |</Link>
         <Link className={styles.publicarButton} to= '/create'>| Publicar Propiedad | </Link>
@@ -16,5 +16,4 @@ function Header() {
     )
   }
   
-  export default Header;
-  
+  export default AdminNavBar;

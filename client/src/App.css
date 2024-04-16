@@ -1,3 +1,13 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: whitesmoke; /* Color de fondo */
+  color: rgb(113, 107, 107); /* Color del texto */
+  border: none; /* Eliminar bordes */
+  outline: none; /* Eliminar contorno */
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;

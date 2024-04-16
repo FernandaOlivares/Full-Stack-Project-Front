@@ -1,0 +1,55 @@
+.card {
+    display: flex; /* Utiliza flexbox para el contenedor */
+    flex-direction: column; /* Asegura que los elementos secundarios estén apilados verticalmente */
+    align-items: center;
+    text-align: center;
+    width: 20.56vw;
+    height: 36vh;
+    text-align: center;
+    z-index: 10;
+    border-radius: 10px;
+    
+  }
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border-color: rgb(113, 107, 107);
+    box-shadow: 0px 0px 1.5vw rgb(113, 107, 107);
+  }
+  
+  .card h3 {
+    font-size: 0.7em;
+    color: rgb(113, 107, 107);
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+    text-overflow: ellipsis; /* Muestra tres puntos (...) cuando el texto desborda */
+    margin-top:-1.5vh;
+  }
+  
+  .card p {
+    font-size: 1em;
+    color: rgb(113, 107, 107);
+    font-style: italic;
+    overflow: hidden; /* Oculta el texto que no cabe */
+    margin-top: -1vh;
+    text-align: center;
+  }
+  
+  .card img {
+    display: block;
+    width: 100%;
+    height: 200px; /* Establece una altura fija para las imágenes */
+    object-fit: cover; /* Mantiene la relación de aspecto y recorta la imagen si es necesario */
+    object-position: center top; /* Alinea la imagen en el centro horizontal y en la parte superior vertical */
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+  .card a {
+    text-decoration: none;
+    color: inherit;
+  }
+  .card a:hover {
+    color: inherit;
+    text-decoration: none;
+  }
