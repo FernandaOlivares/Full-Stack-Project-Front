@@ -1,0 +1,38 @@
+/* .landingPageBackground {
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Fachada_de_Casas_Margarite%C3%B1as_%2816%29.jpg/1200px-Fachada_de_Casas_Margarite%C3%B1as_%2816%29.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+} */
+.pagDiv{ 
+    display: flex;
+    justify-content: center;
+    width:  20vw;
+    height: 100vh;
+}
+
+.startPag2{
+    width: 400px;
+    transition: all 600ms;
+}
+
+.imgs{
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    align-items: center;
+    top: 10%;
+}
+
+.startPag{    
+    width: 100px;
+    margin-top: 250px;
+    left: 47.4%;
+    cursor: pointer;
+    transition: all 1.5s;    
+}
+.startPag:hover{
+    transform: scale(1.5);
+    
+}
