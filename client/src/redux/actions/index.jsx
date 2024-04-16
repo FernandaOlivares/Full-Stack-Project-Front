@@ -27,7 +27,7 @@ export const getAllProperties = () => {
 export const getPropertyById = (id) => {
     return async function (dispatch) {
       try {
-        const response = await axios.get(`https://jsonplaceholder.typicode.com/users/${id}`);
+        const response = await axios.get(`http://localhost:3001/propertyId/${id}`);
         dispatch({
           type: 'GET_PROPERTY_BY_ID',
           payload: response.data,

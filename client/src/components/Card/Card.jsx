@@ -27,7 +27,7 @@ function Card({property}) {
           )}
         </div>
         <p>{category}</p>
-        <h3>{type} en las {city}, {zone}</h3>
+        <h3> {type} | {city} | {zone} </h3>
         <h3>{bedrooms} Dormitorios - {bathrooms} Baños</h3>
         <h3>${price}</h3>
       </Link>
