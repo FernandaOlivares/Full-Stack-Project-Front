@@ -1,5 +1,8 @@
 .navBarContainer {
-  position: fixed;
+  display: flex;
+  justify-content: space-around; /* Alinear los elementos en los extremos */
+  align-items: center;
+  position: absolute;
   top: 9%;
   left: 0;
   width: 100%;
@@ -53,6 +56,17 @@
   
   .publicarButton:hover {
     color: #b70303;
+  }
+
+  .submitBtn {
+    font-size: 14px;
+    padding: 0.5em 2em;
+    border: 1px solid rgb(113, 107, 107);
+    box-shadow: 0 10px 16px 0 rgb(183, 183, 183);
+    background: #ffffff;
+    border-radius: 8px 8px 8px 8px;
+    
+    transition: 0.3s;
   }
 
   /* .container{
@@ -205,7 +219,7 @@ sombreado botones al lado de buscar
   } */
   
   /* en blanco */
-  .git {
+  /* .git {
     position: absolute;
     text-align: center;
     display: none;
@@ -216,10 +230,10 @@ sombreado botones al lado de buscar
     background-color: #ffffff;
     padding-top: 50px;
     z-index: 4;
-  } 
+  }  */
 
-  /* en blanco */
+  /* en blanco
   .menu_hiden.active {
     height: 100vh;
     display: block;
-  } 
+  }  */

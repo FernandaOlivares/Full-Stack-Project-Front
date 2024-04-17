@@ -26,7 +26,7 @@ const SearchBar = () => {
     return (
         <>
             <div className={styles.inputGroup}>
-                <input onChange={handleChange} onKeyDown={onSearchEnter} placeholder="Ingresa nombre de la zona" type="text" />
+                <input onChange={handleChange} className={styles.submitBtn} onKeyDown={onSearchEnter} placeholder="Comuna" type="text" />
                 <button onClick={onSearch} className={styles.submitBtn}><span>BUSCAR</span></button>
             </div>
         </>

@@ -5,14 +5,14 @@
     justify-content: center;   
   }
   
-  /* grueso boton searchbar */
+  /*boton searchbar */
   .submitBtn {
-    font-size: 12px;
+    font-size: 14px;
     padding: 0.5em 2em;
-    border: transparent;
-    box-shadow: 0 12px 16px 0 rgb(255, 255, 255);
-    background: #5c6065;
-    border-radius: 0 10px 10px 0;
+    border: 1px solid rgb(113, 107, 107);
+    box-shadow: 0 10px 16px 0 rgb(183, 183, 183);
+    background: #ffffff;
+    border-radius: 10px 10px 10px 10px;
     transition: 0.3s;
   }
 
