@@ -11,6 +11,7 @@ export const PRICE_ORDER = 'PRICE_ORDER';
 export const POST_NEW_PROPERTY = 'POST_NEW_PROPERTY';
 export const POST_TYPE = 'POST_TYPE';
 export const POST_CATEGORY = 'POST_CATEGORY';
+
 //export const GET_ALL_TYPES = 'GET_ALL_TYPES';
 //export const GET_ALL_CATEGORIES = 'GET_ALL_CATEGORIES';
 
@@ -46,7 +47,7 @@ export const getPropertyById = (id) => {
   };
   
   export function addProperty(zone) {
-    const endpoint = "http://localhost:3001/property?zone=" + zone;
+    const endpoint = "http://localhost:3001/property/filterProperties?zone=" + zone;
     return async (dispatch) => {
       try {
         const { data } = await axios.get(endpoint);
@@ -176,7 +177,81 @@ export function filterType(type) {
     };
   }
 
+  export const filterCombined = (type, category, priceOrder,zone) => {
+    return async (dispatch) => {
+        try {
+            let url = 'http://localhost:3001/property/filterProperties';
 
+            // Construir los parámetros de la URL basados en los filtros seleccionados
+            const queryParams = [];
+            if ( type !== 'all' ) {
+                queryParams.push(`type=${type}`);
+            }
+            if ( category !== 'all') {
+                queryParams.push(`category=${category}`);
+            }
+            if ( priceOrder !== 'default') {
+                queryParams.push(`priceOrder=${priceOrder}`);
+            }
+            if (zone !== 'default' ){
+              queryParams.push(`zone=${zone}`);
+          }
+
+
+          // Si hay parámetros, agregarlos a la URL
+
+            if (queryParams.length > 0) {
+                url += '?' + queryParams.join('&');
+            }
+
+            const response = await axios.get(url);
+            dispatch({
+                type: 'FILTER_TYPE',
+                payload: response.data
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    };
+};
+
+  // export const filterCombined = (type, category, priceOrder) => {
+  //   return async (dispatch) => {
+  //     try {
+  //       let url;
+  //       if (category ==='all') {
+  //         url = `http://localhost:3001/property/filterProperties?type=${type}`;
+  //        } 
+  //         if(type === 'all'){url=`http://localhost:3001/property/filterProperties`
+  //       }
+  //       else {
+  //         url = `http://localhost:3001/property/filterProperties?type=${type}&category=${category}&priceOrder=${priceOrder}`;
+  //       }
+  
+  //       const response = await axios.get(url);
+  //       dispatch({
+  //         type: 'FILTER_TYPE',
+  //         payload: response.data
+  //       });
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  // };
+  // export const filterCombined = (type, category, priceOrder) => {
+  //   return async (dispatch) => {
+  //     try {
+  //       if(!category){const response = axios.get(`http://localhost:3001/property/filterProperties?type=${type}`)}
+  //       const response = await axios.get(`http://localhost:3001/property/filterProperties?type=${type}&category=${category}&priceOrder=${priceOrder}`);
+  //       dispatch({
+  //         type: 'FILTER_TYPE',
+  //         payload: response.data
+  //       });
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  // };
 
 /*export const getAllTypes = () => {
   return async function (dispatch) {

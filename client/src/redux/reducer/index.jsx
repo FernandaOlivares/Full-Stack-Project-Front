@@ -21,6 +21,7 @@ const initialState = {
     allCategoriesBackup: [],
     property: [],
     propertyById: [],
+    propertiesFiltered:[],
     newPropertyId: null,
     error: null,
 };
@@ -45,7 +46,7 @@ function rootReducer(state = initialState, action){
             case GET_PROPERTY_ZONE:
                     return {
                       ...state,
-                      property: action.payload,
+                      allProperties: action.payload
                     };
 
             case PRICE_ORDER: 
@@ -68,6 +69,8 @@ function rootReducer(state = initialState, action){
             return {
               ...state,
               allProperties: action.payload,
+              propertiesFiltered:action.payload
+
             };
            
 
