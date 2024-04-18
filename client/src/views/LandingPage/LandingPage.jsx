@@ -16,7 +16,7 @@ const LandingPage = () => {
             <div className={Styles.imgs}>
               
                 <img className={Styles.startPag2} src={imageImg.LOGO} alt="" />
-                {<img className={Styles.startPag} type='button' onClick={()=>navigate('/home')} src={imageImg.loanding} alt="" />}
+                {<img className={Styles.startPag} type='button' onClick={()=>navigate('/home')} src={imageImg.loanding} alt="" />}<span>ENTRAR</span>
             </div>           
                
         </div>
