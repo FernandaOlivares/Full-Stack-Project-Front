@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux';
 
-import { postNewProperty } from '../../redux/actions/index.jsx'
-import { postType } from '../../redux/actions/index.jsx'
-import { postCategory } from '../../redux/actions/index.jsx'
+import { postNewProperty } from '../../redux/actions/index.jsx';
+import { postType } from '../../redux/actions/index.jsx';
+import { postCategory } from '../../redux/actions/index.jsx';
+import UploadWidget from '../UploadWidget/UploadWidget.jsx';
 
 import styles from './Form.module.css';
 
@@ -299,6 +300,9 @@ if (!propertyInfo.imageDefault || !/^(ftp|http|https):\/\/[^ "]+$/.test(property
             </div>
           </div>
         </form>
+        <div>
+        <UploadWidget/>
+        </div>
         </div>
       </div>
     </>
