@@ -65,23 +65,7 @@ const NavBar = ()=>{
 
 
 
-    const handlerType = (e)=>{
-             console.log(e.target.value.toLowerCase());
-             dispatch(filterType(e.target.value)) 
-
-    }
     
-    const handlerCategory = (e)=>{
-             console.log(e.target.value.toLowerCase());
-             dispatch(filterCategory(e.target.value))
-
-    }
-
-    const handlerpriceOrder = (e)=>{
-        console.log(e.target.value.toLowerCase());
-        dispatch(priceOrder(e.target.value))
-
-}
 
     return (
       <div>
