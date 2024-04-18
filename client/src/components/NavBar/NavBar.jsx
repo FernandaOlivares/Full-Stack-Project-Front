@@ -11,15 +11,20 @@ import { filterType, filterCategory, priceOrder,filterCombined} from '../../redu
 
 
 
+
 const NavBar = ()=>{
 
   
+
+
+
   //const {setPagina} = props
   //const [filterBar, setFilterBar] = useState(false)
   const location = useLocation()
   const dispatch = useDispatch()
   //const allProperties = useSelector ((state) => state.allProperties); 
  
+
   
     const [selectedType, setSelectedType] = useState('all');
     const [selectedCategory, setSelectedCategory] = useState('all');
@@ -59,10 +64,30 @@ const NavBar = ()=>{
   }
 
 
+
+    const handlerType = (e)=>{
+             console.log(e.target.value.toLowerCase());
+             dispatch(filterType(e.target.value)) 
+
+    }
+    
+    const handlerCategory = (e)=>{
+             console.log(e.target.value.toLowerCase());
+             dispatch(filterCategory(e.target.value))
+
+    }
+
+    const handlerpriceOrder = (e)=>{
+        console.log(e.target.value.toLowerCase());
+        dispatch(priceOrder(e.target.value))
+
+}
+
     return (
       <div>
 
         <div className={styles.navBarContainer}>
+
 
         
 
@@ -83,6 +108,7 @@ const NavBar = ()=>{
   <option value="ASC">Ascendente</option>
   <option value="DESC">Descendente</option>
 </select>
+
             
             {/* <div>
               {location.pathname === "/home" && (
@@ -96,6 +122,7 @@ const NavBar = ()=>{
 
               )}
           </div> */}
+
           
           <div>
                 <input onChange={handleZone} onKeyDown={onSearchEnter} placeholder="Ingresa nombre de la zona" type="text" />
@@ -106,20 +133,19 @@ const NavBar = ()=>{
                     <SearchBar zone={zone} onZoneChange={onZoneChange}/>
                 } */}
            
-            
 
-      
-            {/* <div>
-                {location.pathname === "/home" && (
-                    <div className={barra}>
+            
+        {/* <div>
+            {location.pathname === "/home" && (
+                <div className={barra}>
                         <TypeBar setPagina={setPagina}/>
-                    </div>
+                </div>
                 )}
-          </div> */}
+        </div> */}
 
         
-          </div>
-          </div>
+        </div>
+      </div>
           
   )
 
