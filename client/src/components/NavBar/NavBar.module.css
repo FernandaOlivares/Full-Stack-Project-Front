@@ -1,50 +1,42 @@
 .navBarContainer {
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    width: 85vw;
-    height: 10.5%;
-    border-radius: 8px;
-    border: 1px solid antiquewhite;
-    padding: 1%;
-    overflow: hidden;
-    margin-top: -8%;
-    background-color: whitesmoke;
-    z-index: 100;
+  display: flex;
+  justify-content: space-around; /* Alinear los elementos en los extremos */
+  align-items: center;
+  position: absolute;
+  top: 9%;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgb(113, 107, 107);
   }
 
   .adminNavBarContainer {
-    display: flex;
-    justify-content: center;
-    position: fixed;
-    flex-direction: column;
-    align-items: center;
-    width: 85vw;
-    height: 7%;
-    border-radius: 8px;
-    padding: 1%;
-    overflow: hidden;
-    margin-top: -5.5%;
-    margin-left: -15%;
-    z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
   .logoPyd{
     width: 18%;
     margin-top: 0%;
-    margin-left: -84%;
+    margin-left: -65%;
   }
 
   .homeButton {
-    margin-top: -3%;
-    margin-right: -8%;
-    color: rgb(113, 107, 107);
-    font-size: 0.90vw;
-    border-radius: 5px;
-    background-color: whitesmoke;
-    transition: color 0.3s;
+  position: absolute;
+  top: 50%;
+  margin-right: 25%;
+  right: 20px;
+  color: rgb(113, 107, 107);
+  font-size: 0.90vw;
+  border-radius: 5px;
+  transition: color 0.3s;
   }
   
   .homeButton:hover {
@@ -52,15 +44,196 @@
   }
 
   .publicarButton{
-    margin-top: -1.5%;
-    margin-right: -25%;
+    position: absolute;
+    top: 50%;
+    margin-right: 15%;
+    right: 20px;
     color: rgb(113, 107, 107);
     font-size: 0.90vw;
     border-radius: 5px;
-    background-color: whitesmoke;
     transition: color 0.3s;
   }
   
   .publicarButton:hover {
     color: #b70303;
   }
+
+  .submitBtn {
+    font-size: 14px;
+    padding: 0.5em 2em;
+    border: 1px solid rgb(113, 107, 107);
+    box-shadow: 0 10px 16px 0 rgb(183, 183, 183);
+    background: #ffffff;
+    border-radius: 8px 8px 8px 8px;
+    
+    transition: 0.3s;
+  }
+
+  /* .container{
+    background-color:  #ffffff;   
+    width: 100%;
+    height: 45px;
+    margin-top: 30px;
+    
+}   */
+
+/* imagen menu hamburguesa */
+.burger {
+    position: absolute;
+    left: 5px;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    cursor: pointer;
+    margin: 10px;
+    
+  }
+  
+  /* input boton menu hambur */
+  .burger input {
+    display: none;
+  }
+  
+  /* color menu hambur */
+  .burger span {
+    display: block;
+    position: absolute;
+    height: 4px;
+    width: 100%;
+    background:linear-gradient(90deg, #ffffff 0%, #0d0d0c 100%);
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: .25s ease-in-out;
+  }
+  
+  .burger span:nth-of-type(1) {
+    top: 0px;
+    transform-origin: left center;
+  }
+  
+  .burger span:nth-of-type(2) {
+    top: 50%;
+    transform: translateY(-50%);
+    transform-origin: left center;
+  }
+  
+  .burger span:nth-of-type(3) {
+    top: 100%;
+    transform-origin: left center;
+    transform: translateY(-100%);
+  }
+  
+  .burger input:checked ~ span:nth-of-type(1) {
+    transform: rotate(45deg);
+    top: 0px;
+    left: 5px;
+  }
+  
+  .burger input:checked ~ span:nth-of-type(2) {
+    width: 0%;
+    opacity: 0;
+  }
+  
+  .burger input:checked ~ span:nth-of-type(3) {
+    transform: rotate(-45deg);
+    top: 28px;
+    left: 5px;
+  }
+  
+.barContai{
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    padding-top: 5px;
+    
+    
+}
+
+/* .barLeft{
+  display: inline-block;
+	height: 760px;	
+	background-color: #34495e;
+	border-radius: 0% 20px 20px 0px;
+	margin-top: 22px;
+	transition: all 1.3s ease-in-out;  
+} */
+
+/* .barLeft2{
+  display: inline-block;
+	height: 760px;	
+	background-color: #151d25;
+	border-radius: 0% 20px 20px 0px;
+	margin-top: 22px;
+  transform: translateX(-200px);	 
+}  */
+
+/* 
+sombreado botones al lado de buscar
+.submitBtn {
+    margin-top: -20px;
+    font-size: 17px;
+    padding: 0.5em 2em;
+    border: transparent;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24);
+    background: #34495e;
+    transition: 0.3s;
+    border-radius: 10px 10px 0 0;
+    text-decoration: none;
+  } */
+
+  /* sombreado botones al aldo de buscar */
+/*    
+  .submitBtn:hover {
+    transition: 0.3s;
+    background: linear-gradient(90deg, #f60808 0%, #fbfb3f 100%);
+    cursor: pointer;
+  } */
+  
+  /* en blanco */
+  /* .submitBtn:active {
+    transform: translate(0em, 0.2em);
+  }  */
+  
+  /* color botones al aldo buscar */
+  /* .submitBtn span {
+    font-weight: 800;
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, #f60808 0%, #fbfb3f 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: 0.3s;
+  } */
+  
+  /* accion al pasar por botones al lado buscar */
+  /* .submitBtn:hover span {
+    background: #2E2E2E;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: 0.3s;
+  } */
+  
+  /* en blanco */
+  /* .git {
+    position: absolute;
+    text-align: center;
+    display: none;
+    font-size: 15px;
+    height: 0vh;
+    width: 100vw;
+    top: 115px;
+    background-color: #ffffff;
+    padding-top: 50px;
+    z-index: 4;
+  }  */
+
+  /* en blanco
+  .menu_hiden.active {
+    height: 100vh;
+    display: block;
+  }  */

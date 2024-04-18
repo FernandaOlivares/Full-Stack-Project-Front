@@ -1,7 +1,14 @@
 import { 
+    ADD_PROPERTY_DETAIL,
+    FILTER_CATEGORY,
+    FILTER_TYPE,
     GET_ALL_PROPERTIES,
     GET_PROPERTY_BY_ID,
+    GET_PROPERTY_ZONE,
+    PRICE_ORDER,
     POST_NEW_PROPERTY,
+    POST_TYPE,
+    POST_CATEGORY,
     //GET_ALL_TYPES,
 } from '../actions/index.jsx';
 
@@ -12,7 +19,9 @@ const initialState = {
     allTypesBackup: [],
     allCategories: [],
     allCategoriesBackup: [],
+    property: [],
     propertyById: [],
+    propertiesFiltered:[],
     newPropertyId: null,
     error: null,
 };
@@ -26,12 +35,52 @@ function rootReducer(state = initialState, action){
                 allPropertiesBackup: action.payload,
             }
 
-        case GET_PROPERTY_BY_ID: {
+            case GET_PROPERTY_BY_ID: {
+                    return {
+                      ...state,
+                      propertyById: action.payload, 
+                    };
+                  }
+
+        
+            case GET_PROPERTY_ZONE:
+                    return {
+                      ...state,
+                      allProperties: action.payload
+                    };
+
+            case PRICE_ORDER: 
+                return {
+                  ...state,
+                  allProperties: action.payload,
+                };
+              
+
+
+            case ADD_PROPERTY_DETAIL:
+        return {
+          ...state,
+          detail: action.payload,
+        };
+
+        // 
+
+          case FILTER_TYPE: 
             return {
               ...state,
-              propertyById: action.payload, 
+              allProperties: action.payload,
+              propertiesFiltered:action.payload
+
             };
-          }
+           
+
+          case FILTER_CATEGORY: {
+            return {
+              ...state,
+              allProperties: action.payload,
+            };
+        }
+    
 
         case POST_NEW_PROPERTY: {
         return {
@@ -39,6 +88,20 @@ function rootReducer(state = initialState, action){
             newPropertyId: action.payload.id,
         };
         }
+
+        case POST_TYPE: {
+            return {
+                ...state,
+                allTypes: action.payload,
+            };
+            }
+
+        case POST_CATEGORY: {
+            return {
+                ...state,
+                allCategories: action.payload,
+            };
+            }
         
         /*case GET_ALL_TYPES:
             return {

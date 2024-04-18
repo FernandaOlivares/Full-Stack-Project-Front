@@ -1,13 +1,11 @@
 .cardsContainer {
-    width: 87vw;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    align-items: flex-start;
-    align-content: flex-start;
-    border: 1px solid antiquewhite;
-    margin-top:15%;
-    border-radius: 8px;
-    z-index: 50;
-  }
+  width: 87vw;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 10%;
+  border-radius: 8px;
+  z-index: 50;
+}
