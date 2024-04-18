@@ -17,10 +17,10 @@ export const POST_CATEGORY = 'POST_CATEGORY';
 
 const URLfilter = "http://localhost:3001/property/filterProperties"
 
-export const getAllProperties = () => {
+export const getAllProperties = (page, pageSize) => {
     return async function(dispatch) {
         try {
-            const response = await axios.get('http://localhost:3001/property/getProperties');
+            const response = await axios.get(`http://localhost:3001/property/getProperties?page=${page}&pageSize=${pageSize}`);
             return dispatch({
                 type: 'GET_ALL_PROPERTIES',
                 payload: response.data,

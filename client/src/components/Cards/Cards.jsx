@@ -2,12 +2,12 @@
 //import { useState } from "react";
 import Card from '../Card/Card';
 import styles from './Cards.module.css';
-// import { Pagination } from "..//../components/Pagination/Pagination.jsx";
+//import { Pagination } from "..//../components/Pagination/Pagination.jsx";
 // import { useSelector } from "react-redux";
 //import { filterDB, orderPrice } from "../../redux/actions";
 
-function Cards({allProperties}) {
-  const propertyList = allProperties;
+//function Cards({allProperties}) {
+  //const propertyList = allProperties;
 
  // const {property} = useSelector((state)=> state)
   //const dispatch = useDispatch()
@@ -33,18 +33,38 @@ function Cards({allProperties}) {
    
 //let maximo = property.length / porPagina;
 
-    return (
-      <>
-        <div className={styles.cardsContainer}>
-          {propertyList?.map((property)=> (
-          <Card key={property.id} property={property}/>
-          ))}
-        </div>
+    //return (
+      //<>
+        //<div className={styles.cardsContainer}>
+          //{propertyList?.map((property)=> (
+          //<Card key={property.id} property={property}/>
+          //))}
+        //</div>
         
 
-      </>
-    )
-  }
+      //</>
+   // )
+ // }
   
-  export default Cards;
+ // export default Cards;
   
+ function Cards({ allProperties, currentPage, pageSize }) {
+  const startIndex = (currentPage - 1) * pageSize;
+  const endIndex = startIndex + pageSize;
+  const propertiesToShow = allProperties.slice(startIndex, endIndex);
+
+  return (
+    <>
+      <div className={styles.cardsContainer}>
+        {propertiesToShow.map((property) => (
+          <Card key={property.id} property={property} />
+        ))}
+      </div>
+    </>
+  );
+}
+
+export default Cards;
+
+
+
