@@ -33,7 +33,7 @@ function PostNewPropertyForm() {
     swimmingPool:'',
     title: '',
     description: '',
-    imageDefault: '',
+    imageDefault: [],
   });
 
   const [error, setError] = useState({
@@ -51,7 +51,7 @@ function PostNewPropertyForm() {
     swimmingPool:'',
     title: '',
     description: '',
-    imageDefault: '',
+    imageDefault: [],
   });
 
 
@@ -64,7 +64,7 @@ function PostNewPropertyForm() {
   if (!propertyInfo.type || !/^[A-Za-zÀ-ÖØ-öø-Ÿ0-9\s'-]+(?<!-[-])$/.test(propertyInfo.type.trim()) || propertyInfo.type.length < 0 || propertyInfo.type.length > 30) {
     errors.type = '*Carácter inválido, max. 30';
   }
-  if (!propertyInfo.price || !/^\d+$/.test(propertyInfo.price.trim()) || propertyInfo.price.length < 4 || propertyInfo.address.price > 20) {
+  if (!propertyInfo.price || !/^\d+$/.test(propertyInfo.price.trim()) || propertyInfo.price.length < 1 || propertyInfo.price.length > 20) {
     errors.price = '*Ingresar número entero mayor a cero';
   }
 
@@ -111,8 +111,8 @@ if (!propertyInfo.description || propertyInfo.description.length < 50 || propert
   errors.description = '*Usar entre 50-3000 caracteres ';
 }
 
-if (!propertyInfo.imageDefault || !/^(ftp|http|https):\/\/[^ "]+$/.test(propertyInfo.imageDefault.trim())) {
-  errors.imageDefault = '*Link inválido';
+if (!propertyInfo.imageDefault || propertyInfo.imageDefault.length === 0) {
+  errors.imageDefault = '*Debe proporcionar al menos un enlace de imagen';
 }
 
     setError(errors);
@@ -120,7 +120,14 @@ if (!propertyInfo.imageDefault || !/^(ftp|http|https):\/\/[^ "]+$/.test(property
     return Object.keys(errors).length === 0;
   } 
     
-  
+  const handleImageUpload = (imageUrls) => {
+    console.log(imageUrls);
+    setInput((prevInput) => ({
+        ...prevInput,
+        imageDefault: [...prevInput.imageDefault, ...imageUrls],
+    }));
+};
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const isValid = validateFormInput(input);
@@ -147,7 +154,7 @@ if (!propertyInfo.imageDefault || !/^(ftp|http|https):\/\/[^ "]+$/.test(property
           swimmingPool:'',
           title: '',
           description: '',
-          imageDefault: '',
+          imageDefault: [],
         });
       } catch (error) {
         console.error('Error creating new property:', error);
@@ -156,12 +163,33 @@ if (!propertyInfo.imageDefault || !/^(ftp|http|https):\/\/[^ "]+$/.test(property
     } 
   };
 
+  /*const handleChange = (event) =>{
+    
+
+  const handleSubmit = () =>{
+    // console.log(event.target.files);
+    // setFile(event.target.files);
+  }*/
+
+  /*const previewFiles = () => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      console.log(image);
+      setImage(reader.result);
+    }
+  }*/
+  useEffect(() => {
+    validateFormInput(input);
+  }, [input]);
+
   const handleChange = (event) => {
-    setInput({
-        ...input,
-        [event.target.name]: event.target.value,
-    });
-    validateFormInput({ ...input, [event.target.name]: event.target.value });
+    const { name, value } = event.target;
+    setInput((prevInput) => ({
+        ...prevInput,
+        [name]: value,
+    }));
+    validateFormInput({ ...input, [name]: value });
 };
 
   return (
@@ -290,10 +318,14 @@ if (!propertyInfo.imageDefault || !/^(ftp|http|https):\/\/[^ "]+$/.test(property
                 <label >Imágenes*:
               <span className={styles.errorMessage}>{error.imageDefault}</span>
               <div className={styles.inputContainer}>
-                <input type='text' name='imageDefault' value={input.imageDefault} onChange={handleChange}/>
+                <input type='text' name='imageDefault' value={input.imageDefault.join(', ')} onChange={handleChange}/>
               </div>
                 <div/>
             </label>
+            <div>
+            <label>Subir fotos de la propiedad</label>
+            <UploadWidget handleImageUpload={handleImageUpload}/>
+            </div>
             <div className={styles.buttonContainer}>
             <button type='submit' disabled={!Object.keys(error).every(key => error[key] === '')}>Publicar Propiedad</button>
           </div>
@@ -301,7 +333,6 @@ if (!propertyInfo.imageDefault || !/^(ftp|http|https):\/\/[^ "]+$/.test(property
           </div>
         </form>
         <div>
-        <UploadWidget/>
         </div>
         </div>
       </div>

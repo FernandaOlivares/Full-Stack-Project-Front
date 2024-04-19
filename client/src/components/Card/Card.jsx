@@ -6,8 +6,6 @@ import imgNotFound from '../../assets/imgNotFound.png';
 
 function Card({property}) {
   const {id, category, type, city, zone, bedrooms, bathrooms, price, imageDefault} = property;
-  console.log('Propiedad:', property);
-  console.log('imageDefault:', imageDefault);
   return (
     <div className={styles.card}>
       <Link to={`${id}`}>
