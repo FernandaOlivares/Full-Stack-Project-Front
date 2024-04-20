@@ -25,3 +25,5 @@ dist-ssr
 
 # Editor directories and files
 .DS_Store
+# Ignorar el archivo de credenciales
+src/credenciales.js
