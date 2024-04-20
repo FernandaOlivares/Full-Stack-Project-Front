@@ -5,115 +5,267 @@ body {
   color: rgb(113, 107, 107);
 }
 
-.formContainer{
-  margin-top: 90vh;
-  max-width: 100%;
+.bodyContainer {
+  position: fixed;
+  top: 9%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 84%;
+  height: 88%;
+  border: 0.5px solid rgb(113, 107, 107);
+  border-radius: 10px;
 }
 
 .pageTitle{
-  margin-top: -20%;
+  text-align: center;
+  margin-top: -1.5%;
   }
 
 .formInstructions{
   text-align: center;
-  margin-top: -3%;
+  margin-top: -1.8%;
+}
+
+.formContainer{
+  position: fixed;
+  top: 18%; /* 5% de la altura de la ventana */
+  left: 9%; /* 5% del ancho de la ventana */
+  width: 82%; /* 40% del ancho de la ventana */
+  height: 78%; /* 20% de la altura de la ventana */
+  background-color: whitesmoke;
+  border-radius: 3px;
+}
+
+.formContainerLeft{
+  position: fixed;
+  top: 19%; /* 5% de la altura de la ventana */
+  left: 9%; /* 5% del ancho de la ventana */
+  width: 40%; /* 40% del ancho de la ventana */
+  height: 75%;
 }
 
 .formContainerRight {
-  display: flex;
-  flex-direction: column; 
-  margin-right: -50%;
-  width: 40%;
-  border: 1px solid rgb(113, 107, 107);
+  position: fixed;
+  top: 19%; /* 5% de la altura de la ventana */
+  right: 9%; /* 5% del ancho de la ventana */
+  width: 40%; /* 40% del ancho de la ventana */
+  height: 75%;
 }
 
-.inputContainer {
-    display: flex;
-    align-items: flex-start;
-    width: 25vw;
-    border-radius: 25px;
+.selectContainer {
+  display: flex;
+  align-items: left;
+  justify-content: space-between; 
+  width: 100%;
+  justify-content: space-between;
+}
+
+.selectContainer select{
+  width: 95%;
+  flex: 1;
+  border-radius: 20px;
+  border: 1px solid rgb(113, 107, 107);
+  outline: rgb(113, 107, 107);
+}
+.selectContainer select:focus {
+  border-width: 2px; /* Establece el ancho del borde cuando el elemento está enfocado */
+}
+
+.selectContainer label {
+  text-align: left;
+  color: rgb(113, 107, 107);
+  font-size: 17px;
+}
+
+.swimmingPoolSelect{
+  width: 48%;
+}
+
+.inputsFieldLeftContainer {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  height: 66%;
+  top: 28%;
 }
 
 .inputField {
-  margin-bottom: 10px;
   display: flex;
-  flex-direction: column;
   align-items: left;
+  justify-content: space-between; 
+  width: 100%;
+  margin-bottom: 1%;
 }
 
 .inputField label {
-    margin-bottom: 3px;
-    flex: 1;
-    text-align: left;
+  color: rgb(113, 107, 107);
+  font-size: 17px;
+  text-align: left;
+  width: 100%;
 }
 
-.inputField input {
-    width:80%;
-    padding: 8px;
-    border-radius: 5px;
-    background-color: whitesmoke;
-    color: rgb(113, 107, 107);
-}
-.inputField input:focus {
-  outline: none;
+.inputContainer {
+    width: 20vw;
+    }
+
+.inputContainer input {
+  width:80%;
+  padding: 7px;
   border: 1px solid rgb(113, 107, 107);
+  border-radius: 25px;
+  color: black; /* Color del texto del input */
+  background-color: white; /* Color de fondo del input */
+  font-size: 17px;
 }
-  
-  .labelInputContainer {
-    display: flex;
-    align-items: center;
-    text-align: left;
+
+.inputContainer input:focus {
+  outline: none;
+  border: 2px solid rgb(113, 107, 107);
+}
+
+.inputContainer input::placeholder {
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.numberInputField {
+  display: flex;
+  align-items: left;
+  border: 2px solid yellow;
+  width: 100%;
+}
+
+.numberInputField label {
+  color: rgb(113, 107, 107);
+  font-size: 17px;
+  text-align: left;
+  border: 2px solid green;
+}
+
+.numberInputField input {
+  width: 80%;
+  padding: 7px;
+  border: 1px solid rgb(113, 107, 107);
+  border-radius: 25px;
+  color: black; /* Color del texto del input */
+  background-color: white; /* Color de fondo del input */
+  font-size: 17px;
+}
+
+
+.numberInputField input:focus {
+  outline: none;
+  border: 2px solid rgb(113, 107, 107);
+}
+
+.numberInputField input::placeholder {
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.numberInputContainer {
+  width: 50%;
   }
-  
-  .labelInputContainer label {
-    margin-right: 10px;
+
+.numberInputContainer input {
+border: 1px solid rgb(113, 107, 107);
+border-radius: 25px;
+color: black; /* Color del texto del input */
+background-color: white; /* Color de fondo del input */
+font-size: 17px;
+}
+
+.numberInputContainer input:focus {
+outline: none;
+border: 2px solid rgb(113, 107, 107);
+}
+
+.numberInputContainer input::placeholder {
+font-weight: 600;
+font-size: 17px;
+}
+
+.titleInputContainer {
+  width: 96%;
   }
-  
-  .inputContainer input,
-  .inputContainer textarea {
-    width: 100%;
-    padding: 8px;
-    border: 2px solid rgb(113, 107, 107);
-    border-radius: 25px;
-  }
-  
-.inputContainer textarea {
-    resize: vertical;
-    border: 2px solid rgb(113, 107, 107);
-    background-color: whitesmoke;
+
+.titleInputContainer input {
+width:100%;
+padding: 7px;
+border: 1px solid rgb(113, 107, 107);
+border-radius: 25px;
+color: black; /* Color del texto del input */
+background-color: white; /* Color de fondo del input */
+font-size: 17px;
+}
+
+.titleInputContainer input:focus {
+outline: none;
+border: 2px solid rgb(113, 107, 107);
+}
+
+.titleInputContainer input::placeholder {
+font-weight: 600;
+font-size: 17px;
 }
 
 .descriptionContainer {
-  width: 80%;
+  width: 100%;
   height: 70px;
   background-color: whitesmoke;
   margin-bottom: 2%;
+  color: black; /* Color del texto del input */
+  font-size: 17px;
 }
 
 .descriptionContainer textarea {
-  width: 79%;
+  width: 96%;
   height: 100%;
   padding: 8px;
   border-radius: 25px;
-  background-color: whitesmoke;
   color: rgb(113, 107, 107);
-  border: 2px solid rgb(113, 107, 107);
+  border: 1px solid rgb(113, 107, 107);
+  color: black; /* Color del texto del input */
+  background-color: white; /* Color de fondo del input */
+  font-size: 17px;
+  font-family: inherit; /* Hereda la fuente del elemento padre */
+  font-size: inherit;
 }
 
 .descriptionContainer textarea:focus {
 outline: none;
+border: 2px solid rgb(113, 107, 107);
 }
 
-
-
-.radioInputContainer{
+.uploadPicturesContainer {
+  position: fixed;
+  width: 40%;
+  height: 40%;
+  top: 45%;
   display: flex;
+  flex-direction: column; /* Organiza los elementos en columnas */
   justify-content: flex-start;
+  text-align: left;
 }
 
-.radioContainer {
+.uploadPicturesContainer img {
+  width: 100px; /* Establece el ancho máximo de las imágenes */
+  height: 100px; /* Establece la altura máxima de las imágenes */
+  margin: 5px; /* Añade un margen entre las imágenes */
+}
+
+.uploadWidgetButtonContainer {
+  position: fixed;
   display: flex;
-  align-items: center;
+  justify-content: center; /* Centra horizontalmente el botón */
+  align-items: center; /* Centra verticalmente el botón */
+  position: relative; /* Permite posicionar el botón de manera absoluta */
+  width: 100%; /* O ajusta el ancho según sea necesario */
+  height: 50%; /* O ajusta la altura según sea necesario */
+  top: 10%;
+  margin-bottom: 10%;
 }
 
 .label {
@@ -130,9 +282,9 @@ outline: none;
 
 .buttonContainer {
   display: inline-block;
-  margin-right: 30%;
-  margin-bottom: -34%;
-  width: 13%;
+  margin-right: 0%;
+  margin-bottom: 0%;
+  width: 50%;
   box-sizing: border-box;
   position: absolute;
   bottom: 0;
@@ -210,8 +362,70 @@ outline: none; /* Elimina el contorno al hacer clic en el botón */
 }
 
 .errorMessage {
-  font-size: 13px;
-  margin-left: 10px;
+  font-size: 14px;
   white-space: nowrap;
   color: #b70303;
+  margin: 0;
+}
+
+.imagePreview {
+  position: relative;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+/* Form.module.css */
+
+.imagePreviewContainer {
+  width:100%;
+  height: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  order: 2; /* Cambiar el orden para que se ubique debajo */
+}
+
+.imagePreview img {
+  width: 100px; /* Ajusta el ancho según sea necesario */
+  height: 100px; /* Ajusta la altura según sea necesario */
+  object-fit: cover;
+}
+
+.imagePreview button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color:  black;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imagePreview button:hover {
+  background-color: rgba(255, 0, 0, 0.5);
+}
+
+.previewContainer {
+  position: relative; /* Establece el posicionamiento relativo para poder desplazarlo */
+  top: 20px; /* Mueve el contenedor 20px hacia abajo */
+  left: 10px; /* Mueve el contenedor 10px hacia la izquierda */
+  width: 100%;
+
+}
+
+
+.selectButton {
+  font-size: 14px;
+  padding: 0.5em 2em;
+  border: 1px solid rgb(113, 107, 107);
+  background: #ffffff;
+  border-radius: 8px 8px 8px 8px;
+  color: black;
+  font-family: inherit; /* Hereda la fuente del elemento padre */
+  font-size: inherit;
+  text-align-last: left; /* Para navegadores que lo soporten */
+  text-align: left;
 }

@@ -22,7 +22,7 @@ function UploadWidget({ handleImageUpload }) {
     <>
       <div>
         <div>
-          <button onClick={() => widgetRef.current.open()}>Upload</button>
+          <button onClick={() => widgetRef.current.open()}>Cargar Fotos</button>
         </div>
         <div>
         </div>
