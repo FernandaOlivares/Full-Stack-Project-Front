@@ -1,137 +1,99 @@
-/* eslint-disable react/prop-types */
-import { useState } from 'react';
-import SearchBar from '../Filters/SearchBar';
-//import TypeBar from './TypeBar/TypeBar';
-import {useLocation} from 'react-router-dom';
+
+
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import styles from './NavBar.module.css';
-import { useDispatch, } from 'react-redux';
-import { filterType, filterCategory, priceOrder,filterCombined} from '../../redux/actions';
+import { useDispatch } from 'react-redux';
+import { filterCombined } from '../../redux/actions';
 
+const NavBar = () => {
+  const location = useLocation();
+  const dispatch = useDispatch();
 
+  // Estado de los filtros
+  const [selectedType, setSelectedType] = useState(() => {
+    return localStorage.getItem('selectedType') || 'all';
+  });
+  const [selectedCategory, setSelectedCategory] = useState(() => {
+    return localStorage.getItem('selectedCategory') || 'all';
+  });
+  const [selectedPriceOrder, setSelectedPriceOrder] = useState(() => {
+    return localStorage.getItem('selectedPriceOrder') || 'default';
+  });
+  const [selectedZone, setSelectedZone] = useState(() => {
+    return localStorage.getItem('selectedZone') || '';
+  });
 
+  // const [zone,setZone]=useState('')
 
+  // Guardar los filtros seleccionados en el localStorage
+  useEffect(() => {
+    localStorage.setItem('selectedType', selectedType);
+    localStorage.setItem('selectedCategory', selectedCategory);
+    localStorage.setItem('selectedPriceOrder', selectedPriceOrder);
+    localStorage.setItem('selectedZone', selectedZone);
 
+    // Aplicar los filtros combinados cada vez que cambie alguno de los estados de los filtros
+    dispatch(filterCombined(selectedType, selectedCategory, selectedPriceOrder, selectedZone));
+  }, [selectedType, selectedCategory, selectedPriceOrder, selectedZone, dispatch]);
 
-const NavBar = ()=>{
+  // Funciones para manejar cambios en los filtros
+  const handlerType = (e) => {
+    setSelectedType(e.target.value);
+  };
 
-  
+  const handlerCategory = (e) => {
+    setSelectedCategory(e.target.value);
+  };
 
-
-
-  //const {setPagina} = props
-  //const [filterBar, setFilterBar] = useState(false)
-  const location = useLocation()
-  const dispatch = useDispatch()
-  //const allProperties = useSelector ((state) => state.allProperties); 
+  const handlerPriceOrder = (e) => {
+    setSelectedPriceOrder(e.target.value);
+  };
  
+  // const handlezoneni=(e)=>{
+  //   setZone(e.target.value)
+  // }
+  // const handleZone = () => {
+  //   setSelectedZone(zone);
+  // };
 
-  
-    const [selectedType, setSelectedType] = useState('all');
-    const [selectedCategory, setSelectedCategory] = useState('all');
-    const [selectedPriceOrder, setSelectedPriceOrder] = useState('default');
-   const [selectedZone,setSelectedZone]=useState('default')
-
-    const handlerType = (e) => {
-      const type = e.target.value.toLowerCase();
-      setSelectedType(type);
-      dispatch(filterCombined(type, selectedCategory, selectedPriceOrder,selectedZone));
-    }
-    
-    const handlerCategory = (e) => {
-      const category = e.target.value.toLowerCase();
-      setSelectedCategory(category);
-      dispatch(filterCombined(selectedType, category, selectedPriceOrder,selectedZone));
-    }
-    
-    const handlerpriceOrder = (e) => {
-      const priceOrder = e.target.value.toLowerCase();
-      setSelectedPriceOrder(priceOrder);
-      dispatch(filterCombined(selectedType, selectedCategory, priceOrder,selectedZone));
-    }
-
-    const handleZone = (e) => {
-      const zone = e.target.value;
-      setSelectedZone(zone)}
-
-    const onSearch = () => {
-    dispatch(filterCombined(selectedType, selectedCategory, selectedPriceOrder,selectedZone));}
-
-    const onSearchEnter = (e) => {
-      if (e.keyCode === 13) {
-          
-          dispatch(filterCombined(selectedType, selectedCategory, selectedPriceOrder,selectedZone))
-      }
+  const handleZone=(e)=>{
+    setSelectedZone(e.target.value)
   }
 
+  return (
+    <div>
+      <div className={styles.navBarContainer}>
+        {/* Selector de tipo */}
+        <select value={selectedType} onChange={handlerType}>
+          <option value="all">Todos los Tipos</option>
+          <option value="casa">casa</option>
+          <option value="departamento">departamento</option>
+        </select>
 
+        {/* Selector de categoría */}
+        <select value={selectedCategory} onChange={handlerCategory}>
+          <option value="all">Todas las Categorias</option>
+          <option value="venta">venta</option>
+          <option value="renta">renta</option>
+        </select>
 
-    
+        {/* Selector de orden de precio */}
+        <select value={selectedPriceOrder} onChange={handlerPriceOrder}>
+          <option value="default">Ordenar Precio</option>
+          <option value="ASC">Ascendente</option>
+          <option value="DESC">Descendente</option>
+        </select>
 
-    return (
-      <div>
+        {/* Campo de entrada para la zona */}
+        <div>
 
-        <div className={styles.navBarContainer}>
-
-
-        
-
-<select onChange={handlerType} >
-  <option value="all">Todos los Tipos</option>
-  <option value="casa">casa</option>
-  <option value="departamento">departamento</option>
-</select>
-
-<select  onChange={handlerCategory} >
-  <option value="all">Todas las Categorias</option>
-  <option value="venta">venta</option>
-  <option value="renta">renta</option>
-</select>
-
-<select  onChange={handlerpriceOrder} >
-  <option value="default">Ordenar Precio</option>
-  <option value="ASC">Ascendente</option>
-  <option value="DESC">Descendente</option>
-</select>
-
-            
-            {/* <div>
-              {location.pathname === "/home" && (
-                  <label className={styles.burger} htmlFor="burger">
-                      <select onChange={onTypes} type="checkbox" id="burger"/>
-                      <></>
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                  </label>
-
-              )}
-          </div> */}
-
-          
-          <div>
-                <input onChange={handleZone} onKeyDown={onSearchEnter} placeholder="Ingresa nombre de la zona" type="text" />
-                <button onClick={onSearch} className={styles.submitBtn}><span>BUSCAR</span></button>
-            </div>
-         
-                {/* {location.pathname === "/home" &&
-                    <SearchBar zone={zone} onZoneChange={onZoneChange}/>
-                } */}
-           
-
-            
-        {/* <div>
-            {location.pathname === "/home" && (
-                <div className={barra}>
-                        <TypeBar setPagina={setPagina}/>
-                </div>
-                )}
-        </div> */}
-
-        
+        <input value={selectedZone}  onChange={handleZone} placeholder={"Ingresa nombre de la zona"} type="text" />
+        {/* <button value={selectedZone} onClick={handleZone} className={styles.submitBtn}><span>BUSCAR</span></button> */}
         </div>
       </div>
-          
-  )
+    </div>
+  );
+};
 
-}
-  export default NavBar;
+export default NavBar;
