@@ -7,16 +7,18 @@ import { Pagination } from '../../components/Pagination/Pagination.jsx';
 import Header from '../../components/Header/Header.jsx'
 import Cards from '../../components/Cards/Cards.jsx'
 import NavBar from '../../components/NavBar/NavBar.jsx'
-import appFirebase from '../../credenciales.js';
-import { getAuth,signOut } from 'firebase/auth';
+//import appFirebase from '../../credenciales.js';
+//import { getAuth,signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 
 function Home() {
-  const auth =getAuth(appFirebase)
+//  const auth =getAuth(appFirebase)
   const dispatch = useDispatch();
   const allProperties = useSelector((state)=> state.allProperties);
 const navigate =useNavigate()
+ LoginCreation
   //console.log(auth);
+
 
 
   const [currentPage, setCurrentPage] = useState(1); // Asegúrate de tener este estado en tu componente Home
@@ -29,7 +31,7 @@ const navigate =useNavigate()
 
   const handleSignOut = async () => {
     try {
-      await signOut(auth);
+  //    await signOut(auth);
       navigate('/'); // Redirige al usuario a la página de inicio (LandingPage) después de cerrar sesión
     } catch (error) {
       console.error('Error al cerrar sesión:', error);

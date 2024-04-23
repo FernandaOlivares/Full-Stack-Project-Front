@@ -11,7 +11,7 @@ export const PRICE_ORDER = 'PRICE_ORDER';
 export const POST_NEW_PROPERTY = 'POST_NEW_PROPERTY';
 export const POST_TYPE = 'POST_TYPE';
 export const POST_CATEGORY = 'POST_CATEGORY';
-
+//export const UPDATE_PROPERTY_STATUS = 'UPDATE_PROPERTY_STATUS';
 //export const GET_ALL_TYPES = 'GET_ALL_TYPES';
 //export const GET_ALL_CATEGORIES = 'GET_ALL_CATEGORIES';
 
@@ -214,6 +214,22 @@ export function filterType(type) {
         }
     };
 };
+
+// export function updatePropertyStatus(propertyId, isActive) {
+//   return async function(dispatch) {
+//     try {
+//       await axios.put(`/update/${propertyId}`, { isActive });
+//       dispatch({
+//         type: UPDATE_PROPERTY_STATUS,
+//         payload: { propertyId, isActive }
+//       });
+//     } catch (error) {
+//       console.error('Error updating property status:', error);
+//       throw error;
+//     }
+//   };
+// }
+
 
   // export const filterCombined = (type, category, priceOrder) => {
   //   return async (dispatch) => {
