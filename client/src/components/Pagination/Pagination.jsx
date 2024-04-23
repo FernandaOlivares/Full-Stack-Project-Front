@@ -154,7 +154,7 @@ export const Pagination = ({ pagina, setPagina, maximo }) => {
                 className={styles.black}
                 onClick={goToFirstPage}
             >
-                Principio
+                &#10094;&#10094;
             </button>
             
             <button
@@ -162,7 +162,7 @@ export const Pagination = ({ pagina, setPagina, maximo }) => {
                 disabled={pagina === 1}
                 onClick={previousPage}
             >
-                Atras
+                &#10094;
             </button>
 
             <input
@@ -178,14 +178,14 @@ export const Pagination = ({ pagina, setPagina, maximo }) => {
                 disabled={pagina === Math.ceil(maximo)}
                 onClick={nextPage}
             >
-                Siguiente
+                &#10095;
             </button>
 
             <button
                 className={styles.black}
                 onClick={goToLastPage}
             >
-               Final
+               &#10095;&#10095;
             </button>
         </div>
     );
