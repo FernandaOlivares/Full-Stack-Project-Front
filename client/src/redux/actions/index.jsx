@@ -181,7 +181,7 @@ export function filterType(type) {
     return async (dispatch) => {
         try {
             let url = 'http://localhost:3001/property/filterProperties';
-
+//cambiar url a la de railway
             // Construir los parámetros de la URL basados en los filtros seleccionados
             const queryParams = [];
             if ( type !== 'all' ) {

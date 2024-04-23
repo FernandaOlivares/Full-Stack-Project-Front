@@ -19,7 +19,7 @@ const NavBar = () => {
     return localStorage.getItem('selectedPriceOrder') || 'default';
   });
   const [selectedZone, setSelectedZone] = useState(() => {
-    return localStorage.getItem('selectedZone') || '';
+    return localStorage.getItem('selectedZone') || 'default';
   });
 
   // const [zone,setZone]=useState('')
@@ -49,7 +49,7 @@ const NavBar = () => {
   };
  
   // const handlezoneni=(e)=>{
-  //   setZone(e.target.value)
+  //   setSelectedZone(e.target.value)
   // }
   // const handleZone = () => {
   //   setSelectedZone(zone);
@@ -86,8 +86,10 @@ const NavBar = () => {
         {/* Campo de entrada para la zona */}
         <div>
 
-        <input value={selectedZone}  onChange={handleZone} placeholder={"Comuna"} type="text" />
-        {/* <button value={selectedZone} onClick={handleZone} className={styles.submitBtn}><span>BUSCAR</span></button> */}
+
+        <input  onChange={handleZone} placeholder={"Ingresa nombre de la zona"} type="text" />
+        {/* <button  onClick={handleZone} className={styles.submitBtn}><span>BUSCAR</span></button> */}
+ 
         </div>
       </div>
     </div>
