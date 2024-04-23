@@ -16,7 +16,7 @@ function Home() {
   const dispatch = useDispatch();
   const allProperties = useSelector((state)=> state.allProperties);
 const navigate =useNavigate()
-  console.log(auth);
+  //console.log(auth);
 
 
   const [currentPage, setCurrentPage] = useState(1); // Asegúrate de tener este estado en tu componente Home
