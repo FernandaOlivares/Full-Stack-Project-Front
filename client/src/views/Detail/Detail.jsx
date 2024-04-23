@@ -16,6 +16,7 @@ import greyLineIcon from '../../assets/icons/greyLine.png';
 import parkingIcon from '../../assets/icons/parking.png';
 import storageIcon from '../../assets/icons/storage.png';
 import swimmingPoolIcon from '../../assets/icons/swimmingPool.png';
+import ImagesSlider from '../../components/ImagesSlider/ImagesSlider.jsx';
 
 import styles from './Detail.module.css'
 
@@ -24,50 +25,71 @@ function Detail() {
   const {id} = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const propertyDetail = useSelector((state) => state.propertyById);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
   useEffect(() => {
-    dispatch(getPropertyById(id)).then(() => {
+    const fetchData = async () => {
+      await dispatch(getPropertyById(id));
       setIsLoading(false);
-    });
+    };
+    fetchData();
   }, [dispatch, id]);
 
-  const formattedPrice = formatPrice(propertyDetail.price);
-  
+  const openPopup = () => {
+    setIsPopupOpen(true);
+  };
+
+  const closePopup = () => {
+    setIsPopupOpen(false);
+  };
+
+  console.log('propertyDetail:', propertyDetail);
+  const propertyImages = useSelector((state) => state.propertyById?.imageDefault);
+  console.log('propertyImages:', propertyImages);
+
+  const { title, category, zone, price, parking, storage, swimmingPool, description } = propertyDetail;
+
+
+  const formattedPrice = formatPrice(price);
 
     return (
       <>
+      {isLoading ? (
+        <div>Loading...</div>
+      ) : (
         <div className={styles.detailContainer}>
           <Header/>
           <NavBar/>
           <div className={styles.picturesContainer}>
-            <div className={styles.titleContainer}><h2>{propertyDetail.title}</h2></div>
+            <div className={styles.titleContainer}><h2>{title}</h2></div>
             <div className= {styles.principalPicContainer}>
             <img className={styles.imageContainer}
-                  src={propertyDetail.imageDefault ? propertyDetail.imageDefault :`Picture not found`}
+                  onClick={openPopup}
+                  src={propertyImages && propertyImages[0]}
                   alt={`Picture not found`}
         />
             </div>
             <div className={styles.secondaryPicsContainer}>
+            {propertyImages && propertyImages.slice(1).map((image, index) => (
               <img
-                  src={propertyDetail.imageDefault ? propertyDetail.imageDefault :`Picture not found`}
-                  alt={`Picture not found`}
+                onClick={openPopup}
+                key={index}
+                src={image ? image : 'Picture not found'}
+                alt='Picture not found'
+                onLoad={() => setIsLoading(false)}
               />
-              <img
-                  src={propertyDetail.imageDefault ? propertyDetail.imageDefault :`Picture not found`}
-                  alt={`Picture not found`}
-
-              />
-              <img
-                  src={propertyDetail.imageDefault ? propertyDetail.imageDefault :`Picture not found`}
-                  alt={`Picture not found`}
-
-              />
-              <img
-                  src={propertyDetail.imageDefault ? propertyDetail.imageDefault :`Picture not found`}
-                  alt={`Picture not found`}
-              />
+            ))}
           </div>
           </div>
+          {isPopupOpen && (
+            <div className={styles.popupContainer}>
+                <ImagesSlider images={propertyImages} />
+              <button className={styles.closeButton} onClick={closePopup}>Cerrar</button>
+            </div>
+          )}
           <div>
+          <div>
+          </div>
             <div className={styles.principalInfoContainer}>
               <div className={styles.iconContainer}>
                 <img src={searchIcon} className={styles.searchIcon} alt="searchIcon" />
@@ -75,9 +97,9 @@ function Detail() {
                 <img src={priceIcon} className={styles.priceIcon} alt="priceIcon" />
               </div>
               <div className={styles.textContainer}>
-                <p className={styles.line1}>{propertyDetail.category}</p>
-                <p className={styles.line2}>{propertyDetail.zone}</p>
-                <p className={styles.line3}>{formattedPrice} {propertyDetail.category === 'Arriendo' ? 'mensual' : null}</p>
+                <p className={styles.line1}>{category}</p>
+                <p className={styles.line2}>{zone}</p>
+                <p className={styles.line3}>{formattedPrice} {category === 'Arriendo' ? 'mensual' : null}</p>
               </div>
           <button className={styles.reserveButton}>Reservar</button>
               <div className={styles.imgLineContainer}>
@@ -88,9 +110,9 @@ function Detail() {
             </div>
             <div className={styles.secondaryInfoContainer}>
               <div className={styles.textContainer}>
-                <p className={styles.lineParking}>Parking: {propertyDetail.parking}</p>
-                <p className={styles.lineStorage}>Storage: {propertyDetail.storage}</p>
-                <p className={styles.lineSwimmingPool}>Swimming Pool: {propertyDetail.swimmingPool}</p>
+                <p className={styles.lineParking}>Estacionamientos: {parking}</p>
+                <p className={styles.lineStorage}>Bodega: {storage}</p>
+                <p className={styles.lineSwimmingPool}>Piscina: {swimmingPool}</p>
               </div>
             </div>
           </div>
@@ -98,11 +120,12 @@ function Detail() {
           <div className={styles.descriptionContainer}>
             <div className={styles.textDescriptionContainer}>
           <h3>Descripción:</h3>
-            {propertyDetail.description}
+            {description}
             </div>
             </div>
             </div>
         </div>
+      )}
       </>
     )
   }
