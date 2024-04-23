@@ -1,6 +1,4 @@
-
-
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import styles from './NavBar.module.css';
 import { useDispatch } from 'react-redux';
@@ -88,7 +86,7 @@ const NavBar = () => {
         {/* Campo de entrada para la zona */}
         <div>
 
-        <input value={selectedZone}  onChange={handleZone} placeholder={"Ingresa nombre de la zona"} type="text" />
+        <input value={selectedZone}  onChange={handleZone} placeholder={"Comuna"} type="text" />
         {/* <button value={selectedZone} onClick={handleZone} className={styles.submitBtn}><span>BUSCAR</span></button> */}
         </div>
       </div>

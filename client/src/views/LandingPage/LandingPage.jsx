@@ -2,8 +2,8 @@ import {useNavigate} from "react-router-dom";
 import Styles from "./LandingPage.module.css";
 //import Footer from "..//../components/Footer/Footer";
 import {imageImg} from "..//..//assets/Image/imageImg";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import appFirebase from "../../credenciales";
+//import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+//import appFirebase from "../../credenciales";
 // const LandingPage = () => {
 
 //   const navigate = useNavigate()
@@ -27,8 +27,8 @@ import appFirebase from "../../credenciales";
 //   }
   
 //   export default LandingPage;
-const auth=getAuth(appFirebase)
-const provider = new GoogleAuthProvider();
+//const auth=getAuth(appFirebase)
+//const provider = new GoogleAuthProvider();
 
 
 const LandingPage = () => {
@@ -37,7 +37,7 @@ const LandingPage = () => {
 
   const handleSignInWithGoogle = async () => {
     try {
-      const result = await signInWithPopup(auth, provider);
+  //    const result = await signInWithPopup(auth, provider);
       // Aquí puedes realizar acciones adicionales después de iniciar sesión con Google
       navigate('/home'); // Redirigir al usuario a la página de inicio después de iniciar sesión
     } catch (error) {
