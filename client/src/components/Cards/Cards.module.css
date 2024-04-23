@@ -1,11 +1,15 @@
 .cardsContainer {
-  width: 87vw;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: flex-start;
-  align-items: flex-start;
-  margin-top: 10%;
-  border-radius: 8px;
+  position: fixed;
+  top: 16%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 86%;
+  height: 80%;
+  border: 0.5px solid rgb(113, 107, 107);
+  border-radius: 10px;
   z-index: 50;
+  display: flex;
+  flex-wrap: wrap; /* Permite que las tarjetas se envuelvan a la siguiente línea */
+  justify-content: space-between; /* Distribuye el espacio entre las tarjetas */
 }
