@@ -19,10 +19,8 @@ const NavBar = () => {
     return localStorage.getItem('selectedPriceOrder') || 'default';
   });
   const [selectedZone, setSelectedZone] = useState(() => {
-    return localStorage.getItem('selectedZone') || 'default';
+    return localStorage.getItem('selectedZone') || '';
   });
-
-  // const [zone,setZone]=useState('')
 
   // Guardar los filtros seleccionados en el localStorage
   useEffect(() => {
@@ -47,50 +45,53 @@ const NavBar = () => {
   const handlerPriceOrder = (e) => {
     setSelectedPriceOrder(e.target.value);
   };
- 
-  // const handlezoneni=(e)=>{
-  //   setSelectedZone(e.target.value)
-  // }
-  // const handleZone = () => {
-  //   setSelectedZone(zone);
-  // };
 
-  const handleZone=(e)=>{
-    setSelectedZone(e.target.value)
-  }
+  const handleZone = (e) => {
+    setSelectedZone(e.target.value);
+  };
+
+  const handleResetFilters = () => {
+    setSelectedType('all');
+    setSelectedCategory('all');
+    setSelectedPriceOrder('default');
+    setSelectedZone('');
+  };
 
   return (
-    <div>
-      <div className={styles.navBarContainer}>
+    <div className={styles.navBarContainer}>
+      <div className={styles.selectContainer}>
         {/* Selector de tipo */}
-        <select value={selectedType} onChange={handlerType}>
+        <select value={selectedType} onChange={handlerType} className={styles.selectButton}>
           <option value="all">Todos los Tipos</option>
-          <option value="casa">casa</option>
-          <option value="departamento">departamento</option>
+          <option value="casa">Casa</option>
+          <option value="departamento">Departamento</option>
         </select>
 
         {/* Selector de categoría */}
-        <select value={selectedCategory} onChange={handlerCategory}>
+        <select value={selectedCategory} onChange={handlerCategory} className={styles.selectButton}>
           <option value="all">Todas las Categorias</option>
-          <option value="venta">venta</option>
-          <option value="renta">renta</option>
+          <option value="venta">Venta</option>
+          <option value="arriendo">Arriendo</option>
         </select>
 
         {/* Selector de orden de precio */}
-        <select value={selectedPriceOrder} onChange={handlerPriceOrder}>
+        <select value={selectedPriceOrder} onChange={handlerPriceOrder} className={styles.selectButton}>
           <option value="default">Ordenar Precio</option>
           <option value="ASC">Ascendente</option>
           <option value="DESC">Descendente</option>
         </select>
 
         {/* Campo de entrada para la zona */}
-        <div>
-
-
-        <input  onChange={handleZone} placeholder={"Ingresa nombre de la zona"} type="text" />
-        {/* <button  onClick={handleZone} className={styles.submitBtn}><span>BUSCAR</span></button> */}
- 
-        </div>
+        <input
+          className={styles.searchButton}
+          onChange={handleZone}
+          placeholder={"Buscar Comuna..."}
+          type="text"
+          value={selectedZone}
+        />
+        
+        {/* Botón para resetear filtros */}
+        <button onClick={handleResetFilters} className={styles.resetButton}><span>Resetear Filtros</span></button>
       </div>
     </div>
   );

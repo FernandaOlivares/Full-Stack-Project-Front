@@ -1,35 +1,15 @@
 import {useNavigate} from "react-router-dom";
-import Styles from "./LandingPage.module.css";
+import styles from "./LandingPage.module.css";
 import axios from 'axios';
-//import Footer from "..//../components/Footer/Footer";
-import {imageImg} from "..//..//assets/Image/imageImg";
-//import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-//import appFirebase from "../../credenciales";
-// const LandingPage = () => {
+//import {imageImg} from "..//..//assets/Image/imageImg";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { Link } from 'react-router-dom';
 
-//   const navigate = useNavigate()
-  
-//     return (
-//       <div>
-        
-//         <div className={Styles.landingPageBackground}>
-//         <div className={Styles.pagDiv}> 
-            
-//             <div className={Styles.imgs}>
-              
-//                 <img className={Styles.startPag2} src={imageImg.LOGO} alt="" />
-//                 {<img className={Styles.startPag} type='button' onClick={()=>navigate('/home')} src={imageImg.loanding} alt="" />}<span>ENTRAR</span>
-//             </div>           
-               
-//         </div>
-//         </div>
-//       </div>
-//     )
-//   }
-  
-//   export default LandingPage;
-//const auth=getAuth(appFirebase)
-//const provider = new GoogleAuthProvider();
+import appFirebase from "../../credenciales";
+
+
+const auth=getAuth(appFirebase)
+const provider = new GoogleAuthProvider();
 
 
 const LandingPage = () => {
@@ -71,21 +51,65 @@ const LandingPage = () => {
   };
 
   return (
-    <div>
-      <div className={Styles.landingPageBackground}>
-        <div className={Styles.pagDiv}> 
-          <div className={Styles.imgs}>
-            <img className={Styles.startPag2} src={imageImg.LOGO} alt="" />
-            <button className={Styles.startPag} onClick={()=>navigate('/home')}>
-              <img src={imageImg.loanding} alt="" />
-              <span>ENTRAR</span>
-            </button>
-             <button onClick={handleSignInWithGoogle}>Iniciar sesión con Google </button>
-          </div>
+    <div className={styles.landingPageContainer}>
+      {/* Overlay negro transparente */}
+      <div className={styles.landingPageOverlay}></div>
+
+      {/* Contenido */}
+      <div className={styles.content}>
+        <h1>Bienvenido a tu Futuro Hogar</h1>
+        <Link to="/home" className={styles.button}>Iniciar como Invitado</Link>
+        <div className={styles.textContainer }>
+        <p>Registro de Usuario:</p>
         </div>
+        <button onClick={handleSignInWithGoogle}>Iniciar sesión con Google </button>
       </div>
     </div>
   );
-}
+};
 
 export default LandingPage;
+
+
+/*
+return (
+  <div>
+    <div className={Styles.landingPageBackground} style={{ backgroundImage: `url(${landingPageImage})` }}>
+      <div className={Styles.pagDiv}> 
+        <div className={Styles.imgs}>
+          <img className={Styles.startPag2} src={imageImg.LOGO} alt="" />
+          <button className={Styles.startPag} onClick={()=>navigate('/home')}>
+            <img src={imageImg.loanding} alt="" />
+            <span>ENTRAR</span>
+          </button>
+   
+        </div>
+      </div>
+    </div>
+  </div>
+);
+}*/
+
+// const LandingPage = () => {
+
+//   const navigate = useNavigate()
+  
+//     return (
+//       <div>
+        
+//         <div className={Styles.landingPageBackground}>
+//         <div className={Styles.pagDiv}> 
+            
+//             <div className={Styles.imgs}>
+              
+//                 <img className={Styles.startPag2} src={imageImg.LOGO} alt="" />
+//                 {<img className={Styles.startPag} type='button' onClick={()=>navigate('/home')} src={imageImg.loanding} alt="" />}<span>ENTRAR</span>
+//             </div>           
+               
+//         </div>
+//         </div>
+//       </div>
+//     )
+//   }
+  
+//   export default LandingPage;

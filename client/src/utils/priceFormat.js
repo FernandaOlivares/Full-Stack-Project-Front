@@ -7,9 +7,3 @@ export function formatPrice(price) {
     formattedPrice = `$ ${formattedPrice}`;
     return formattedPrice;
 }
-
-/* Ejemplo de uso:
-const price = 200000;
-const formattedPrice = formatPrice(price);
-console.log(formattedPrice); // Salida: "$200.000"
-*/

@@ -2,7 +2,12 @@
   position: fixed;
   top: 0;
   left: 0;
+  right: 0;
+  margin: 0 auto;
   width: 100%;
+  height: 70px;
+  max-width: 100%;
+  max-height: 30%;
   z-index: 1000;
   background-color: #ffffff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -28,9 +33,9 @@
   position: absolute;
   top: 50%;
   margin-right: 25%;
-  right: 20px;
+  right: 60px;
   color: rgb(113, 107, 107);
-  font-size: 0.90vw;
+  font-size: 14px;
   border-radius: 5px;
   transition: color 0.3s;
   }
@@ -43,9 +48,9 @@
     position: absolute;
     top: 50%;
     margin-right: 15%;
-    right: 20px;
+    right: 50px;
     color: rgb(113, 107, 107);
-    font-size: 0.90vw;
+    font-size: 14px;
     border-radius: 5px;
     transition: color 0.3s;
   }
@@ -53,3 +58,23 @@
   .publicarButton:hover {
     color: #b70303;
   }
+
+  .headerContainer Button{
+    position: absolute;
+    top: 50%;
+    margin-right: 7%;
+    top: 30px;
+    right: 70px;
+    color: rgb(113, 107, 107);
+    border: 0.5px solid rgb(113, 107, 107);
+    font-size: 14px;
+    border-radius: 5px;
+    transition: color 0.3s;
+    background-color: white;
+    }
+
+    .headerContainer Button:hover {
+      background-color: rgb(113, 107, 107,0.4); 
+      border: none;
+      color: white;
+    }

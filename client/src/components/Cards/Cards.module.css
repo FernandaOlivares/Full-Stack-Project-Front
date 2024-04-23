@@ -1,15 +1,18 @@
 .cardsContainer {
   position: fixed;
   top: 16%;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  width: 86%;
-  height: 80%;
-  border: 0.5px solid rgb(113, 107, 107);
+  left: 50%; /* Centra el contenedor horizontalmente */
+  transform: translateX(-50%); /* Centra el contenedor horizontalmente */
+  padding-top: 28px; /* Padding superior */
+  padding-bottom: 20px; /* Padding inferior */
+  max-width: 86%;
+  max-height: 80%;
+  width: 1400px;
+  height: 700px;
   border-radius: 10px;
   z-index: 50;
   display: flex;
   flex-wrap: wrap; /* Permite que las tarjetas se envuelvan a la siguiente línea */
   justify-content: space-between; /* Distribuye el espacio entre las tarjetas */
+  overflow-y: auto;
 }
