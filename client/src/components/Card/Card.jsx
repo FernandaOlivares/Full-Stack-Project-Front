@@ -6,8 +6,7 @@ import imgNotFound from '../../assets/imgNotFound.png';
 
 function Card({property}) {
   const {id, category, type, city, zone, bedrooms, bathrooms, price, imageDefault} = property;
-  console.log('Propiedad:', property);
-  console.log('imageDefault:', imageDefault);
+  
   return (
     <div className={styles.card}>
       <Link to={`${id}`}>
@@ -27,7 +26,7 @@ function Card({property}) {
           )}
         </div>
         <p>{category}</p>
-        <h3>{type} en las {city}, {zone}</h3>
+        <h3> {type} | {city} | {zone} </h3>
         <h3>{bedrooms} Dormitorios - {bathrooms} Baños</h3>
         <h3>${price}</h3>
       </Link>
