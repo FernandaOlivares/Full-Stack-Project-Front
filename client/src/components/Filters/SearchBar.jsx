@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "../Filters/SearchBar.module.css";
 import { useDispatch } from "react-redux";
-import { addProperty } from "..//../redux/actions/index";
+import { addProperty,filterCombined } from "..//../redux/actions/index";
 
 const SearchBar = () => {
     const dispatch = useDispatch();
@@ -13,13 +13,13 @@ const SearchBar = () => {
 
     const onSearch = () => {
         console.log(property);
-        dispatch(addProperty(property));
+        dispatch(filterCombined(property));
     }
 
     const onSearchEnter = (e) => {
         if (e.keyCode === 13) {
             console.log(property);
-            dispatch(addProperty(property));
+            dispatch(filterCombined(property));
         }
     }
 

@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
+// /* eslint-disable react/prop-types */
 // import { useEffect, useState } from 'react';
 // import styles from '../Pagination/Pagination.module.css';
 
-// export const Pagination = ( pagina, setPagina, maximo ) => {
+// export const Pagination = ({ pagina, setPagina, maximo }) => {
 //     const [input, setInput] = useState(1);
 
 //     useEffect(() => {
@@ -70,7 +71,7 @@
 //                 autoComplete="off"
 //                 value={input}
 //             />
-//             <p> de {Math.ceil(maximo)} </p>
+//             {/* <p> de {Math.ceil(maximo)} </p> */}
 
 //             <button
 //                 className={styles.black}
@@ -92,7 +93,6 @@
 
 
 
-
 import { useEffect, useState } from 'react';
 import styles from '../Pagination/Pagination.module.css';
 
@@ -100,17 +100,23 @@ export const Pagination = ({ pagina, setPagina, maximo }) => {
     const [input, setInput] = useState(1);
 
     useEffect(() => {
-        setInput(pagina)
+        setInput(pagina);
     }, [pagina]);
 
     const nextPage = () => {
-        setInput(parseInt(input) + 1);
-        setPagina(parseInt(pagina) + 1);
+        const nextPageNumber = parseInt(pagina) + 1;
+        if (nextPageNumber <= Math.ceil(maximo)) {
+            setInput(nextPageNumber);
+            setPagina(nextPageNumber);
+        }
     };
 
     const previousPage = () => {
-        setInput(parseInt(input) - 1);
-        setPagina(parseInt(pagina) - 1);
+        const previousPageNumber = parseInt(pagina) - 1;
+        if (previousPageNumber >= 1) {
+            setInput(previousPageNumber);
+            setPagina(previousPageNumber);
+        }
     };
 
     const goToFirstPage = () => {
@@ -119,19 +125,21 @@ export const Pagination = ({ pagina, setPagina, maximo }) => {
     };
 
     const goToLastPage = () => {
-        setInput(Math.ceil(maximo));
-        setPagina(Math.ceil(maximo));
+        const lastPage = Math.ceil(maximo);
+        setInput(lastPage);
+        setPagina(lastPage);
     };
 
     const onKeyDown = e => {
         if (e.keyCode === 13) {
-            setPagina(parseInt(e.target.value));
-            if (parseInt(e.target.value) < 1 || parseInt(e.target.value) > Math.ceil(maximo) || isNaN(parseInt(e.target.value))) {
-                setPagina(1);
-                setInput(1);
-            } else {
-                setPagina(parseInt(e.target.value));
+            let newPage = parseInt(e.target.value);
+            if (newPage < 1) {
+                newPage = 1;
+            } else if (newPage > Math.ceil(maximo)) {
+                newPage = Math.ceil(maximo);
             }
+            setInput(newPage);
+            setPagina(newPage);
         }
     };
 
@@ -151,7 +159,7 @@ export const Pagination = ({ pagina, setPagina, maximo }) => {
             
             <button
                 className={styles.black}
-                disabled={pagina === 1 || pagina < 1}
+                disabled={pagina === 1}
                 onClick={previousPage}
             >
                 Atras
@@ -164,11 +172,10 @@ export const Pagination = ({ pagina, setPagina, maximo }) => {
                 autoComplete="off"
                 value={input}
             />
-            <p> de {Math.ceil(maximo)} </p>
 
             <button
                 className={styles.black}
-                disabled={pagina === Math.ceil(maximo) || pagina > Math.ceil(maximo)}
+                disabled={pagina === Math.ceil(maximo)}
                 onClick={nextPage}
             >
                 Siguiente
