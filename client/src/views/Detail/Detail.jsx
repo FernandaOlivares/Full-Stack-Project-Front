@@ -134,7 +134,7 @@ function Detail() {
           </div>
           </div>
           <div>
-          <button className={styles.reserveButton} onClick={handleReservation} disabled={isLoading}>
+          <button className={styles.button} onClick={handleReservation} disabled={isLoading}>
             Reservar
           </button>
           </div>

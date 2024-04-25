@@ -15,6 +15,8 @@
     box-sizing: border-box;
     z-index: 1;
 }
+
+
 .landingPageOverlay {
     position: absolute;
     top: 0;
@@ -26,12 +28,15 @@
 }
 
 .textContainer {
-    background-color: rgba(0, 0, 0, 0.7); /* Utiliza rgba para definir un color con transparencia */
+    margin-top:30%;
+    background-color: rgba(0, 0, 0, 0.5); /* Utiliza rgba para definir un color con transparencia */
     color: white; /* Define el color del texto */
-    padding: 10px; /* Añade un poco de espacio alrededor del texto */
+    padding: 5px; /* Añade un poco de espacio alrededor del texto */
     width: 30%; /* Establece el ancho del párrafo */
+    height: 10%;
     margin: 0 auto; /* Centra horizontalmente el párrafo */
     z-index: 10;
+    border-radius: 15px;
 }
 
 .button {
@@ -40,13 +45,13 @@
     color: white;
     text-decoration: none; /* Elimina el subrayado del enlace */
     padding: 10px 20px; /* Ajusta el relleno según sea necesario */
-    border-radius: 5px; /* Agrega esquinas redondeadas */
+    border-radius: 10px; /* Agrega esquinas redondeadas */
     transition: background-color 0.3s, color 0.3s; /* Agrega una transición suave */
     z-index: 10;
   }
   
   .button:hover {
-    background-color: gray; /* Cambia el color de fondo al pasar el cursor */
+    background-color: rgba(113, 107, 107, 0.7); /* Cambia el color de fondo al pasar el cursor */
     color: white; /* Cambia el color del texto al pasar el cursor */
     z-index: 10;
     border: none; /* Elimina el borde */

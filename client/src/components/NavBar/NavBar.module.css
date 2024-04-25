@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 10%;
+  top: 9%;
   left: 0;
   width: 100%;
   height: 50px;
@@ -13,11 +13,11 @@
 
 .selectContainer {
   display: flex; /* Añadido */
-  gap: 135px;
+  gap: 50px;
 }
 
   .selectContainer select{
-    width: 200px;
+    width: 215px;
     flex: 1;
     border-radius: 20px;
     border: 0.5px solid rgb(113, 107, 107);
@@ -63,6 +63,25 @@
     }
     .searchButton select:focus {
       border-width: 2px; /* Establece el ancho del borde cuando el elemento está enfocado */
+    }
+
+    .button {
+      display: inline-block;
+      background-color: black;
+      color: white;
+      text-decoration: none; /* Elimina el subrayado del enlace */
+      padding: 10px 20px; /* Ajusta el relleno según sea necesario */
+      border-radius: 10px; /* Agrega esquinas redondeadas */
+      transition: background-color 0.3s, color 0.3s; /* Agrega una transición suave */
+      z-index: 10;
+    }
+    
+    .button:hover {
+      background-color: rgba(113, 107, 107, 0.7); /* Cambia el color de fondo al pasar el cursor */
+      color: white; /* Cambia el color del texto al pasar el cursor */
+      z-index: 10;
+      border: none; /* Elimina el borde */
+      outline: none;
     }
 
   .adminNavBarContainer {

@@ -52,18 +52,18 @@ const LandingPage = () => {
 
   return (
     <div className={styles.landingPageContainer}>
-      {/* Overlay negro transparente */}
       <div className={styles.landingPageOverlay}></div>
-
-      {/* Contenido */}
       <div className={styles.content}>
-        <h1>Bienvenido a tu Futuro Hogar</h1>
+        <div>
+        <h1>Bienvenido a Tu Futuro Hogar</h1>
         <Link to="/home" className={styles.button}>Iniciar como Invitado</Link>
+        </div>
+        <div>-</div>
         <div className={styles.textContainer }>
         <p>Registro de Usuario:</p>
+        <button className={styles.button} onClick={handleSignInWithGoogle}>Iniciar Sesión con Google </button>
         </div>
-        <button onClick={handleSignInWithGoogle}>Iniciar sesión con Google </button>
-      </div>
+        </div>
     </div>
   );
 };

@@ -60,23 +60,24 @@ const NavBar = () => {
   return (
     <div className={styles.navBarContainer}>
       <div className={styles.selectContainer}>
+
+        {/* Selector de categoría */}
+        <select value={selectedCategory} onChange={handlerCategory} className={styles.selectButton}>
+          <option value="all">¿Qué busca?</option>
+          <option value="arriendo">Arriendo</option>
+          <option value="venta">Venta</option>
+        </select>
+
         {/* Selector de tipo */}
         <select value={selectedType} onChange={handlerType} className={styles.selectButton}>
-          <option value="all">Todos los Tipos</option>
+          <option value="all">¿Tipo de propiedad?</option>
           <option value="casa">Casa</option>
           <option value="departamento">Departamento</option>
         </select>
 
-        {/* Selector de categoría */}
-        <select value={selectedCategory} onChange={handlerCategory} className={styles.selectButton}>
-          <option value="all">Todas las Categorias</option>
-          <option value="venta">Venta</option>
-          <option value="arriendo">Arriendo</option>
-        </select>
-
         {/* Selector de orden de precio */}
         <select value={selectedPriceOrder} onChange={handlerPriceOrder} className={styles.selectButton}>
-          <option value="default">Ordenar Precio</option>
+          <option value="default">Ordenar: $</option>
           <option value="ASC">Ascendente</option>
           <option value="DESC">Descendente</option>
         </select>
@@ -91,7 +92,7 @@ const NavBar = () => {
         />
         
         {/* Botón para resetear filtros */}
-        <button onClick={handleResetFilters} className={styles.resetButton}><span>Resetear Filtros</span></button>
+        <button className={styles.button} onClick={handleResetFilters}><span>Resetear Filtros</span></button>
       </div>
     </div>
   );

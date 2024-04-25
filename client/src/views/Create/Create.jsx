@@ -1,4 +1,4 @@
-import AdminNavBar from '../../components/NavBar/AdminNavBar.jsx';
+import Header from '../../components/Header/Header.jsx';
 import PostNewPropertyForm from '../../components/Form/PostNewPropertyForm.jsx';
 
 import styles from './Create.module.css';
@@ -9,7 +9,7 @@ function Create() {
       <>
         <div>
           <div>
-          <AdminNavBar/>
+          <Header/>
           </div>
           <div>
           <PostNewPropertyForm/>

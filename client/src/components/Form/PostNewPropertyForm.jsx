@@ -17,6 +17,7 @@ function PostNewPropertyForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const newPropertyId = useSelector((state) => state.newPropertyId);
+  const [formSubmitted, setFormSubmitted] = useState(false);
   //const allTypes = useSelector((state) => state.allTypes);
   //const allCategories = useSelector((state) => state.allCategories);
 
@@ -25,11 +26,19 @@ function PostNewPropertyForm() {
     dispatch(allCategories());
   }, [dispatch]);*/
 
-  useEffect(() => {
-    if (newPropertyId) {
-        navigate(`/home/${newPropertyId}`);
+  /*useEffect(() => {
+    const isCreatingPropertyPage = window.location.pathname.includes('/create');
+    if (newPropertyId && isCreatingPropertyPage) {
+      navigate(`/home/${newPropertyId}`);
     }
-}, [newPropertyId, navigate]);
+  }, [newPropertyId, navigate]);*/
+  
+  useEffect(() => {
+    // Redirigir solo si el formulario se ha enviado con éxito
+    if (newPropertyId && formSubmitted) {
+      navigate(`/home/${newPropertyId}`);
+    }
+  }, [newPropertyId, formSubmitted, navigate]);
 
   const [input, setInput] = useState({
     category:'',
@@ -174,6 +183,7 @@ if (Object.keys(propertyInfo).length > 0) {
           description: '',
           imageDefault: [],
         });
+        setFormSubmitted(true);
       } catch (error) {
         console.error('Error creating new property:', error);
         alert('Error en crear una nueva propiedad, por favor intente nuevamente.');
