@@ -56,14 +56,16 @@ function Detail() {
     setIsLoading(true); // Opcional: Si quieres mostrar un indicador de carga mientras se realiza la solicitud
     try {
       // Realiza una solicitud HTTP PUT al endpoint correspondiente en tu backend
+      const userEmail=localStorage.getItem('userEmail')
+      console.log(userEmail);
       const response = await axios.put(`http://localhost:3001/update/${id}`);
-      const email = await axios.post(`http://localhost:3001/booking`, {destinatario: "victorseva123@gmail.com",
+      const email = await axios.post(`http://localhost:3001/booking`, {destinatario:userEmail,
       propiedad: id
     });
       console.log(response.data); // Imprime la respuesta del servidor en la consola
       // Aquí puedes agregar cualquier lógica adicional, como mostrar un mensaje de éxito al usuario
     } catch (error) {
-      console.error('Error updating property:', error);
+      console.log('Error updating property:', error);
       // Aquí puedes manejar el error, como mostrar un mensaje de error al usuario
     }
     setIsLoading(false); // Opcional: Si utilizaste setIsLoading(true) anteriormente
