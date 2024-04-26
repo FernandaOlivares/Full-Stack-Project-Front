@@ -21,6 +21,9 @@ const LandingPage = () => {
 
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
+      localStorage.setItem('userEmail',user.email)
+
+
 
       // Aquí puedes realizar acciones adicionales después de iniciar sesión con Google
       navigate('/home'); // Redirigir al usuario a la página de inicio después de iniciar sesión
