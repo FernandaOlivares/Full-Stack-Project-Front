@@ -14,7 +14,7 @@ const provider = new GoogleAuthProvider();
 
 const LandingPage = () => {
   const navigate = useNavigate();
-  
+
 
   const handleSignInWithGoogle = async () => {
     try {
@@ -55,7 +55,7 @@ const LandingPage = () => {
       <div className={styles.landingPageOverlay}></div>
       <div className={styles.content}>
         <div>
-        <h1>Bienvenido a Tu Futuro Hogar</h1>
+        <h1>Bienvenido a Propiedades & Diseño</h1>
         <Link to="/home" className={styles.button}>Iniciar como Invitado</Link>
         </div>
         <div>-</div>
@@ -69,47 +69,3 @@ const LandingPage = () => {
 };
 
 export default LandingPage;
-
-
-/*
-return (
-  <div>
-    <div className={Styles.landingPageBackground} style={{ backgroundImage: `url(${landingPageImage})` }}>
-      <div className={Styles.pagDiv}> 
-        <div className={Styles.imgs}>
-          <img className={Styles.startPag2} src={imageImg.LOGO} alt="" />
-          <button className={Styles.startPag} onClick={()=>navigate('/home')}>
-            <img src={imageImg.loanding} alt="" />
-            <span>ENTRAR</span>
-          </button>
-   
-        </div>
-      </div>
-    </div>
-  </div>
-);
-}*/
-
-// const LandingPage = () => {
-
-//   const navigate = useNavigate()
-  
-//     return (
-//       <div>
-        
-//         <div className={Styles.landingPageBackground}>
-//         <div className={Styles.pagDiv}> 
-            
-//             <div className={Styles.imgs}>
-              
-//                 <img className={Styles.startPag2} src={imageImg.LOGO} alt="" />
-//                 {<img className={Styles.startPag} type='button' onClick={()=>navigate('/home')} src={imageImg.loanding} alt="" />}<span>ENTRAR</span>
-//             </div>           
-               
-//         </div>
-//         </div>
-//       </div>
-//     )
-//   }
-  
-//   export default LandingPage;
