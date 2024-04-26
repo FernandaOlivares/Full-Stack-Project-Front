@@ -7,12 +7,7 @@ const { VITE_FIREBASE_API_KEY,
       VITE_FIREBASE_STORAGE_BUCKET, 
       VITE_FIREBASE_MESSAGING_SENDER_ID, 
       VITE_FIREBASE_APP_ID } = import.meta.env;
-console.log(VITE_FIREBASE_API_KEY,
-      VITE_FIREBASE_AUTH_DOMAIN, 
-      VITE_FIREBASE_PROJECT_ID, 
-      VITE_FIREBASE_STORAGE_BUCKET, 
-      VITE_FIREBASE_MESSAGING_SENDER_ID, 
-      VITE_FIREBASE_APP_ID);
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: VITE_FIREBASE_API_KEY,
