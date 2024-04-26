@@ -1,11 +1,19 @@
 .cardsContainer {
-  width: 87vw;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: flex-start;
-  align-items: flex-start;
-  margin-top: 10%;
-  border-radius: 8px;
+  position: fixed;
+  top: 14%;
+  left: 50%; /* Centra el contenedor horizontalmente */
+  transform: translateX(-50%); /* Centra el contenedor horizontalmente */
+  padding-top: 28px; /* Padding superior */
+  padding-bottom: 20px; /* Padding inferior */
+  max-width: 86%;
+  max-height: 80%;
+  width: 1400px;
+  height: 625px;
+  border-radius: 10px;
   z-index: 50;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap; /* Permite que las tarjetas se envuelvan a la siguiente línea */
+  gap: 12px;
+  overflow-y: auto;
 }

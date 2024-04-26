@@ -1,0 +1,153 @@
+/* tipo de propiedad */
+.container {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 15px;
+    display: grid;
+    gap: 2px;
+    place-content: center;
+    width: 200px;
+    margin-top: 0px;   
+    
+  }
+
+  /* select debajo del boton todos */
+.container input[type=radio] {
+    display: none;
+  }
+
+  /* color tipo de propiedad */
+/* .container h3{
+    color: #b00404;
+} */
+
+  /* color encima del boton todos */
+/* .inputBtn:is(:checked) + .neonBtn .span {
+    inset: 1px;
+    background-color: #60635a;
+    box-shadow: inset 0 40px 20px hsla(0, 0%, 100%, 0.631);
+  } */
+  
+  /* color de las letras del boton todos */
+/* .inputBtn:is(:checked) + .neonBtn .txt {
+    text-shadow: 2px 4px 1px #000534, 2px 2px 1px #0251bf, 0 0 20px rgba(255, 255, 255, 0.616);
+    color: rgb(251, 239, 10);
+    -webkit-animation: colorchange 0.3s ease;
+    animation: colorchange 0.3s ease;
+  } */
+
+  /* en blanco */
+/*   
+  .inputBtn:is(:checked) + .neonBtn::before {
+    -webkit-animation-duration: 0.6s;
+    animation-duration: 0.6s;
+  } */
+
+  /* en blanco*/
+/*   
+  .inputBtn:is(:checked) + .neonBtn::after {
+    -webkit-animation-duration: 0.6s;
+    animation-duration: 0.6s;
+  } */
+  
+  /* definicion del boton todos  */
+.neonBtn {
+    width: 150px;
+    height: 30px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: right;
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+    transition: all 2s ease-in-out;
+    -webkit-clip-path: polygon(6% 0, 93% 0, 100% 8%, 100% 86%, 90% 89%, 88% 100%, 5% 100%, 0% 85%);
+    clip-path: polygon(6% 0, 93% 0, 100% 8%, 100% 86%, 90% 89%, 88% 100%, 5% 100%, 0% 85%);
+    z-index: 99999999999;
+  }
+
+  /* efectos de color en el boton todos */
+
+.neonBtn .span {
+    display: flex;
+    -webkit-clip-path: polygon(6% 0, 93% 0, 100% 8%, 100% 86%, 90% 89%, 88% 100%, 5% 100%, 0% 85%);
+    clip-path: polygon(6% 0, 93% 0, 100% 8%, 100% 86%, 90% 89%, 88% 100%, 5% 100%, 0% 85%);
+    position: absolute;
+    inset: 1px;
+    background-color: #595959b5;
+    z-index: 1;
+  } 
+   
+  /* texto de todos */
+.neonBtn .txt {
+    text-align: right;
+    position: relative;
+    z-index: 2;
+    color: aliceblue;
+    font-size: 1em;
+    transition: all ease-in-out 2s linear;
+    text-shadow: 0px 0px 1px #b5b340, 0px 0px 1px #a9a730, 0 0 1px white;
+  }
+
+  /* en blanco */
+/* .neonBtn:before {
+    content: "";
+    position: absolute;
+    height: 300px;
+    aspect-ratio: 1.5/1;
+    box-shadow: -17px -19px 20px #a7a930;
+    background-image: conic-gradient(#a5a930, transparent, transparent, transparent, transparent, transparent, transparent, #a09e1c);
+    animation: rotate 4s linear infinite -2s;
+  }  */
+  
+  /* en blanco */
+/* .neonBtn::after {
+    content: "";
+    position: absolute;
+    height: 300px;
+    aspect-ratio: 1.5/1;
+    box-shadow: -17px -19px 10px #adb540;
+    background-image: conic-gradient(#b5b540, transparent, transparent, transparent, transparent, transparent, transparent, transparent, #b1b540);
+    animation: rotate 4s linear infinite;
+  } */
+/*   
+@keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+@keyframes colorchange {
+    0% {
+      text-shadow: 0px 0px 0px #a3a930, 0px 0px 0px #4090b5, 0 0 0px rgba(255, 255, 255, 0.616);
+    }
+  
+    50% {
+      text-shadow: -6px 5px 1px #a9a530, 5px 11px 1px #4090b5, 0 0 20px rgba(255, 255, 255, 0.616);
+    }
+  
+    to {
+      text-shadow: 2px 4px 1px #9fa930, 2px 2px 1px #4090b5, 0 0 20px rgba(255, 255, 255, 0.616);
+    }
+  }
+  
+@keyframes backgroundchange {
+    0% {
+      background-color: transparent;
+    }
+  
+    50% {
+      background-color: #4090b5;
+    }
+  
+    to {
+      background-color: transparent;
+    }
+  } */

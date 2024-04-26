@@ -1,0 +1,99 @@
+
+.landingPageContainer {
+    background-image: url('../../assets/Image/landingPageImage.jpeg');
+    background-size: 100% 100%;
+    background-position: center;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 50px solid black; /* Borde temporal */
+    margin-left: -6.3%;
+    padding: 0;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+
+.landingPageOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); /* Negro semi-transparente */
+    z-index: 2; /* Aseguramos que el overlay esté encima de la imagen de fondo */
+}
+
+.textContainer {
+    margin-top:30%;
+    background-color: rgba(0, 0, 0, 0.5); /* Utiliza rgba para definir un color con transparencia */
+    color: white; /* Define el color del texto */
+    padding: 5px; /* Añade un poco de espacio alrededor del texto */
+    width: 30%; /* Establece el ancho del párrafo */
+    height: 10%;
+    margin: 0 auto; /* Centra horizontalmente el párrafo */
+    z-index: 10;
+    border-radius: 15px;
+}
+
+.button {
+    display: inline-block;
+    background-color: black;
+    color: white;
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    padding: 10px 20px; /* Ajusta el relleno según sea necesario */
+    border-radius: 10px; /* Agrega esquinas redondeadas */
+    transition: background-color 0.3s, color 0.3s; /* Agrega una transición suave */
+    z-index: 10;
+  }
+  
+  .button:hover {
+    background-color: rgba(113, 107, 107, 0.7); /* Cambia el color de fondo al pasar el cursor */
+    color: white; /* Cambia el color del texto al pasar el cursor */
+    z-index: 10;
+    border: none; /* Elimina el borde */
+    outline: none;
+  }
+
+
+.content {
+    color: white;
+    font-size: 24px;
+    z-index: 10;
+}
+
+
+.pagDiv{ 
+    display: flex;
+    justify-content: center;
+    width:  20vw;
+    height: 100vh;
+}
+
+.startPag2{
+    width: 400px;
+    transition: all 600ms;
+}
+
+.imgs{
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    align-items: center;
+    top: 10%;
+}
+
+.startPag{    
+    width: 100px;
+    margin-top: 250px;
+    left: 47.4%;
+    cursor: pointer;
+    transition: all 1.5s;    
+}
+.startPag:hover{
+    transform: scale(1.5);
+    
+}

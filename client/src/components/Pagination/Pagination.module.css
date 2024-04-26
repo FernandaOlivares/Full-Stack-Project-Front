@@ -1,0 +1,70 @@
+.container {
+    position: fixed;
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: 1.5%;
+    margin: 0 auto;
+    height:30px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+	text-align: center;
+    border: none;
+}
+
+
+.container button {
+	color: rgb(113, 107, 107);
+    width: 35.5px;
+    height: 35.5px;
+    border-radius: 50%;
+	text-align: center;
+    border: none;
+}
+
+
+.container input {
+    color: rgb(113, 107, 107);
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    text-align: center;
+    background: transparent;
+    border: none;
+    transition: background 0.3s, color 0.3s; /* Agrega una transición suave */
+	cursor: pointer;
+	font-size: 15px;
+}
+
+.container input:hover {
+    background: rgb(113, 107, 107); /* Cambia el color de fondo al hacer hover */
+    color: whitesmoke; /* Cambia el color del texto al hacer hover */
+    border: none;
+}
+
+.black {
+	display: flex;
+	justify-content: center; /* Centra horizontalmente */
+	align-items: center;
+    font-size: 14px;
+	text-align: center;
+    border-radius: 8px;
+    transition: background 0.3s; /* Aplica la transición solo al color de fondo */
+    color: rgb(113, 107, 107);
+    border: none;
+    background: transparent; /* Establece el color de fondo inicial */
+}
+
+
+.black:hover {
+    background: rgb(113, 107, 107); /* Cambia el color de fondo al hacer hover */
+	color:whitesmoke;
+    border: none;
+}
+
+.container button:focus {
+    outline: none; /* Elimina el borde de enfoque */
+}

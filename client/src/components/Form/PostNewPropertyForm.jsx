@@ -1,14 +1,23 @@
 import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux';
 
-import { postNewProperty } from '../../redux/actions/index.jsx'
-import { postType } from '../../redux/actions/index.jsx'
-import { postCategory } from '../../redux/actions/index.jsx'
+import { useNavigate } from 'react-router-dom';
+import { postNewProperty } from '../../redux/actions/index.jsx';
+import { postType } from '../../redux/actions/index.jsx';
+import { postCategory } from '../../redux/actions/index.jsx';
+import UploadWidget from '../UploadWidget/UploadWidget.jsx';
 
 import styles from './Form.module.css';
+//import parkingIcon from '../../assets/icons/parking.png'
+//import swimmingPoolIcon from '../../assets/icons/swimmingPool.png'
+//import storageIcon from '../../assets/icons/storage.png'
+
 
 function PostNewPropertyForm() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const newPropertyId = useSelector((state) => state.newPropertyId);
+  const [formSubmitted, setFormSubmitted] = useState(false);
   //const allTypes = useSelector((state) => state.allTypes);
   //const allCategories = useSelector((state) => state.allCategories);
 
@@ -16,6 +25,20 @@ function PostNewPropertyForm() {
     dispatch(getAllTypes());
     dispatch(allCategories());
   }, [dispatch]);*/
+
+  /*useEffect(() => {
+    const isCreatingPropertyPage = window.location.pathname.includes('/create');
+    if (newPropertyId && isCreatingPropertyPage) {
+      navigate(`/home/${newPropertyId}`);
+    }
+  }, [newPropertyId, navigate]);*/
+  
+  useEffect(() => {
+    // Redirigir solo si el formulario se ha enviado con éxito
+    if (newPropertyId && formSubmitted) {
+      navigate(`/home/${newPropertyId}`);
+    }
+  }, [newPropertyId, formSubmitted, navigate]);
 
   const [input, setInput] = useState({
     category:'',
@@ -29,10 +52,10 @@ function PostNewPropertyForm() {
     bathrooms: '',
     parking: '',
     storage:'',
-    swimmingPool:'',
+    swimmingPool: '',
     title: '',
     description: '',
-    imageDefault: '',
+    imageDefault: [],
   });
 
   const [error, setError] = useState({
@@ -50,20 +73,20 @@ function PostNewPropertyForm() {
     swimmingPool:'',
     title: '',
     description: '',
-    imageDefault: '',
+    imageDefault: [],
   });
 
 
   const validateFormInput = (propertyInfo) => {
     const errors = {};
 
-  if (!propertyInfo.category || !/^[A-Za-zÀ-ÖØ-öø-Ÿ0-9\s'-]+(?<!-[-])$/.test(propertyInfo.category.trim()) || propertyInfo.category.length < 0 || propertyInfo.category.length > 30) {
-    errors.category = '*Carácter inválido, max. 30';
+  if (!propertyInfo.category || propertyInfo.category === '') {
+    errors.category = '*Campo obligatorio';
   }
-  if (!propertyInfo.type || !/^[A-Za-zÀ-ÖØ-öø-Ÿ0-9\s'-]+(?<!-[-])$/.test(propertyInfo.type.trim()) || propertyInfo.type.length < 0 || propertyInfo.type.length > 30) {
-    errors.type = '*Carácter inválido, max. 30';
+  if (!propertyInfo.type || propertyInfo.type === '') {
+    errors.type = '*Campo obligatorio';
   }
-  if (!propertyInfo.price || !/^\d+$/.test(propertyInfo.price.trim()) || propertyInfo.price.length < 4 || propertyInfo.address.price > 20) {
+  if (!propertyInfo.price || !/^\d+$/.test(propertyInfo.price.trim()) || propertyInfo.price.length < 1 || propertyInfo.price.length > 20) {
     errors.price = '*Ingresar número entero mayor a cero';
   }
 
@@ -98,8 +121,8 @@ if (!propertyInfo.storage || !/^\d+$/.test(propertyInfo.storage.trim()) || prope
   errors.storage = '*Usar solo números, máx. 2 dígitos';
 }
 
-if (!/^si$|^no$/i.test(propertyInfo.swimmingPool.trim())) {
-  errors.swimmingPool = '*Responder con "Si" o "No"';
+if (!propertyInfo.swimmingPool || propertyInfo.swimmingPool === '') {
+  errors.swimmingPool = '*Campo obligatorio';
 }
 
 if (!propertyInfo.title || !/^[A-Za-zÀ-ÖØ-öø-Ÿ0-9\s'-]+(?<!-[-])$/.test(propertyInfo.title.trim()) || propertyInfo.title.length < 2 || propertyInfo.title.length > 30) {
@@ -110,16 +133,28 @@ if (!propertyInfo.description || propertyInfo.description.length < 50 || propert
   errors.description = '*Usar entre 50-3000 caracteres ';
 }
 
-if (!propertyInfo.imageDefault || !/^(ftp|http|https):\/\/[^ "]+$/.test(propertyInfo.imageDefault.trim())) {
-  errors.imageDefault = '*Link inválido';
+if (!propertyInfo.imageDefault || propertyInfo.imageDefault.length < 5) {
+  errors.imageDefault = '*Debe proporcionar 5 imágenes';
 }
 
-    setError(errors);
+if (Object.keys(propertyInfo).length > 0) {
+  setError(errors);
+}
+
+/*return Object.keys(errors).length === 0;
+    setError(errors);*/
     
     return Object.keys(errors).length === 0;
   } 
     
-  
+  const handleImageUpload = (imageUrls) => {
+    console.log(imageUrls);
+    setInput((prevInput) => ({
+        ...prevInput,
+        imageDefault: [...prevInput.imageDefault, ...imageUrls],
+    }));
+};
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const isValid = validateFormInput(input);
@@ -146,8 +181,9 @@ if (!propertyInfo.imageDefault || !/^(ftp|http|https):\/\/[^ "]+$/.test(property
           swimmingPool:'',
           title: '',
           description: '',
-          imageDefault: '',
+          imageDefault: [],
         });
+        setFormSubmitted(true);
       } catch (error) {
         console.error('Error creating new property:', error);
         alert('Error en crear una nueva propiedad, por favor intente nuevamente.');
@@ -155,154 +191,218 @@ if (!propertyInfo.imageDefault || !/^(ftp|http|https):\/\/[^ "]+$/.test(property
     } 
   };
 
+  const handleRemoveImage = (index) => {
+    const updatedImages = [...input.imageDefault];
+    updatedImages.splice(index, 1);
+    setInput((prevInput) => ({
+      ...prevInput,
+      imageDefault: updatedImages,
+    }));
+  };
+
+  const handleCloseButtonClick = (e, index) => {
+    e.stopPropagation(); // Detener la propagación del evento para evitar que se propague al contenedor principal
+    handleRemoveImage(index); // Llama a la función handleRemoveImage para eliminar la imagen
+  };
+
+  const renderImagePreviews = () => {
+    return input.imageDefault.map((imageUrl, index) => (
+      <div key={index} className={styles.imagePreview}>
+        <img src={imageUrl} alt={`Preview ${index}`} />
+        <button onClick={(e) => handleCloseButtonClick(e)}>X</button>
+      </div>
+    ));
+  };
+  /*const handleChange = (event) =>{
+    
+
+  const handleSubmit = () =>{
+    // console.log(event.target.files);
+    // setFile(event.target.files);
+  }*/
+
+  /*const previewFiles = () => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      console.log(image);
+      setImage(reader.result);
+    }
+  }*/
+  useEffect(() => {
+    validateFormInput(input);
+  }, [input]);
+
   const handleChange = (event) => {
-    setInput({
-        ...input,
-        [event.target.name]: event.target.value,
-    });
-    validateFormInput({ ...input, [event.target.name]: event.target.value });
+    const { name, value } = event.target;
+    setInput((prevInput) => ({
+        ...prevInput,
+        [name]: value,
+    }));
+    validateFormInput({ ...input, [name]: value });
 };
 
-  return (
-    <>
-    <div className={styles.formContainer}>
-      <div className={styles.pageTitle}>
-        <h2>Publicar Nueva Propiedad</h2>
-        <p className={styles.formInstructions}>Favor de rellenar toda la información solicitada para publicar una nueva propiedad:</p>
-      </div>
-      <div className={styles.formContainerLeft }>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <div className={styles.inputField}>
-              <label>Tipo de servicio*:
-              <span className={styles.errorMessage}>{error.category}</span>
-              <div className={styles.inputContainer}>
-                <input type='text' name='category' value={input.category} onChange={handleChange} />
+
+return (
+  <>
+  <div className={styles.bodyContainer}>
+    <div className={styles.pageTitle}>
+      <h2>Publicar Nueva Propiedad</h2>
+      <p className={styles.formInstructions}>Rellenar toda la información solicitada para publicar una nueva propiedad:</p>
+    </div>
+  <div className={styles.formContainer}>
+    <form onSubmit={handleSubmit}>
+      <div className={styles.formContainerLeft}>
+        <div className={styles.selectContainer}>
+        <div>
+            <label> Tipo de servicio*: </label>
+                <span className={styles.errorMessage}>{error.category}</span>
+              <div>
+                <select name='category' value={input.category} onChange={handleChange} className={styles.selectButton}>
+                  <option value='' disabled>Selecciona una opción</option>
+                  <option value='arriendo'>Arriendo</option>
+                  <option value='venta'> Venta</option>
+                </select>
               </div>
-              </label>
-              </div>
-              <div className={styles.inputField}>
-              <label>Tipo de propiedad*:
-              <span className={styles.errorMessage}>{error.type}</span>
-              <div className={styles.inputContainer}>
-                <input type='text' name='type' value={input.type} onChange={handleChange} />
-              </div>
-              </label>
-              </div>
-              <div className={styles.inputField}>
-              <label>Precio*:
-              <span className={styles.errorMessage}>{error.price}</span>
-              <div className={styles.inputContainer}>
-                <input type='text' name='price' value={input.price} onChange={handleChange} />
-              </div>
-              </label>
-              </div>
-              <div className={styles.inputField}>
-            <label>Región*:
-              <span className={styles.errorMessage}>{error.region}</span>
-              <div className={styles.inputContainer}>
-                <input type='text' name='region' value={input.region} onChange={handleChange}/>
-              </div>
-            </label>
             </div>
-            <div className={styles.inputField}>
-            <label>Ciudad*:
-              <span className={styles.errorMessage}>{error.city}</span>
-              <div className={styles.inputContainer}>
-                <input type='text' name='city' value={input.city} onChange={handleChange}/>
+            <div>
+            <label> Tipo de propiedad*: </label>
+                <span className={styles.errorMessage}>{error.type}</span>
+              <div>
+                <select name='type' value={input.type} onChange={handleChange} className={styles.selectButton}>
+                  <option value='' disabled>Selecciona una opción</option>
+                  <option value='casa'>Casa</option>
+                  <option value='departamento'>Departamento</option>
+                </select>
               </div>
-            </label>
-            </div>
-            <div className={styles.inputField}>
-            <label>Comuna*:
-              <span className={styles.errorMessage}>{error.zone}</span>
-              <div className={styles.inputContainer}>
-                <input type='text' name='zone' value={input.zone} onChange={handleChange}/>
-              </div>
-            </label>
-            </div>
-            <div className={styles.inputField}>
-            <label>Dirección*:
-              <span className={styles.errorMessage}>{error.address}</span>
-              <div className={styles.inputContainer}>
-                <input type='text' name='address' value={input.address} onChange={handleChange}/>
-              </div>
-            </label>
-            </div>
-            <div className={styles.inputField}>
-            <label>Cantidad de Dormitorios*:
-              <span className={styles.errorMessage}>{error.bedrooms}</span>
-              <div className={styles.inputContainer}>
-                <input type='text' name='bedrooms' value={input.bedrooms} onChange={handleChange}/>
-              </div>
-            </label>
-            </div>
-            <div className={styles.inputField}>
-            <label>Cantidad de Baños*:
-              <span className={styles.errorMessage}>{error.bathrooms}</span>
-              <div className={styles.inputContainer}>
-                <input type='text' name='bathrooms' value={input.bathrooms} onChange={handleChange}/>
-              </div>
-            </label>
-            </div>
-            <div className={styles.inputField}>
-            <label>Estacionamientos*:
-              <span className={styles.errorMessage}>{error.parking}</span>
-              <div className={styles.inputContainer}>
-                <input type='text' name='parking' value={input.parking} onChange={handleChange}/>
-              </div>
-            </label>
-            </div>
-            <div className={styles.inputField}>
-            <label>Bodegas*:
-              <span className={styles.errorMessage}>{error.storage}</span>
-              <div className={styles.inputContainer}>
-                <input type='text' name='storage' value={input.storage} onChange={handleChange}/>
-              </div>
-            </label>
-            </div>
-            <div className={styles.inputField}>
-            <label>Piscina*:
-              <span className={styles.errorMessage}>{error.swimmingPool}</span>
-              <div className={styles.inputContainer}>
-                <input type='text' name='swimmingPool' value={input.swimmingPool} onChange={handleChange}/>
-              </div>
-            </label>
-            </div>
-            <div className={styles.inputField}>
-            <label>Título*:
-              <span className={styles.errorMessage}>{error.title}</span>
-              <div className={styles.inputContainer}>
-                  <input type='text' name='title' value={input.title} onChange={handleChange}  />
-              </div>
-            </label>
-            </div>
-            <div className={styles.inputField}>
-            <label>Description*:
-              <span className={styles.errorMessage}>{error.description}</span>
-              <div className={styles.descriptionContainer}>
-                <textarea name='description' value={input.description} onChange={handleChange} className={styles.textarea} />
-              </div>
-            </label>
-            </div>
-            <div className={styles.inputField}>
-                <label >Imágenes*:
-              <span className={styles.errorMessage}>{error.imageDefault}</span>
-              <div className={styles.inputContainer}>
-                <input type='text' name='imageDefault' value={input.imageDefault} onChange={handleChange}/>
-              </div>
-                <div/>
-            </label>
-            <div className={styles.buttonContainer}>
-            <button type='submit' disabled={!Object.keys(error).every(key => error[key] === '')}>Publicar Propiedad</button>
           </div>
-            </div>
-          </div>
-        </form>
         </div>
-      </div>
-    </>
-  );
+        <div className={styles.inputsFieldLeftContainer}>
+              <div className={styles.inputField}>
+            <label>Precio*:        
+              <div className={styles.inputContainer}>
+                <input type='text' name='price' value={input.price} onChange={handleChange}/>
+              <span className={styles.errorMessage}>{error.price}</span>
+              </div>
+              </label>
+         
+              </div>
+            <div className={styles.inputField}>
+          <label>Región*:
+            <div className={styles.inputContainer}>
+              <input type='text' name='region' value={input.region} onChange={handleChange} />
+            </div>
+            <span className={styles.errorMessage}>{error.region}</span>
+          </label>
+          <label>Ciudad*:
+            <div className={styles.inputContainer}>
+              <input type='text' name='city' value={input.city} onChange={handleChange}/>
+            </div>
+            <span className={styles.errorMessage}>{error.city}</span>
+          </label>
+          </div>
+          <div className={styles.inputField}>
+          <label>Comuna*:
+            <div className={styles.inputContainer}>
+              <input type='text' name='zone' value={input.zone} onChange={handleChange}/>
+            </div>
+            <span className={styles.errorMessage}>{error.zone}</span>
+          </label>
+          <label>Dirección*:
+            <div className={styles.inputContainer}>
+              <input type='text' name='address' value={input.address} onChange={handleChange}/>
+            </div>
+            <span className={styles.errorMessage}>{error.address}</span>
+          </label>
+          </div>
+
+
+          <div className={styles.inputField}>
+          <label>Nº Dormitorios*:
+            <div className={styles.inputContainer}>
+              <input type='text' name='bedrooms' value={input.bedrooms} onChange={handleChange}/>
+            </div>
+            <span className={styles.errorMessage}>{error.bedrooms}</span>
+          </label>
+          <label>Nº Baños*:
+            <div className={styles.inputContainer}>
+              <input type='text' name='bathrooms' value={input.bathrooms} onChange={handleChange}/>
+            </div>
+            <span className={styles.errorMessage}>{error.bathrooms}</span>
+          </label>
+          </div>
+          <div className={styles.inputField}>
+          <label>Estacionamientos*:
+            <div className={styles.inputContainer}>
+              <input type='text' name='parking' value={input.parking} onChange={handleChange}/>
+            </div>
+            <span className={styles.errorMessage}>{error.parking}</span>
+          </label>
+   
+          <div className={styles.inputField}>
+          <label>Bodega*:
+            <div className={styles.inputContainer}>
+              <input type='text' name='storage' value={input.storage} onChange={handleChange}/>
+            </div>
+            <span className={styles.errorMessage}>{error.storage}</span>
+          </label>
+          </div>
+          </div>
+          <div className={styles.inputField}>
+          <div className={styles.selectContainer}>
+        <label>Piscina*:
+          <div className={styles.swimmingPoolSelect}>
+          <select name='swimmingPool' value={input.swimmingPool} onChange={handleChange} className={styles.selectButton}>
+            <option value='' disabled>Selecciona una opción</option>
+            <option value='si'>Sí</option>
+            <option value='no'>No</option>
+          </select>
+          </div>
+          <span className={styles.errorMessage}>{error.swimmingPool}</span>
+        </label>
+          </div>
+          </div>
+
+        </div>
+        </div>
+
+     <div className={styles.formContainerRight}>
+          <div className={styles.inputField}>
+          <label>Título*:
+            <span className={styles.errorMessage}>{error.title}</span>
+            <div className={styles.titleInputContainer}>
+                <input type='text' name='title' value={input.title} onChange={handleChange}  />
+            </div>
+          </label>
+          </div>
+          <div className={styles.inputField}>
+          <label>Description*:
+            <span className={styles.errorMessage}>{error.description}</span>
+            <div className={styles.descriptionContainer}>
+              <textarea name='description' value={input.description} onChange={handleChange} className={styles.textarea} />
+            </div>
+          </label>
+          </div>
+          <div className={styles.uploadPicturesContainer}>
+          <label>Fotos de la propiedad*:
+          <span className={styles.errorMessage}>{error.imageDefault}</span>
+          <div className={styles.uploadWidgetButtonContainer}>
+          <UploadWidget handleImageUpload={handleImageUpload}/>
+          </div>
+          </label>
+          <div className={styles.imagePreviewContainer}>
+            {renderImagePreviews()}
+          </div>
+          </div>
+          </div>
+          <div className={styles.buttonContainer}>
+          <button type='submit' disabled={!Object.keys(error).every(key => error[key] === '')}>Publicar Propiedad</button>
+        </div>
+      </form>
+    </div>
+    </div>
+  </>
+);
 }
   
 export default PostNewPropertyForm;
