@@ -8,10 +8,11 @@ import { postCategory } from '../../redux/actions/index.jsx';
 import UploadWidget from '../UploadWidget/UploadWidget.jsx';
 
 import styles from './Form.module.css';
+import PropertyCreatedAlert from '../Alerts/PropertyCreatedAlert.jsx';
+import ErrorPropertyCreationAlert from '../Alerts/ErrorPropertyCreationAlert.jsx';
 //import parkingIcon from '../../assets/icons/parking.png'
 //import swimmingPoolIcon from '../../assets/icons/swimmingPool.png'
 //import storageIcon from '../../assets/icons/storage.png'
-
 
 function PostNewPropertyForm() {
   const dispatch = useDispatch();
@@ -20,6 +21,10 @@ function PostNewPropertyForm() {
   const [formSubmitted, setFormSubmitted] = useState(false);
   //const allTypes = useSelector((state) => state.allTypes);
   //const allCategories = useSelector((state) => state.allCategories);
+
+  /*useEffect(()=>{
+    ErrorPropertyCreationAlert();
+  });*/
 
   /*useEffect(() => {
     dispatch(getAllTypes());
@@ -33,12 +38,14 @@ function PostNewPropertyForm() {
     }
   }, [newPropertyId, navigate]);*/
   
+
   useEffect(() => {
     // Redirigir solo si el formulario se ha enviado con éxito
     if (newPropertyId && formSubmitted) {
       navigate(`/home/${newPropertyId}`);
     }
   }, [newPropertyId, formSubmitted, navigate]);
+
 
   const [input, setInput] = useState({
     category:'',
@@ -164,7 +171,7 @@ if (Object.keys(propertyInfo).length > 0) {
         dispatch(postType(input));
         dispatch(postCategory(input));
 
-        alert('La propiedad fue creada exitosamente.');
+        PropertyCreatedAlert(input.title);
   
         setInput({
           category:'',
@@ -186,7 +193,7 @@ if (Object.keys(propertyInfo).length > 0) {
         setFormSubmitted(true);
       } catch (error) {
         console.error('Error creating new property:', error);
-        alert('Error en crear una nueva propiedad, por favor intente nuevamente.');
+        ErrorPropertyCreationAlert();
       }
     } 
   };
@@ -209,7 +216,7 @@ if (Object.keys(propertyInfo).length > 0) {
     return input.imageDefault.map((imageUrl, index) => (
       <div key={index} className={styles.imagePreview}>
         <img src={imageUrl} alt={`Preview ${index}`} />
-        <button onClick={(e) => handleCloseButtonClick(e)}>X</button>
+        <button type="button" onClick={(e) => handleCloseButtonClick(e)}>X</button>
       </div>
     ));
   };

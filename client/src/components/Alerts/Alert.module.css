@@ -1,0 +1,9 @@
+.alertPopup {
+    border-radius: 26px;
+    background-color: whitesmoke;
+}
+
+.confirmButton {
+    background-color: #b70303;
+    color: #ffffff;
+}

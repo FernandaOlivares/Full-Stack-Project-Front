@@ -13,6 +13,7 @@ function Header() {
   const handleSignOut = async () => {
     try {
       await signOut(auth);
+      localStorage.removeItem('userEmail');
       navigate('/');
     } catch (error) {
       console.error('Error al cerrar sesión:', error);
