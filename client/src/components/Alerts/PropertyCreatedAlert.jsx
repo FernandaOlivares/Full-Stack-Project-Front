@@ -9,7 +9,7 @@ const PropertyCreatedAlert = (propertyTitle) => {
         title: `¡Felicitaciones!`,
         html: `La propiedad <b>"${propertyTitle}"</b>,ha sido publicada exitosamente.`,
         showConfirmButton: false,
-        timer: 2000,
+        timer: 4000,
         customClass: {
           popup: styles.alertPopup,
       },
