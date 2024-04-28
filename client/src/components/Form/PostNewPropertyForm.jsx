@@ -6,6 +6,7 @@ import { postNewProperty } from '../../redux/actions/index.jsx';
 import { postType } from '../../redux/actions/index.jsx';
 import { postCategory } from '../../redux/actions/index.jsx';
 import UploadWidget from '../UploadWidget/UploadWidget.jsx';
+import { capitalizeSentences } from '../../utils/stringUtils.js'
 
 import styles from './Form.module.css';
 import PropertyCreatedAlert from '../Alerts/PropertyCreatedAlert.jsx';
@@ -242,13 +243,16 @@ if (Object.keys(propertyInfo).length > 0) {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
+    let updatedValue = value;
+  if (['category', 'type', 'region','city','zone','address', 'title', 'description'].includes(name)) {
+      updatedValue = capitalizeSentences(value);
+  }
     setInput((prevInput) => ({
         ...prevInput,
-        [name]: value,
+        [name]: updatedValue,
     }));
-    validateFormInput({ ...input, [name]: value });
+    validateFormInput({ ...input, [name]: updatedValue });
 };
-
 
 return (
   <>
@@ -286,13 +290,12 @@ return (
         </div>
         <div className={styles.inputsFieldLeftContainer}>
               <div className={styles.inputField}>
-            <label>Precio*:        
+            <label>Precio* $:        
               <div className={styles.inputContainer}>
                 <input type='text' name='price' value={input.price} onChange={handleChange}/>
               <span className={styles.errorMessage}>{error.price}</span>
               </div>
               </label>
-         
               </div>
             <div className={styles.inputField}>
           <label>Región*:
