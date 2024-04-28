@@ -55,11 +55,17 @@ function Detail() {
   const handleReservation = async () => {
     setIsLoading(true); // Opcional: Si quieres mostrar un indicador de carga mientras se realiza la solicitud
     try {
+      const BASE_URL = import.meta.env.VITE_ENV === 'production'
+      ? import.meta.env.VITE_BACKEND_URL_PRODUCTION
+      : import.meta.env.VITE_BACKEND_URL_LOCAL;
+
+
+
       // Realiza una solicitud HTTP PUT al endpoint correspondiente en tu backend
       const userEmail=localStorage.getItem('userEmail')
       console.log(userEmail);
-      const response = await axios.put(`http://localhost:3001/update/${id}`);
-      const email = await axios.post(`http://localhost:3001/booking`, {destinatario:userEmail,
+      const response = await axios.put(`${BASE_URL}/update/${id}`);
+      const email = await axios.post(`${BASE_URL}/booking`, {destinatario:userEmail,
       propiedad: id
     });
       console.log(response.data); // Imprime la respuesta del servidor en la consola

@@ -1,9 +1,8 @@
 import Header from '../../components/Header/Header.jsx';
-import PostNewPropertyForm from '../../components/Form/PostNewPropertyForm.jsx';
 
 //import styles from './Create.module.css';
 
-function Create() {
+function UserProfile() {
 
     return (
       <>
@@ -12,11 +11,11 @@ function Create() {
           <Header/>
           </div>
           <div>
-          <PostNewPropertyForm/>
+            <h1>Bienvenido al User Profile</h1>
           </div>
         </div>
       </>
     )
   }
   
-  export default Create;
+  export default UserProfile;

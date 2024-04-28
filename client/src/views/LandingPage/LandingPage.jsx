@@ -23,13 +23,19 @@ const LandingPage = () => {
       const user = result.user;
       localStorage.setItem('userEmail',user.email)
 
-
-
+      
       // Aquí puedes realizar acciones adicionales después de iniciar sesión con Google
       navigate('/home'); // Redirigir al usuario a la página de inicio después de iniciar sesión
+      
+      const BASE_URL = import.meta.env.VITE_ENV === 'production'
+      ? import.meta.env.VITE_BACKEND_URL_PRODUCTION
+      : import.meta.env.VITE_BACKEND_URL_LOCAL;
 
        // Realizar una solicitud GET al backend para verificar si el usuario ya está registrado
-      const response = await axios.get(`http://localhost:3001/user?email=${user.email}`);
+      const response = await axios.get(`${BASE_URL}/user?email=${user.email}`);
+
+
+      //axiios.`http://full-stack-proyect-back-production.up.railway.app/user?email=${user.email}`
 
     
       if (!response.data.exists) {
@@ -40,7 +46,7 @@ const LandingPage = () => {
         };
         
         // Realizar una solicitud POST al backend para registrar al usuario
-        await axios.post('http://localhost:3001/user', userData);
+        await axios.post(`${BASE_URL}/user`, userData);
         console.log("Los datos del usuario se han enviado al backend.");
       } else {
         // El usuario ya está registrado en el backend, no es necesario enviar sus datos nuevamente
