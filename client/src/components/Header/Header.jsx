@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import logoPyd from '../../assets/logoPyd.jpg';
 import appFirebase from '../../credenciales.js';
 import { getAuth,signOut } from 'firebase/auth';
@@ -23,7 +23,7 @@ function Header() {
     return (
       <>
         <div className={styles.headerContainer}>
-        <img src={logoPyd} alt="logoPyd" className={styles.logoPyd} />
+        <Link to="/home"><img src={logoPyd} alt="logoPyd" className={styles.logoPyd} /></Link>
         <Link className={styles.homeButton} to= '/home'>| Home |</Link>
         <Link className={styles.publicarButton} to= '/create'>| Publicar Propiedad | </Link>
         <button onClick={handleSignOut}>Log Out</button>

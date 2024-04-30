@@ -1,0 +1,11 @@
+.adminDashboardContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw; /* Ancho del viewport */
+  height: 100vh; /* Altura del viewport */
+  box-sizing: border-box; /* Incluye el tamaño del borde en el cálculo del tamaño total */
+  padding: 0; /* Elimina el relleno para evitar el desbordamiento */
+  margin: 0; /* Elimina el margen para evitar el desbordamiento */
+  z-index: 1;
+}

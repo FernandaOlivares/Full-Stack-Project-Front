@@ -26,8 +26,6 @@ function Home() {
       <NavBar></NavBar>
       <Cards allProperties={allProperties} currentPage={currentPage} pageSize={pageSize}></Cards>
       <Pagination pagina={currentPage} setPagina={setCurrentPage} maximo={10}  />
-      
-     
       </div>
     </>
   )

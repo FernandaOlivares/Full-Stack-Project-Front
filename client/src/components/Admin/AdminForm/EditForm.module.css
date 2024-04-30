@@ -1,0 +1,439 @@
+body {
+    background-color: whitesmoke;
+    margin: 0;
+    padding: 0;
+    color: rgb(113, 107, 107);
+  }
+  
+  .bodyContainer {
+    position: fixed;
+    top: 13%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 84%;
+    height: 84%;
+    border: 0.5px solid rgb(113, 107, 107);
+    border-radius: 10px;
+  }
+  
+  .pageTitle{
+    text-align: center;
+    margin-top: -1.5%;
+    }
+  
+  .formInstructions{
+    text-align: center;
+    margin-top: -1.8%;
+  }
+  
+  .formContainer{
+    position: fixed;
+    top: 18%; /* 5% de la altura de la ventana */
+    left: 9%; /* 5% del ancho de la ventana */
+    width: 82%; /* 40% del ancho de la ventana */
+    height: 78%; /* 20% de la altura de la ventana */
+    background-color: whitesmoke;
+    border-radius: 3px;
+  }
+  
+  .formContainerLeft{
+    position: fixed;
+    top: 19%; /* 5% de la altura de la ventana */
+    left: 9%; /* 5% del ancho de la ventana */
+    width: 40%; /* 40% del ancho de la ventana */
+    height: 75%;
+  }
+  
+  .formContainerRight {
+    position: fixed;
+    top: 19%; /* 5% de la altura de la ventana */
+    right: 9%; /* 5% del ancho de la ventana */
+    width: 40%; /* 40% del ancho de la ventana */
+    height: 75%;
+  }
+  
+  .selectContainer {
+    display: flex;
+    align-items: left;
+    justify-content: space-between; 
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .selectContainer select{
+    width: 95%;
+    flex: 1;
+    border-radius: 20px;
+    border: 1px solid rgb(113, 107, 107);
+    outline: rgb(113, 107, 107);
+  }
+  .selectContainer select:focus {
+    border-width: 2px; /* Establece el ancho del borde cuando el elemento está enfocado */
+  }
+  
+  .selectContainer label {
+    text-align: left;
+    color: rgb(113, 107, 107);
+    font-size: 17px;
+  }
+  
+  .swimmingPoolSelect{
+    width: 48%;
+  }
+  
+  .inputsFieldLeftContainer {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    height: 66%;
+    top: 28%;
+  }
+  
+  .inputField {
+    display: flex;
+    align-items: left;
+    justify-content: space-between; 
+    width: 100%;
+    margin-bottom: 1%;
+  }
+  
+  .inputField label {
+    color: rgb(113, 107, 107);
+    font-size: 17px;
+    text-align: left;
+    width: 100%;
+  }
+  
+  .inputContainer {
+      width: 20vw;
+      }
+  
+  .inputContainer input {
+    width:80%;
+    padding: 7px;
+    border: 1px solid rgb(113, 107, 107);
+    border-radius: 25px;
+    color: black; /* Color del texto del input */
+    background-color: white; /* Color de fondo del input */
+    font-size: 17px;
+  }
+  
+  .inputContainer input:focus {
+    outline: none;
+    border: 2px solid rgb(113, 107, 107);
+  }
+  
+  .inputContainer input::placeholder {
+    font-weight: 600;
+    font-size: 17px;
+  }
+  
+  .numberInputField {
+    display: flex;
+    align-items: left;
+    border: 2px solid yellow;
+    width: 100%;
+  }
+  
+  .numberInputField label {
+    color: rgb(113, 107, 107);
+    font-size: 17px;
+    text-align: left;
+    border: 2px solid green;
+  }
+  
+  .numberInputField input {
+    width: 80%;
+    padding: 7px;
+    border: 1px solid rgb(113, 107, 107);
+    border-radius: 25px;
+    color: black; /* Color del texto del input */
+    background-color: white; /* Color de fondo del input */
+    font-size: 17px;
+  }
+  
+  
+  .numberInputField input:focus {
+    outline: none;
+    border: 2px solid rgb(113, 107, 107);
+  }
+  
+  .numberInputField input::placeholder {
+    font-weight: 600;
+    font-size: 17px;
+  }
+  
+  .numberInputContainer {
+    width: 50%;
+    }
+  
+  .numberInputContainer input {
+  border: 1px solid rgb(113, 107, 107);
+  border-radius: 25px;
+  color: black; /* Color del texto del input */
+  background-color: white; /* Color de fondo del input */
+  font-size: 17px;
+  }
+  
+  .numberInputContainer input:focus {
+  outline: none;
+  border: 2px solid rgb(113, 107, 107);
+  }
+  
+  .numberInputContainer input::placeholder {
+  font-weight: 600;
+  font-size: 17px;
+  }
+  
+  .titleInputContainer {
+    width: 96%;
+    }
+  
+  .titleInputContainer input {
+  width:100%;
+  padding: 7px;
+  border: 1px solid rgb(113, 107, 107);
+  border-radius: 25px;
+  color: black; /* Color del texto del input */
+  background-color: white; /* Color de fondo del input */
+  font-size: 17px;
+  }
+  
+  .titleInputContainer input:focus {
+  outline: none;
+  border: 2px solid rgb(113, 107, 107);
+  }
+  
+  .titleInputContainer input::placeholder {
+  font-weight: 600;
+  font-size: 17px;
+  }
+  
+  .descriptionContainer {
+    width: 100%;
+    height: 70px;
+    background-color: whitesmoke;
+    margin-bottom: 2%;
+    color: black; /* Color del texto del input */
+    font-size: 17px;
+  }
+  
+  .descriptionContainer textarea {
+    width: 96%;
+    height: 100%;
+    padding: 8px;
+    border-radius: 25px;
+    color: rgb(113, 107, 107);
+    border: 1px solid rgb(113, 107, 107);
+    color: black; /* Color del texto del input */
+    background-color: white; /* Color de fondo del input */
+    font-size: 17px;
+    font-family: inherit; /* Hereda la fuente del elemento padre */
+    font-size: inherit;
+  }
+  
+  .descriptionContainer textarea:focus {
+  outline: none;
+  border: 2px solid rgb(113, 107, 107);
+  }
+  
+  .uploadPicturesContainer {
+    position: fixed;
+    width: 40%;
+    height: 40%;
+    top: 45%;
+    display: flex;
+    flex-direction: column; /* Organiza los elementos en columnas */
+    justify-content: flex-start;
+    text-align: left;
+  }
+  
+  .uploadPicturesContainer img {
+    width: 100px; /* Establece el ancho máximo de las imágenes */
+    height: 100px; /* Establece la altura máxima de las imágenes */
+    margin: 5px; /* Añade un margen entre las imágenes */
+  }
+  
+  .uploadWidgetButtonContainer {
+    position: fixed;
+    display: flex;
+    justify-content: center; /* Centra horizontalmente el botón */
+    align-items: center; /* Centra verticalmente el botón */
+    position: relative; /* Permite posicionar el botón de manera absoluta */
+    width: 100%; /* O ajusta el ancho según sea necesario */
+    height: 50%; /* O ajusta la altura según sea necesario */
+    top: 10%;
+    margin-bottom: 10%;
+  }
+  
+  .label {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: -30vw; /* Ajusta el espaciado entre el label y los botones de radio */
+  }
+  
+  .radioButton {
+    display: flex;
+    align-items: center;
+    margin-right: 10px; /* Ajusta el espaciado entre los botones de radio */
+  }
+  
+  .buttonContainer {
+    display: flex;
+    align-items: center;
+    display: center;
+    margin-right: 0%;
+    margin-bottom: 0%;
+    width: 50%;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 0;
+    right: -20%;
+    outline: none;
+  }
+  
+  .buttonContainer:focus {
+  outline: none; /* Elimina el contorno al hacer clic en el botón */
+  }
+  
+  
+  .buttonContainer button {
+    border: 1px solid transparent; /* Borde transparente por defecto */
+  }
+  .Container button:hover {
+    border-color: black;
+    box-shadow: 0px 0px 1.5vw silver;
+    outline: none;
+  }
+  
+  
+  .buttonContainer button:active {
+    border-color: silver;
+    box-shadow: 0px 0px 1.5vw silver;
+    outline: none;
+  }
+  
+  .iconsContainer {
+    display: flex;
+    justify-content: space-between; /* Distribuir los elementos uniformemente */
+    align-items: flex-start;
+    width: 65%;
+    border-radius: 25px;
+    margin-bottom: 1%;
+  }
+  
+  .swimmingPoolIcon {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+  }
+  
+  .storageIcon {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+  }
+  
+  .parkingIcon {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+    border: 2px white;
+    background-color: white;
+  }
+  
+  .parkingNumber{
+    width: 1vw;
+    height: 1vw;
+  }
+  
+  .titleLabel{
+    margin-left: -57vw;
+  }
+  
+  .othersContainer{
+    border-radius: 20px;
+    border-color: black;
+    background-color: whitesmoke;
+    color: rgb(113, 107, 107);
+  }
+  
+  .errorMessage {
+    font-size: 14px;
+    white-space: nowrap;
+    color: #b70303;
+    margin: 0;
+  }
+  
+  .imagePreview {
+    position: relative;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  
+  }
+  
+  .imagePreviewContainer {
+    width: 95%;
+    height: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    order: 2;
+    border: 1px solid rgb(113, 107, 107);
+    overflow-y: scroll;
+    border-radius: 25px;
+    padding: 5px;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  
+  
+  .imagePreview img {
+    width: 100px; /* Ajusta el ancho según sea necesario */
+    height: 100px; /* Ajusta la altura según sea necesario */
+    object-fit: cover;
+    border-radius: 10px;
+  
+  }
+  
+  .imagePreview button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color:  black;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .imagePreview button:hover {
+    background-color: rgba(255, 0, 0, 0.5);
+  }
+  
+  
+  
+  
+  .selectButton {
+    font-size: 14px;
+    padding: 0.5em 2em;
+    border: 1px solid rgb(113, 107, 107);
+    background: #ffffff;
+    border-radius: 8px 8px 8px 8px;
+    color: black;
+    font-family: inherit; /* Hereda la fuente del elemento padre */
+    font-size: inherit;
+    text-align-last: left; /* Para navegadores que lo soporten */
+    text-align: left;
+  }
+  
