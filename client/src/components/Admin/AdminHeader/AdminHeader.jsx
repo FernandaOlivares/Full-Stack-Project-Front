@@ -26,8 +26,8 @@ function AdminHeader() {
         <Link to="/home"><img src={logo} alt="logo" className={styles.logo}/></Link>
       </div>
       <div className={styles.navContainer}>
-        <Link to= '/home'> | Home | </Link>
-        <Link to= '/create'> | Publicar Propiedad | </Link>
+        <Link className={styles.homeButton} to= '/home'> | Home | </Link>
+        <Link className={styles.publicarButton} to= '/create'> | Publicar Propiedad | </Link>
         <button onClick={handleSignOut}>Log Out</button>
       </div>
     </header>

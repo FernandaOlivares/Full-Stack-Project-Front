@@ -23,11 +23,14 @@ function Header() {
     return (
       <>
         <div className={styles.headerContainer}>
-        <Link to="/home"><img src={logoPyd} alt="logoPyd" className={styles.logoPyd} /></Link>
-        <Link className={styles.homeButton} to= '/home'>| Home |</Link>
-        <Link className={styles.publicarButton} to= '/create'>| Publicar Propiedad | </Link>
-        <button onClick={handleSignOut}>Log Out</button>
-       
+        <div className={styles.logoContainer}>
+        <Link to="/home"><img src={logoPyd} alt="logoPyd" className={styles.logo} /></Link>
+        </div>
+        <div>
+          <Link className={styles.homeButton} to= '/home'>| Home |</Link>
+          <Link className={styles.miPerfilButton} to= '/myProfile'>| Mi Perfil | </Link>
+          <button onClick={handleSignOut}>Log Out</button>
+        </div>
         </div>
       </>
     )

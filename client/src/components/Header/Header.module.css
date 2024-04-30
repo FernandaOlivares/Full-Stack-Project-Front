@@ -16,17 +16,22 @@
   padding-bottom: 0%;
   padding-left: 7%;
   }
+  .logoContainer{
+    display: flex;
 
-  .logoPyd{
+  }
+  
+  .logo{
     width: auto;
-    height: 70%;
-    max-height: 60px;
+    height: 80%;
+    max-height: 50px;
+    align-items: center;
   }
 
   .homeButton {
   position: absolute;
   top: 50%;
-  margin-right: 25%;
+  margin-right: 24%;
   right: 60px;
   color: rgb(113, 107, 107);
   font-size: 14px;
@@ -38,10 +43,10 @@
     color: #b70303;
   }
 
-  .publicarButton{
+  .miPerfilButton{
     position: absolute;
     top: 50%;
-    margin-right: 15%;
+    margin-right: 19%;
     right: 50px;
     color: rgb(113, 107, 107);
     font-size: 14px;
@@ -49,14 +54,14 @@
     transition: color 0.3s;
   }
   
-  .publicarButton:hover {
+  .miPerfilButton:hover {
     color: #b70303;
   }
 
   .headerContainer Button{
     position: absolute;
     top: 50%;
-    margin-right: 7%;
+    margin-right: 10%;
     top: 30px;
     right: 70px;
     color: rgb(113, 107, 107);
