@@ -63,10 +63,11 @@ function Detail() {
 
       // Realiza una solicitud HTTP PUT al endpoint correspondiente en tu backend
       const userEmail=localStorage.getItem('userEmail')
+      const name=localStorage.getItem("name")
       console.log(userEmail);
       const response = await axios.put(`${BASE_URL}/update/${id}`);
       const email = await axios.post(`${BASE_URL}/booking`, {destinatario:userEmail,
-      propiedad: id
+      propiedad: id, name: name 
     });
       console.log(response.data); // Imprime la respuesta del servidor en la consola
       // Aquí puedes agregar cualquier lógica adicional, como mostrar un mensaje de éxito al usuario
