@@ -41,8 +41,8 @@ const LandingPage = () => {
       if (!response.data.exists) {
         // El usuario no está registrado en el backend, enviar sus datos al backend para registrarlo
         const userData = {
-          userName: user.displayName,
-          userEmail: user.email
+          name: user.displayName,
+          email: user.email
         };
         
         // Realizar una solicitud POST al backend para registrar al usuario
