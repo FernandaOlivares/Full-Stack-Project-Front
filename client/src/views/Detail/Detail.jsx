@@ -82,7 +82,7 @@ function Detail() {
       <div className={styles.detailContainer}>
         <Header/>
         <div className={styles.picturesContainer}>
-          <div className={styles.titleContainer}><h2>{propertyDetail.title}</h2></div>
+          <div className={styles.titleContainer}><h2>{title}</h2></div>
           <div className= {styles.principalPicContainer}>
           <img
               className={styles.imageContainer}

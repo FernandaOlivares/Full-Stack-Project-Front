@@ -3,46 +3,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 90px;
+  top: 9%;
   left: 0;
   width: 100%;
-  max-width: 100%;
   height: 50px;
-  max-height: 30%;
   z-index: 1000;
   gap: 20px;
-  background-color: whitesmoke;
-}
-
-
-
-/* Media query para pantallas más pequeñas */
-@media screen and (max-width: 768px) {
-  .navBarContainer {
-    flex-direction: column;
-    top: 0; /* Ajuste para que la barra de navegación se muestre en la parte superior */
-    height: auto; /* Permitir que la altura se ajuste automáticamente según el contenido */
-  }
-}
-
-
-.headerContainer {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  width: 100%;
-  height: 70px;
-  max-width: 100%;
-  max-height: 30%;
-  z-index: 1000;
-  background-color: #ffffff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  padding-top: 1%;
-  padding-bottom: 0%;
-  padding-left: 7%;
 }
 
 .selectContainer {

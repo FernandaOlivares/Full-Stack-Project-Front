@@ -1,5 +1,10 @@
 .cardsContainer {
   position: fixed;
+  display: flex;
+  justify-content: center; /* Centra horizontalmente las tarjetas */
+  align-items: flex-start; /* Alinea las tarjetas en la parte superior del contenedor */
+  flex-wrap: wrap;
+  overflow-y: auto;
   top: 14%;
   left: 50%; /* Centra el contenedor horizontalmente */
   transform: translateX(-50%); /* Centra el contenedor horizontalmente */
@@ -10,10 +15,13 @@
   width: 1400px;
   height: 625px;
   border-radius: 10px;
-  z-index: 50;
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap; /* Permite que las tarjetas se envuelvan a la siguiente línea */
+  z-index: 1;
   gap: 12px;
-  overflow-y: auto;
+
+}
+
+@media screen and (max-width: 768px) {
+  .cardsContainer {
+      max-width: 90%; /* Cambiar el valor según tus necesidades */
+  }
 }
