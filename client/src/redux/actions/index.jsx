@@ -12,6 +12,7 @@ export const POST_NEW_PROPERTY = 'POST_NEW_PROPERTY';
 export const POST_TYPE = 'POST_TYPE';
 export const POST_CATEGORY = 'POST_CATEGORY';
 export const EDIT_PROPERTY = 'EDIT_PROPERTY';
+export const GET_USER_INFO = 'GET_USER_INFO';
 //export const UPDATE_PROPERTY_STATUS = 'UPDATE_PROPERTY_STATUS';
 //export const GET_ALL_TYPES = 'GET_ALL_TYPES';
 //export const GET_ALL_CATEGORIES = 'GET_ALL_CATEGORIES';
@@ -224,8 +225,22 @@ export const filterCombined = (type, category, priceOrder, zone) => {
 };
 
 
-
-
+    export const getUserInfo = (userEmail) => {
+        return async function(dispatch) {
+            try {
+                const url=buildApiUrl(`/user?email=${userEmail}`)   
+                const response = await axios.get(url);
+                console.log('action response', response)
+                return dispatch({
+                    type: 'GET_USER_INFO',
+                    payload: response.data,
+                });
+            } catch (error) {
+                console.error('Error al obtener los datos:', error);
+            }
+        };
+      };
+      
 
 
 
