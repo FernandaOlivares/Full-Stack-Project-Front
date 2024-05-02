@@ -20,8 +20,8 @@
 @media screen and (max-width: 768px) {
   .navBarContainer {
     flex-direction: column;
-    top: 0; /* Ajuste para que la barra de navegación se muestre en la parte superior */
-    height: auto; /* Permitir que la altura se ajuste automáticamente según el contenido */
+    top: 0;
+    height: auto;
   }
 }
 
@@ -46,7 +46,7 @@
 }
 
 .selectContainer {
-  display: flex; /* Añadido */
+  display: flex;
   gap: 50px;
 }
 
@@ -58,7 +58,7 @@
     outline: rgb(113, 107, 107);
   }
   .selectContainer select:focus {
-    border-width: 2px; /* Establece el ancho del borde cuando el elemento está enfocado */
+    border-width: 2px;
   }
   
   .selectContainer label {
@@ -74,9 +74,9 @@
       background: #ffffff;
       border-radius: 8px 8px 8px 8px;
       color: rgb(113, 107, 107);
-      font-family: inherit; /* Hereda la fuente del elemento padre */
+      font-family: inherit;
       font-size: inherit;
-      text-align-last: left; /* Para navegadores que lo soporten */
+      text-align-last: left;
       text-align: left;
     }
 
@@ -89,32 +89,35 @@
       border-radius: 25px;
       border: 0.5px solid rgb(113, 107, 107);
       outline: rgb(113, 107, 107);
-      font-family: inherit; /* Hereda la fuente del elemento padre */
+      font-family: inherit;
       font-size: inherit;
-      text-align-last: left; /* Para navegadores que lo soporten */
+      text-align-last: left;
       text-align: left;
       flex: 1;
     }
     .searchButton select:focus {
-      border-width: 2px; /* Establece el ancho del borde cuando el elemento está enfocado */
+      border-width: 2px; 
     }
 
     .button {
       display: inline-block;
-      background-color: black;
-      color: white;
-      text-decoration: none; /* Elimina el subrayado del enlace */
-      padding: 10px 20px; /* Ajusta el relleno según sea necesario */
-      border-radius: 10px; /* Agrega esquinas redondeadas */
-      transition: background-color 0.3s, color 0.3s; /* Agrega una transición suave */
+      color: rgb(113, 107, 107);
+      background-color: whitesmoke;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: color 0.3s;
       z-index: 10;
+      font-size: 15.5px;
+      border: 0.5px solid rgb(113, 107, 107);
     }
     
+
     .button:hover {
-      background-color: rgba(113, 107, 107, 0.7); /* Cambia el color de fondo al pasar el cursor */
-      color: white; /* Cambia el color del texto al pasar el cursor */
+      background-color: rgba(113, 107, 107, 0.4);
+      color: white;
       z-index: 10;
-      border: none; /* Elimina el borde */
+      border: none;
       outline: none;
     }
 
@@ -171,175 +174,5 @@
     box-shadow: 0 10px 16px 0 rgb(183, 183, 183);
     background: #ffffff;
     border-radius: 8px 8px 8px 8px;
-    
     transition: 0.3s;
   }
-
-  /* .container{
-    background-color:  #ffffff;   
-    width: 100%;
-    height: 45px;
-    margin-top: 30px;
-    
-}   */
-
-/* imagen menu hamburguesa */
-.burger {
-    position: absolute;
-    left: 5px;
-    width: 30px;
-    height: 25px;
-    background: transparent;
-    cursor: pointer;
-    margin: 10px;
-    
-  }
-  
-  /* input boton menu hambur */
-  .burger input {
-    display: none;
-  }
-  
-  /* color menu hambur */
-  .burger span {
-    display: block;
-    position: absolute;
-    height: 4px;
-    width: 100%;
-    background:linear-gradient(90deg, #ffffff 0%, #0d0d0c 100%);
-    border-radius: 9px;
-    opacity: 1;
-    left: 0;
-    transform: rotate(0deg);
-    transition: .25s ease-in-out;
-  }
-  
-  .burger span:nth-of-type(1) {
-    top: 0px;
-    transform-origin: left center;
-  }
-  
-  .burger span:nth-of-type(2) {
-    top: 50%;
-    transform: translateY(-50%);
-    transform-origin: left center;
-  }
-  
-  .burger span:nth-of-type(3) {
-    top: 100%;
-    transform-origin: left center;
-    transform: translateY(-100%);
-  }
-  
-  .burger input:checked ~ span:nth-of-type(1) {
-    transform: rotate(45deg);
-    top: 0px;
-    left: 5px;
-  }
-  
-  .burger input:checked ~ span:nth-of-type(2) {
-    width: 0%;
-    opacity: 0;
-  }
-  
-  .burger input:checked ~ span:nth-of-type(3) {
-    transform: rotate(-45deg);
-    top: 28px;
-    left: 5px;
-  }
-  
-.barContai{
-    display: flex;
-    gap: 10px;
-    flex-direction: row;
-    justify-content: center;
-    align-items: stretch;
-    padding-top: 5px;
-    
-    
-}
-
-/* .barLeft{
-  display: inline-block;
-	height: 760px;	
-	background-color: #34495e;
-	border-radius: 0% 20px 20px 0px;
-	margin-top: 22px;
-	transition: all 1.3s ease-in-out;  
-} */
-
-/* .barLeft2{
-  display: inline-block;
-	height: 760px;	
-	background-color: #151d25;
-	border-radius: 0% 20px 20px 0px;
-	margin-top: 22px;
-  transform: translateX(-200px);	 
-}  */
-
-/* 
-sombreado botones al lado de buscar
-.submitBtn {
-    margin-top: -20px;
-    font-size: 17px;
-    padding: 0.5em 2em;
-    border: transparent;
-    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24);
-    background: #34495e;
-    transition: 0.3s;
-    border-radius: 10px 10px 0 0;
-    text-decoration: none;
-  } */
-
-  /* sombreado botones al aldo de buscar */
-/*    
-  .submitBtn:hover {
-    transition: 0.3s;
-    background: linear-gradient(90deg, #f60808 0%, #fbfb3f 100%);
-    cursor: pointer;
-  } */
-  
-  /* en blanco */
-  /* .submitBtn:active {
-    transform: translate(0em, 0.2em);
-  }  */
-  
-  /* color botones al aldo buscar */
-  /* .submitBtn span {
-    font-weight: 800;
-    letter-spacing: 2px;
-    background: linear-gradient(90deg, #f60808 0%, #fbfb3f 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    transition: 0.3s;
-  } */
-  
-  /* accion al pasar por botones al lado buscar */
-  /* .submitBtn:hover span {
-    background: #2E2E2E;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    transition: 0.3s;
-  } */
-  
-  /* en blanco */
-  /* .git {
-    position: absolute;
-    text-align: center;
-    display: none;
-    font-size: 15px;
-    height: 0vh;
-    width: 100vw;
-    top: 115px;
-    background-color: #ffffff;
-    padding-top: 50px;
-    z-index: 4;
-  }  */
-
-  /* en blanco
-  .menu_hiden.active {
-    height: 100vh;
-    display: block;
-  }  */

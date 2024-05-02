@@ -1,21 +1,21 @@
 .adminCardContainer {
   display: flex;
-  flex-direction: row; /* Disposición en fila para elementos secundarios */
-  justify-content: left; /* Centra los elementos secundarios horizontalmente */
-  align-items: center; /* Centra los elementos secundarios verticalmente */
-  width: 100%; /* Ancho completo para ocupar el espacio disponible */
-  max-width: 500px; /* Aumenta el ancho máximo */
-  height: 15%; /* Altura automática para ajustarse al contenido */
-  padding: 4%; /* Espaciado interno de la tarjeta */
+  flex-direction: row; 
+  justify-content: left;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  height: 15%;
+  padding: 4%;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   gap: 20px;
 }
 
-/* Media query para ajustar el ancho máximo en pantallas más pequeñas */
+
 @media screen and (max-width: 768px) {
   .adminCardContainer {
-    max-width: 90%; /* Cambiar el valor según tus necesidades */
+    max-width: 90%;
   }
 }
 
@@ -30,8 +30,8 @@
   color: rgb(113, 107, 107);
   text-align: center;
   overflow: hidden;
-  white-space: nowrap; /* Evita que el texto se divida en varias líneas */
-  text-overflow: ellipsis; /* Muestra tres puntos (...) cuando el texto desborda */
+  white-space: nowrap;
+  text-overflow: ellipsis;
   margin-top:-1.5vh;
 }
 
@@ -39,7 +39,7 @@
   font-size: 1em;
   color: rgb(113, 107, 107);
   font-style: italic;
-  overflow: hidden; /* Oculta el texto que no cabe */
+  overflow: hidden;
   margin-top: -1vh;
   text-align: center;
 }
@@ -59,9 +59,9 @@
 .adminCardContainer img {
   display: block;
   width: 100%;
-  height: 100%; /* Establece una altura fija para las imágenes */
-  object-fit: cover; /* Mantiene la relación de aspecto y recorta la imagen si es necesario */
-  object-position: center center; /* Alinea la imagen en el centro horizontal y en la parte superior vertical */
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
   border-radius: 10px;
 }  
  
@@ -99,11 +99,11 @@
 }
 
 .dot {
-  width: 3px; /* Ancho del punto */
-  height: 3px; /* Alto del punto */
-  background-color: rgb(113, 107, 107, 0.2); /* Color del punto */
-  border-radius: 50%; /* Forma circular */
-  margin: 0 5px; /* Espacio entre las flechas y el punto */
+  width: 3px;
+  height: 3px;
+  background-color: rgb(113, 107, 107, 0.2); 
+  border-radius: 50%;
+  margin: 0 5px; 
 }
 
 /*++++++++++++++++++++++*/
@@ -116,13 +116,35 @@
 
 .buttonsContainer {
   display: flex;
-  flex-direction: column; /* Cambia la dirección de los elementos a columnas */
+  flex-direction: column;
   border-radius: 10px;
   width: 150px;
   padding: 3px;
-  height: 150px; /* Ajusta la altura del contenedor */
+  height: 150px;
 }
 
 .buttonsContainer button {
-  margin-bottom: 10px; /* Agrega margen inferior para separar los botones */
+  margin-bottom: 10px;
+}
+ 
+
+.buttonsContainer button {
+  display: inline-block;
+  border: 0.5px solid rgba(113, 107, 107);
+  background-color: whitesmoke;
+  color: rgba(113, 107, 107);
+  text-decoration: none;
+  padding: 7px 15px;
+  border-radius: 5px;
+  transition: color 0.3s;
+  z-index: 10;
+  font-size: 15px;
+}
+
+.buttonsContainer button:hover {
+  background-color: rgba(113, 107, 107, 0.4);
+  color: white;
+  z-index: 10;
+  border: none;
+  outline: none;
 }
