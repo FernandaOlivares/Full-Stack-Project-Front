@@ -11,6 +11,7 @@ export const PRICE_ORDER = 'PRICE_ORDER';
 export const POST_NEW_PROPERTY = 'POST_NEW_PROPERTY';
 export const POST_TYPE = 'POST_TYPE';
 export const POST_CATEGORY = 'POST_CATEGORY';
+export const EDIT_PROPERTY = 'EDIT_PROPERTY';
 //export const UPDATE_PROPERTY_STATUS = 'UPDATE_PROPERTY_STATUS';
 //export const GET_ALL_TYPES = 'GET_ALL_TYPES';
 //export const GET_ALL_CATEGORIES = 'GET_ALL_CATEGORIES';
@@ -60,8 +61,8 @@ export const getAllProperties = (page, pageSize) => {
 export const getPropertyById = (id) => {
     return async function (dispatch) {
       try {
-           const url=buildApiUrl(`/propertyId/${id}`)
-        const response = await axios.get(url);
+        const url = buildApiUrl(`/propertyId/${id}`);
+        const response = await axios.get(url);// Aquí se consoluega la respuesta
         dispatch({
           type: 'GET_PROPERTY_BY_ID',
           payload: response.data,
@@ -71,6 +72,7 @@ export const getPropertyById = (id) => {
       }
     };
   };
+  
   
   export function addProperty(zone) {
 
@@ -145,7 +147,6 @@ export const postType = (payload) => {
   };
 };
 
-
 export const postCategory = (payload) => {
   return async function (dispatch) {
       try {
@@ -163,6 +164,25 @@ export const postCategory = (payload) => {
   };
 };
 
+
+export const editProperty = (propertyId, updatedProperty) => {
+    return async function (dispatch) {
+        try {
+            const url = buildApiUrl(`/edit/${propertyId}`);
+            console.log('Actualizando isActive:', updatedProperty.isActive); // Agregar console.log aquí
+            const response = await axios.put(url, updatedProperty);
+            console.log('Respuesta del servidor:', response.data); // Agregar console.log aquí
+            dispatch({ 
+                type: 'EDIT_PROPERTY',
+                payload: response.data
+            });
+            return response.data;
+        } catch (error) {
+            console.error('Error posting new property:', error);
+            throw error;
+        }
+    };
+};
 
 export const filterCombined = (type, category, priceOrder, zone) => {
   return async (dispatch) => {

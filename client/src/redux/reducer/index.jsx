@@ -10,6 +10,7 @@ import {
     POST_NEW_PROPERTY,
     POST_TYPE,
     POST_CATEGORY,
+    EDIT_PROPERTY,
     //UPDATE_PROPERTY_STATUS,
     //GET_ALL_TYPES,
 } from '../actions/index.jsx';
@@ -37,12 +38,12 @@ function rootReducer(state = initialState, action){
               allPropertiesBackup: action.payload,
           }
 
-      case GET_PROPERTY_BY_ID: {
+          case GET_PROPERTY_BY_ID: {
             return {
-                ...state,
-                propertyById: action.payload, 
+              ...state,
+              propertyById: action.payload,
             };
-      }
+          }
 
       case GET_PROPERTY_ZONE:
             return {
@@ -98,6 +99,13 @@ function rootReducer(state = initialState, action){
             };
       }
       
+      case EDIT_PROPERTY: {
+        return {
+            ...state,
+            newPropertyId: action.payload.id,
+        };
+  }
+
       // case UPDATE_PROPERTY_STATUS:
       //   const { propertyId, isActive } = action.payload;
       //       return {

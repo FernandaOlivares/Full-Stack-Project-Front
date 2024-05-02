@@ -1,14 +1,14 @@
 
 import AdminHeader from '../../components/Admin/AdminHeader/AdminHeader.jsx';
-import EditPropertyForm from '../../components/Admin/AdminForm/EditForm.jsx'
+import AdminEditPropertyForm from '../../components/Admin/AdminEditPropertyForm/AdminEditPropertyForm.jsx'
 
-import styles from './AdminEditProperty.module.css';
+//import styles from './AdminEditProperty.module.css';
 
 function AdminEditProperty() {
     return (
     <div>
      <AdminHeader/>
-      <EditPropertyForm/>
+      <AdminEditPropertyForm/>
     </div>
   );
 }
