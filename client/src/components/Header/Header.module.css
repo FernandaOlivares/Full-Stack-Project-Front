@@ -1,4 +1,11 @@
+body {
+  margin: 0;
+}
+
 .headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   position: fixed;
   top: 0;
   left: 0;
@@ -12,10 +19,9 @@
   background-color: #ffffff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  padding-top: 1%;
-  padding-bottom: 0%;
-  padding-left: 7%;
-  }
+  padding: 1% 7% 0 7%;
+}
+
   .logoContainer{
     display: flex;
 
@@ -28,40 +34,32 @@
     align-items: center;
   }
 
-  .homeButton {
-  position: absolute;
-  top: 50%;
-  margin-right: 24%;
-  right: 60px;
-  color: rgb(113, 107, 107);
-  font-size: 14px;
-  border-radius: 5px;
-  transition: color 0.3s;
+  .navContainer {
+    display: flex;
+    flex-direction: row; /* Cambiar de columna a fila */
+    align-items: center; /* Alinear los elementos verticalmente */
+    gap: 20px;
+    width: 30%;
+    height: 60%;
+    margin-right: 16%;
   }
   
-  .homeButton:hover {
-    color: #b70303;
-  }
-
-  .miPerfilButton{
-    position: absolute;
-    top: 50%;
-    margin-right: 19%;
-    right: 50px;
+  .homeButton, .miPerfilButton, .publicarButton, button {
     color: rgb(113, 107, 107);
     font-size: 14px;
     border-radius: 5px;
     transition: color 0.3s;
   }
   
-  .miPerfilButton:hover {
+  .homeButton:hover, .miPerfilButton:hover, .publicarButton:hover, button:hover {
     color: #b70303;
   }
-
-  .headerContainer Button{
+  
+  
+  .navContainer Button{
     position: absolute;
     top: 50%;
-    margin-right: 10%;
+    margin-right: 15%;
     top: 30px;
     right: 70px;
     color: rgb(113, 107, 107);
@@ -71,9 +69,68 @@
     transition: color 0.3s;
     background-color: white;
     }
-
-    .headerContainer Button:hover {
+  
+    .navContainer Button:hover {
       background-color: rgb(113, 107, 107,0.4); 
       border: none;
       color: white;
     }
+  .userContainer { 
+    border: 0.5px solid rgb(113, 107, 107);
+    border-radius: 20px;
+    padding: 8px;
+    width: 18%;
+    position: absolute;
+    top: 10%;
+    right: 13%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+  }
+  
+  .logInButton {
+    border: 1px solid rgb(183, 3, 3);
+    transition: color 0.3s;
+    padding: 8px 25px;
+    background-color: rgb(183, 3, 3, 0.8);
+    font-size: 14px;
+    border-radius: 5px;
+    color: white;
+  }
+  
+  .logInButton:hover {
+    background-color: rgb(113, 107, 107,0.4); 
+    border: none;
+    color: white;
+  }
+
+  .emailButton {
+    border: none;
+    font-size: 14px;
+    background-color: white;
+    border-radius: 5px;
+    color: rgb(113, 107, 107);
+  }
+
+  .emailButton:hover {
+    border: none;
+    color: #b70303;
+    font-size: 14px;
+  }
+  
+
+    @media screen and (max-width: 768px) {
+      .headerContainer {
+        padding: 1% 5% 0 5%; /* Ajustar el padding */
+      }
+    
+      .navContainer {
+        width: 60%; /* Ajustar el ancho */
+      }
+
+      .userContainer {
+        width: 30%;
+        right: 3%;
+      }
+    }
+    

@@ -7,6 +7,7 @@ import Create from '../src/views/Create/Create.jsx';
 import AdminDashboard from '../src/views/AdminDashboard/AdminDashboard.jsx';
 import AdminEditProperty from '../src/views/AdminEditProperty/AdminEditProperty.jsx';
 import UserProfile from '../src/views/UserProfile/UserProfile.jsx';
+import UserEditProfile from '../src/views/UserEditProfile/UserEditProfile.jsx';
 
 import './App.css'
 
@@ -24,6 +25,7 @@ function App() {
         <Route exact path='/admin/dashboard' element ={<AdminDashboard/>}/>
         <Route exact path='/admin/editProperty/:id' element ={<AdminEditProperty/>}/>
         <Route exact path='/user/profile' element ={<UserProfile/>}/>
+        <Route exact path='/user/profile/edit' element ={<UserEditProfile/>}/>
       </Routes>
       </div>
     </BrowserRouter>
