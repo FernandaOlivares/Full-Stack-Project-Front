@@ -45,7 +45,6 @@ body {
   margin-right: 10%;
 }
 
-/* Elimina las posiciones absolutas y los márgenes derechos de los elementos internos */
 .homeButton, .administrarButton, .publicarButton, button {
   color: rgb(113, 107, 107);
   font-size: 14px;
