@@ -22,6 +22,8 @@ const LandingPage = () => {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
       localStorage.setItem('userEmail',user.email)
+      localStorage.setItem("name", user.displayName)
+      console.log(user.email, user.displayName);
 
       
       // Aquí puedes realizar acciones adicionales después de iniciar sesión con Google
