@@ -12,6 +12,7 @@ import {
     POST_CATEGORY,
     EDIT_PROPERTY,
     GET_USER_INFO,
+    EDIT_USER_INFO,
     //UPDATE_PROPERTY_STATUS,
     //GET_ALL_TYPES,
 } from '../actions/index.jsx';
@@ -109,11 +110,17 @@ function rootReducer(state = initialState, action){
         }
 
         case GET_USER_INFO:
-            console.log('reducer:', action.payload)
           return{
               ...state,
-              userInfo: action.payload,
+              userInfo: action.payload.user,
           }
+
+        case EDIT_USER_INFO: {
+        return {
+            ...state,
+            userInfo: action.payload.user,
+        };
+    }
 
       // case UPDATE_PROPERTY_STATUS:
       //   const { propertyId, isActive } = action.payload;

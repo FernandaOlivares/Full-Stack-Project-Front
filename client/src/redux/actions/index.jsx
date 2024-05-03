@@ -13,12 +13,10 @@ export const POST_TYPE = 'POST_TYPE';
 export const POST_CATEGORY = 'POST_CATEGORY';
 export const EDIT_PROPERTY = 'EDIT_PROPERTY';
 export const GET_USER_INFO = 'GET_USER_INFO';
+export const EDIT_USER_INFO = 'EDIT_USER_INFO';
 //export const UPDATE_PROPERTY_STATUS = 'UPDATE_PROPERTY_STATUS';
 //export const GET_ALL_TYPES = 'GET_ALL_TYPES';
 //export const GET_ALL_CATEGORIES = 'GET_ALL_CATEGORIES';
-
-
-
 
 
 const buildApiUrl = (path) => {
@@ -30,40 +28,28 @@ const buildApiUrl = (path) => {
 };
 
 
-
-
-
 export const getAllProperties = (page, pageSize) => {
   return async function(dispatch) {
       try {
-      
-           
           const url=buildApiUrl(`/property/getProperties?page=${page}&pageSize=${pageSize}`)   
           // Realiza la solicitud GET utilizando la URL base seleccionada
           const response = await axios.get(url);
-
-          // Despacha la acción con los datos obtenidos
           return dispatch({
               type: 'GET_ALL_PROPERTIES',
               payload: response.data,
           });
       } catch (error) {
           console.error('Error al obtener los datos:', error);
-          // Maneja el error si ocurre
       }
   };
 };
-
-
-
-
 
 
 export const getPropertyById = (id) => {
     return async function (dispatch) {
       try {
         const url = buildApiUrl(`/propertyId/${id}`);
-        const response = await axios.get(url);// Aquí se consoluega la respuesta
+        const response = await axios.get(url);
         dispatch({
           type: 'GET_PROPERTY_BY_ID',
           payload: response.data,
@@ -72,44 +58,40 @@ export const getPropertyById = (id) => {
         console.error('Error al obtener los datos:', error);
       }
     };
-  };
+};
   
   
-  export function addProperty(zone) {
-
-
-     const url=buildApiUrl(`/property/filterProperties?zone=${zone}`)
-
-    
-    return async (dispatch) => {
-      try {
-        const { data } = await axios.get(url);
-        return dispatch({
-          type: GET_PROPERTY_ZONE,
-          payload: data,
-        });
-      } catch (error) {
-        alert("Property NOT FOUND!!!");//
-      }
-    };
-  }
+export function addProperty(zone) {
+const url=buildApiUrl(`/property/filterProperties?zone=${zone}`)
+return async (dispatch) => {
+    try {
+    const { data } = await axios.get(url);
+    return dispatch({
+        type: GET_PROPERTY_ZONE,
+        payload: data,
+    });
+    } catch (error) {
+    alert("Property NOT FOUND!!!");//
+    }
+};
+}
 
  
-  export function addPropertyDetail(id) {
-    return async (dispatch) => {
-        try {
-            const url = buildApiUrl(`/property/${id}`);
-            const response = await axios.get(url);
-            const propertyDetail = response.data;
+export function addPropertyDetail(id) {
+return async (dispatch) => {
+    try {
+        const url = buildApiUrl(`/property/${id}`);
+        const response = await axios.get(url);
+        const propertyDetail = response.data;
 
-            dispatch({
-                type: ADD_PROPERTY_DETAIL,
-                payload: propertyDetail,
-            });
-        } catch (error) {
-            console.error("Error fetching Property details:", error.message);
-        }
-    };
+        dispatch({
+            type: ADD_PROPERTY_DETAIL,
+            payload: propertyDetail,
+        });
+    } catch (error) {
+        console.error("Error fetching Property details:", error.message);
+    }
+};
 }
 
 
@@ -148,6 +130,7 @@ export const postType = (payload) => {
   };
 };
 
+
 export const postCategory = (payload) => {
   return async function (dispatch) {
       try {
@@ -170,9 +153,7 @@ export const editProperty = (propertyId, updatedProperty) => {
     return async function (dispatch) {
         try {
             const url = buildApiUrl(`/edit/${propertyId}`);
-            console.log('Actualizando isActive:', updatedProperty.isActive); // Agregar console.log aquí
             const response = await axios.put(url, updatedProperty);
-            console.log('Respuesta del servidor:', response.data); // Agregar console.log aquí
             dispatch({ 
                 type: 'EDIT_PROPERTY',
                 payload: response.data
@@ -184,6 +165,7 @@ export const editProperty = (propertyId, updatedProperty) => {
         }
     };
 };
+
 
 export const filterCombined = (type, category, priceOrder, zone) => {
   return async (dispatch) => {
@@ -225,24 +207,37 @@ export const filterCombined = (type, category, priceOrder, zone) => {
 };
 
 
-    export const getUserInfo = (userEmail) => {
-        return async function(dispatch) {
-            try {
-                const url=buildApiUrl(`/user?email=${userEmail}`)   
-                const response = await axios.get(url);
-                console.log('action response', response)
-                return dispatch({
-                    type: 'GET_USER_INFO',
-                    payload: response.data,
-                });
-            } catch (error) {
-                console.error('Error al obtener los datos:', error);
-            }
-        };
-      };
+export const getUserInfo = (userEmail) => {
+    return async function(dispatch) {
+        try {
+            const url=buildApiUrl(`/user?email=${userEmail}`)   
+            const response = await axios.get(url);
+            return dispatch({
+                type: 'GET_USER_INFO',
+                payload: response.data,
+            });
+        } catch (error) {
+            console.error('Error al obtener los datos:', error);
+        }
+    };
+    };
       
-
-
+export const editUserInfo = (userId, updatedUserData) => {
+    return async function (dispatch) {
+        try {
+            const url = buildApiUrl(`/user/${userId}`);
+            const response = await axios.put(url, updatedUserData);
+            dispatch({ 
+                type: 'EDIT_USER_INFO',
+                payload: response.data
+            });
+            return response.data;
+        } catch (error) {
+            console.error('Error posting new property:', error);
+            throw error;
+        }
+    };
+};
 
 
 // export function updatePropertyStatus(propertyId, isActive) {
@@ -260,9 +255,6 @@ export const filterCombined = (type, category, priceOrder, zone) => {
 //   };
 // }
 
-
- 
-  
 /*export const getAllTypes = () => {
   return async function (dispatch) {
       try {

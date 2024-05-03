@@ -12,24 +12,25 @@ import profilePicture from '../../assets/icons/profilePicture.png'
 
 function UserProfile() {
   const dispatch = useDispatch();
-  const [isLoading, setIsLoading] = useState(true);
-  const userInfo = useSelector(state => state.userInfo);
+  
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
   const [userProfilePicture, setUserProfilePicture] = useState('');
 
   useEffect(() => {
     const userEmail = localStorage.getItem('userEmail');
-  
+
     dispatch(getUserInfo(userEmail))
       .then(response => {
         const userData = response.payload.user;
         setUserName(userData.name);
         setUserEmail(userData.email);
-        setUserProfilePicture(userData.imageDefault || profilePicture);
+        const imageDefault = userData.imageDefault || [];
+        setUserProfilePicture(imageDefault.length > 0 ? imageDefault[0] : profilePicture);
       })
       .catch(error => console.error('Error:', error));
   }, [dispatch]);
+
   
 
   return (
@@ -51,3 +52,18 @@ function UserProfile() {
 }
 
 export default UserProfile;
+
+
+/*useEffect(() => {
+    const userEmail = localStorage.getItem('userEmail');
+    dispatch(getUserInfo(userEmail))
+    .then(() => {
+      setIsLoading(false);
+    });
+  }, [dispatch, userEmail]);*/
+
+  //const userInfo = useSelector(state => state.userInfo);
+  //console.log('USER INFO:', userInfo);
+  //const { name, email, imageDefault } = userInfo;
+  //console.log('NAME:', name);
+  //const [isLoading, setIsLoading] = useState(true);
