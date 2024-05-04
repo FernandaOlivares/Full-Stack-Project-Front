@@ -368,10 +368,8 @@ return (
         </label>
           </div>
           </div>
-
         </div>
         </div>
-
      <div className={styles.formContainerRight}>
           <div className={styles.inputField}>
           <label>Título*:
