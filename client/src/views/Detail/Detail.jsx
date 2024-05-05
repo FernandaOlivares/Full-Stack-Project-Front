@@ -55,15 +55,24 @@ function Detail() {
   const handleReservation = async () => {
     setIsLoading(true); // Opcional: Si quieres mostrar un indicador de carga mientras se realiza la solicitud
     try {
+      const BASE_URL = import.meta.env.VITE_ENV === 'production'
+      ? import.meta.env.VITE_BACKEND_URL_PRODUCTION
+      : import.meta.env.VITE_BACKEND_URL_LOCAL;
+
+
+
       // Realiza una solicitud HTTP PUT al endpoint correspondiente en tu backend
-      const response = await axios.put(`http://localhost:3001/update/${id}`);
-      const email = await axios.post(`http://localhost:3001/booking`, {destinatario: "victorseva123@gmail.com",
-      propiedad: id
+      const userEmail=localStorage.getItem('userEmail')
+      const name=localStorage.getItem("name")
+      console.log(userEmail);
+      const response = await axios.put(`${BASE_URL}/update/${id}`);
+      const email = await axios.post(`${BASE_URL}/booking`, {destinatario:userEmail,
+      propiedad: id, name: name 
     });
       console.log(response.data); // Imprime la respuesta del servidor en la consola
       // Aquí puedes agregar cualquier lógica adicional, como mostrar un mensaje de éxito al usuario
     } catch (error) {
-      console.error('Error updating property:', error);
+      console.log('Error updating property:', error);
       // Aquí puedes manejar el error, como mostrar un mensaje de error al usuario
     }
     setIsLoading(false); // Opcional: Si utilizaste setIsLoading(true) anteriormente
@@ -74,7 +83,7 @@ function Detail() {
       <div className={styles.detailContainer}>
         <Header/>
         <div className={styles.picturesContainer}>
-          <div className={styles.titleContainer}><h2>{propertyDetail.title}</h2></div>
+          <div className={styles.titleContainer}><h2>{title}</h2></div>
           <div className= {styles.principalPicContainer}>
           <img
               className={styles.imageContainer}

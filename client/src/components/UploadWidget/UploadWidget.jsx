@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useRef } from 'react';
 
+import styles from './UploadWidget.module.css'
+
 function UploadWidget({ handleImageUpload }) {
   const cloudinaryRef = useRef();
   const widgetRef = useRef();
@@ -22,7 +24,7 @@ function UploadWidget({ handleImageUpload }) {
     <>
       <div>
         <div>
-          <button onClick={() => widgetRef.current.open()}>Cargar Fotos</button>
+          <button className={styles.uploadPicturesButton} type='button' onClick={() => widgetRef.current.open()}>Cargar Fotos</button>
         </div>
         <div>
         </div>

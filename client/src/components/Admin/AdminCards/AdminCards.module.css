@@ -1,0 +1,24 @@
+.adminCardsContainer {
+    position: fixed;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    overflow-y: scroll;
+    padding-top: 28px;
+    padding-bottom: 20px;
+    max-width: 95%;
+    width: 1400px;
+    height: 625px;
+    border-radius: 10px;
+    z-index: 1;
+    gap: 20px;
+    top: 15%;
+}
+
+@media screen and (max-width: 768px) {
+    .adminCardsContainer {
+        max-width: 90%;
+    }
+}

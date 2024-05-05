@@ -1,7 +1,7 @@
 import Header from '../../components/Header/Header.jsx';
 import PostNewPropertyForm from '../../components/Form/PostNewPropertyForm.jsx';
 
-import styles from './Create.module.css';
+//import styles from './Create.module.css';
 
 function Create() {
 

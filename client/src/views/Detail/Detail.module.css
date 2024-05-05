@@ -411,17 +411,22 @@ background-color: rgba(0, 0, 0, 0.7);
   display: inline-block;
   background-color: black;
   color: white;
-  text-decoration: none; /* Elimina el subrayado del enlace */
-  padding: 10px 20px; /* Ajusta el relleno según sea necesario */
-  border-radius: 10px; /* Agrega esquinas redondeadas */
-  transition: background-color 0.3s, color 0.3s; /* Agrega una transición suave */
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  transition: background-color 0.3s, color 0.3s;
   z-index: 10;
+  border: none;
+  outline: none;
 }
 
-.button:hover {
-  background-color: rgba(113, 107, 107, 0.7); /* Cambia el color de fondo al pasar el cursor */
-  color: white; /* Cambia el color del texto al pasar el cursor */
+.button:hover,
+.button:focus,
+.button:active {
+  background-color: rgba(113, 107, 107, 0.7);
+  color: white;
   z-index: 10;
-  border: none; /* Elimina el borde */
+  text-decoration: none;
+  border: none;
   outline: none;
 }

@@ -1,0 +1,17 @@
+
+.uploadPicturesButton {
+    background-color: rgba(0, 0, 0, 1);
+    color: white;
+    padding: 10px 20px; /* Espaciado interno del botón */
+    border: none; /* Quita el borde del botón */
+    border-radius: 5px; /* Añade esquinas redondeadas al botón */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    font-size: 16px; /* Tamaño de la fuente del texto */
+    margin-top: 5px;
+    margin-bottom: 5px; /* Espaciado inferior */
+}
+    
+    .uploadPicturesButton:hover {
+    background-color: rgb(113, 107, 107, 0.4); 
+    color: white;
+    }
