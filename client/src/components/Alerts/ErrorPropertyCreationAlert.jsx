@@ -9,6 +9,7 @@ const ErrorUserCreationAlert = () => {
         title: `¡Error de Publicación!`,
         html: `La propiedad no ha sido publicada, inténtalo nuevamente.`,
         showConfirmButton: true,
+        timer: 5000,
         confirmButtonColor: "#b70303",
         customClass: {
           popup: styles.alertPopup,

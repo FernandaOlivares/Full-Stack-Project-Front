@@ -9,7 +9,7 @@ const PropertyEditedAlert = (propertyTitle) => {
         title: `¡Felicitaciones!`,
         html: `La propiedad <b>"${propertyTitle}"</b>,ha sido editada exitosamente.`,
         showConfirmButton: false,
-        timer: 4000,
+        timer: 5000,
         customClass: {
           popup: styles.alertPopup,
       },
