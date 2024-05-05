@@ -9,6 +9,7 @@ const ErrorUserEditedAlert = () => {
         title: `¡Error de Edición!`,
         html: `El usuario no ha sido actualizado, inténtalo nuevamente.`,
         showConfirmButton: true,
+        timer: 5000,
         confirmButtonColor: "#b70303",
         customClass: {
           popup: styles.alertPopup,
