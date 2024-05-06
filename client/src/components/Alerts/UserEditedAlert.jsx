@@ -7,9 +7,9 @@ const UserEditedAlert = (userName) => {
         position: 'top-end',
         icon: 'success',
         title: `¡Felicitaciones!`,
-        html: `El usuario ${userName}"</b> ha sido editado exitosamente.`,
+        html: `El usuario <b>"${userName}"</b> ha sido editado exitosamente.`,
         showConfirmButton: false,
-        timer: 4000,
+        timer: 5000,
         customClass: {
           popup: styles.alertPopup,
       },

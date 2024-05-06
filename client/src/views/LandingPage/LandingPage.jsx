@@ -74,6 +74,7 @@ const LandingPage = () => {
         <p>Registro de Usuario:</p>
         <button className={styles.button} onClick={handleSignInWithGoogle}>Iniciar Sesión con Google </button>
         </div>
+        <Link to="/admin/dashboard" className={styles.button}>Admin</Link>
         </div>
     </div>
   );

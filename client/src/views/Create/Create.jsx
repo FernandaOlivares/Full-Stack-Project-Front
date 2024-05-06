@@ -1,4 +1,4 @@
-import Header from '../../components/Header/Header.jsx';
+import AdminHeader from '../../components/Admin/AdminHeader/AdminHeader.jsx';
 import PostNewPropertyForm from '../../components/Form/PostNewPropertyForm.jsx';
 
 //import styles from './Create.module.css';
@@ -9,7 +9,7 @@ function Create() {
       <>
         <div>
           <div>
-          <Header/>
+          <AdminHeader/>
           </div>
           <div>
           <PostNewPropertyForm/>

@@ -9,6 +9,7 @@ const ErrorPropertyEditedAlert = () => {
         title: `¡Error de Edición!`,
         html: `La propiedad no ha sido actualizada, inténtalo nuevamente.`,
         showConfirmButton: true,
+        timer: 5000,
         confirmButtonColor: "#b70303",
         customClass: {
           popup: styles.alertPopup,
