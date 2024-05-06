@@ -22,18 +22,20 @@ function Header() {
 
   const userEmail=localStorage.getItem('userEmail')
 
-    return (
-      <>
-        <div className={styles.headerContainer}>
+  return (
+    <>
+      <div className={styles.headerContainer}>
         <div className={styles.logoContainer}>
-        <Link to="/home"><img src={logo} alt="logoPyd" className={styles.logo} /></Link>
+          <Link to="/home"><img src={logo} alt="logoPyd" className={styles.logo} /></Link>
         </div>
         <div className={styles.navContainer}>
-          <Link className={styles.homeButton} to= '/home'>| Home |</Link>
-          <Link className={styles.miPerfilButton} to= '/user/profile'>| Mi Perfil | </Link>
-          <div>
+          <Link className={styles.homeButton} to= '/home'>| Inicio |</Link>
+          <div className={styles.userEmailContainer}>
             {userEmail ? (
-              <Link className={styles.emailButton} to='/user/profile'>| {userEmail} |</Link>
+              <>
+                <Link className={styles.miPerfilButton} to= '/user/profile'>| Mi Perfil | </Link>
+                <Link className={styles.emailButton} to='/user/profile'>| {userEmail} |</Link>
+              </>
             ) : (
               <Link className={styles.logInButton} to='/'>Log In</Link>
             )}
@@ -42,10 +44,10 @@ function Header() {
             )}
           </div>
         </div>
-        </div>
-      </>
-    )
-  }
+      </div>
+    </>
+  );
+}  
   
   export default Header;
   
