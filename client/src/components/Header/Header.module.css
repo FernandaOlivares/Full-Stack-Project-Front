@@ -36,12 +36,17 @@ body {
 
   .navContainer {
     display: flex;
-    flex-direction: row; /* Cambiar de columna a fila */
-    align-items: center; /* Alinear los elementos verticalmente */
-    gap: 20px;
-    width: 30%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: right;
+    gap: 30px;
+    width: 35%;
     height: 60%;
-    margin-right: 16%;
+    margin-right: 210px;
+  }
+
+  .userEmailContainer{
+    gap: 30px;
   }
   
   .homeButton, .miPerfilButton, .publicarButton, button {
@@ -56,25 +61,20 @@ body {
   }
   
   
-  .navContainer Button{
-    position: absolute;
-    top: 50%;
-    margin-right: 15%;
-    top: 30px;
-    right: 70px;
+  .navContainer Button {
     color: rgb(113, 107, 107);
     border: 0.5px solid rgb(113, 107, 107);
     font-size: 14px;
     border-radius: 5px;
     transition: color 0.3s;
     background-color: white;
-    }
+  }
   
-    .navContainer Button:hover {
-      background-color: rgb(113, 107, 107,0.4); 
-      border: none;
-      color: white;
-    }
+  .navContainer Button:hover {
+    background-color: rgb(113, 107, 107,0.4); 
+    border: none;
+    color: white;
+  }
   .userContainer { 
     border: 0.5px solid rgb(113, 107, 107);
     border-radius: 20px;
@@ -103,13 +103,14 @@ body {
     border: none;
     color: white;
   }
+  
 
   .emailButton {
     border: none;
     font-size: 14px;
     background-color: white;
-    border-radius: 5px;
     color: rgb(113, 107, 107);
+    margin: 15px;
   }
 
   .emailButton:hover {
@@ -121,11 +122,16 @@ body {
 
     @media screen and (max-width: 768px) {
       .headerContainer {
-        padding: 1% 5% 0 5%; /* Ajustar el padding */
+        padding: 1% 5% 0 5%;
       }
     
       .navContainer {
-        width: 60%; /* Ajustar el ancho */
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
       }
 
       .userContainer {

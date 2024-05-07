@@ -18,6 +18,7 @@ import parkingIcon from '../../assets/icons/parking.png';
 import storageIcon from '../../assets/icons/storage.png';
 import swimmingPoolIcon from '../../assets/icons/swimmingPool.png';
 import ImagesSlider from '../../components/ImagesSlider/ImagesSlider.jsx';
+import ReviewForm from '../../components/ReviewForm/ReviewForm.jsx';
 import styles from './Detail.module.css'
 
 function Detail() {
@@ -30,8 +31,9 @@ function Detail() {
   const { id } = useParams();
   
   const [isLoading, setIsLoading] = useState(true);
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
-  
+  const [isPopupOpenImage, setIsPopupOpenImage] = useState(false);
+  const [isPopupOpenReview, setIsPopupOpenReview] = useState(false);
+
   const formattedPrice = formatPrice(price);
   const typeCapitalize = capitalizeFirstLetter(type);
   const categoryCapitalize = capitalizeFirstLetter(category);
@@ -43,12 +45,18 @@ function Detail() {
     });
   }, [dispatch, id]);
 
-  const openPopup = () => {
-    setIsPopupOpen(true);
+  const openImagePopup = () => {
+    setIsPopupOpenImage(true);
   };
+  
+  const openReviewPopup = () => {
+    setIsPopupOpenReview(true);
+  };
+  
 
   const closePopup = () => {
-    setIsPopupOpen(false);
+    setIsPopupOpenImage(false);
+    setIsPopupOpenReview(false);
   };
 
 
@@ -87,7 +95,7 @@ function Detail() {
           <div className= {styles.principalPicContainer}>
           <img
               className={styles.imageContainer}
-              onClick={openPopup}
+              onClick={openImagePopup}
               src={propertyImages && propertyImages[0]}
               alt={`Picture not found`}
           />
@@ -95,7 +103,7 @@ function Detail() {
         <div className={styles.secondaryPicsContainer}>
           {propertyImages && propertyImages.slice(1).map((image, index) => (
                 <img
-                  onClick={openPopup}
+                  onClick={openImagePopup}
                   key={index}
                   src={image ? image : 'Picture not found'}
                   alt='Picture not found'
@@ -103,7 +111,7 @@ function Detail() {
             ))}
         </div>
         </div>
-        {isPopupOpen && (
+        {isPopupOpenImage && (
             <div className={styles.popupContainer}>
               <ImagesSlider images={propertyImages} />
               <button className={styles.closeButton} onClick={closePopup}>Cerrar</button>
@@ -146,6 +154,17 @@ function Detail() {
           <button className={styles.button} onClick={handleReservation} disabled={isLoading}>
             Reservar
           </button>
+          </div>
+          <div>
+          <button className={styles.button} onClick={openReviewPopup} disabled={isLoading}>
+            Reseña
+          </button>
+          {isPopupOpenReview && (
+            <div className={styles.popupContainer}>
+              <ReviewForm propertyId={id} onClose={closePopup}/>
+              <button className={styles.closeButton} onClick={closePopup}>Cerrar</button>
+            </div>
+          )}
           </div>
           </div>
       </div>
