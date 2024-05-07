@@ -23,7 +23,13 @@ const LandingPage = () => {
     try {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
-      localStorage.setItem('userEmail', user.email);
+
+      //localStorage.setItem('userEmail', user.email); CONFLICT
+
+      localStorage.setItem('userEmail',user.email)
+      localStorage.setItem("name", user.displayName)
+      console.log(user.email, user.displayName);
+
 
       const BASE_URL = import.meta.env.VITE_ENV === 'production'
       ? import.meta.env.VITE_BACKEND_URL_PRODUCTION
@@ -34,8 +40,8 @@ const LandingPage = () => {
       if (!response.data.exists) {
         // El usuario no está registrado en el backend, enviar sus datos al backend para registrarlo
         const userData = {
-          userName: user.displayName,
-          userEmail: user.email
+          name: user.displayName,
+          email: user.email
         };
         // Realizar una solicitud POST al backend para registrar al usuario
         await axios.post(`${BASE_URL}/user`, userData);
