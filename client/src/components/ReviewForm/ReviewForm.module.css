@@ -1,0 +1,104 @@
+.reviewFormContainer {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 70%;
+    border: 1px solid rgba(0, 0, 0, 0.7);
+    border-radius: 50px;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: center;
+    padding: 20px;
+    color: whitesmoke;
+}
+
+.reviewFormContainer > * {
+    margin-bottom: 10px;
+}
+
+.selectButton {
+    font-size: 14px;
+    padding: 0.5em 2em;
+    border: 1px solid rgb(113, 107, 107);
+    border-radius: 8px 8px 8px 8px;
+    color: whitesmoke;
+    font-family: inherit; /* Hereda la fuente del elemento padre */
+    font-size: inherit;
+    text-align-last: left; /* Para navegadores que lo soporten */
+    text-align: left;
+}
+
+.descriptionContainer {
+    width: 100%;
+    height: 70px;
+    margin-bottom: 2%;
+    font-size: 17px;
+}
+
+.descriptionContainer textarea {
+    width: 98%;
+    height: 100%;
+    padding: 5px;
+    border-radius: 25px;
+    border: 1px solid rgb(113, 107, 107);
+    color: whitesmoke; /* Color del texto del input */
+    font-size: 18px;
+    font-family: inherit; /* Hereda la fuente del elemento padre */
+    font-size: inherit;
+}
+
+.descriptionContainer textarea:focus {
+    outline: none;
+    border: 2px solid rgb(113, 107, 107);
+}
+
+.descriptionContainer label {
+    color: whitesmoke;
+    padding: 15px;
+}
+
+.submitButton {
+    position: absolute;
+    bottom: 35px; /* Ajusta la posición del botón para que esté pegado al borde inferior */
+    left: 50%; /* Centra horizontalmente el botón */
+    transform: translateX(-50%); /* Centra horizontalmente el botón */
+    padding: 10px 20px; /* Espaciado interno del botón */
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff; /* Color del texto del botón */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    font-size: 16px; /* Tamaño de fuente */
+  }
+  
+  .submitButton:hover {
+    background-color: rgb(113, 107, 107); 
+    color: #fff;
+  }
+  
+  .userContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+    width: 40%;
+    height: 30%;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  
+  .userImage {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 10px;
+    border: 6px solid rgb(113, 107, 107, 0.5); 
+  }
+  
+  .userName {
+    font-size: 20px;
+    color: whitesmoke;
+  }

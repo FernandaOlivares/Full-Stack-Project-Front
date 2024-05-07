@@ -1,11 +1,13 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useDispatch } from 'react-redux';
 import {useNavigate} from "react-router-dom";
 import styles from "./LandingPage.module.css";
 import axios from 'axios';
-//import {imageImg} from "..//..//assets/Image/imageImg";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { Link } from 'react-router-dom';
 
 import appFirebase from "../../credenciales";
+import { getUserInfo } from '../../redux/actions/index.jsx';
 
 
 const auth=getAuth(appFirebase)
@@ -13,38 +15,28 @@ const provider = new GoogleAuthProvider();
 
 
 const LandingPage = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
 
   const handleSignInWithGoogle = async () => {
     try {
-
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
-      localStorage.setItem('userEmail',user.email)
+      localStorage.setItem('userEmail', user.email);
 
-      
-      // Aquí puedes realizar acciones adicionales después de iniciar sesión con Google
-      navigate('/home'); // Redirigir al usuario a la página de inicio después de iniciar sesión
-      
       const BASE_URL = import.meta.env.VITE_ENV === 'production'
       ? import.meta.env.VITE_BACKEND_URL_PRODUCTION
       : import.meta.env.VITE_BACKEND_URL_LOCAL;
 
-       // Realizar una solicitud GET al backend para verificar si el usuario ya está registrado
       const response = await axios.get(`${BASE_URL}/user?email=${user.email}`);
 
-
-      //axiios.`http://full-stack-proyect-back-production.up.railway.app/user?email=${user.email}`
-
-    
       if (!response.data.exists) {
         // El usuario no está registrado en el backend, enviar sus datos al backend para registrarlo
         const userData = {
           userName: user.displayName,
           userEmail: user.email
         };
-        
         // Realizar una solicitud POST al backend para registrar al usuario
         await axios.post(`${BASE_URL}/user`, userData);
         console.log("Los datos del usuario se han enviado al backend.");
@@ -52,13 +44,22 @@ const LandingPage = () => {
         // El usuario ya está registrado en el backend, no es necesario enviar sus datos nuevamente
         console.log("El usuario ya está registrado en el backend.");
       }
+      //Se gurda la info del usuario en el estado global userInfo y en local storage userInfo, para luego usarla como userInfo
+      await dispatch(getUserInfo(user.email));
+      const userInfo = JSON.parse(localStorage.getItem('user'));
 
+      if (userInfo && userInfo.user.role) {
+        if (userInfo.user.role === 'user') {
+          navigate('/home');
+        } else if (userInfo.user.role === 'admin') {
+          navigate('/admin/dashboard');
+        }
+      }
     } catch (error) {
       console.error(error);
-      // Manejar errores
     }
   };
-
+ 
   return (
     <div className={styles.landingPageContainer}>
       <div className={styles.landingPageOverlay}></div>
@@ -72,7 +73,6 @@ const LandingPage = () => {
         <p>Registro de Usuario:</p>
         <button className={styles.button} onClick={handleSignInWithGoogle}>Iniciar Sesión con Google </button>
         </div>
-        <Link to="/admin/dashboard" className={styles.button}>Admin</Link>
         </div>
     </div>
   );

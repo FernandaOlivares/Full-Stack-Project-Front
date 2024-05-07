@@ -1,0 +1,19 @@
+import Swal from 'sweetalert2';
+import styles from './Alert.module.css';
+
+
+const PropertyCreatedAlert = (propertyTitle) => {
+    Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: `¡Felicitaciones!`,
+        html: `La reseña de <b>"${propertyTitle}"</b>,ha sido publicada exitosamente.`,
+        showConfirmButton: false,
+        timer: 5000,
+        customClass: {
+          popup: styles.alertPopup,
+      },
+      });
+};
+
+export default PropertyCreatedAlert;

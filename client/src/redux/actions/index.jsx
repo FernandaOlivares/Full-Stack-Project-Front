@@ -14,6 +14,7 @@ export const POST_CATEGORY = 'POST_CATEGORY';
 export const EDIT_PROPERTY = 'EDIT_PROPERTY';
 export const GET_USER_INFO = 'GET_USER_INFO';
 export const EDIT_USER_INFO = 'EDIT_USER_INFO';
+export const POST_NEW_REVIEW = 'POST_NEW_REVIEW';
 //export const UPDATE_PROPERTY_STATUS = 'UPDATE_PROPERTY_STATUS';
 //export const GET_ALL_TYPES = 'GET_ALL_TYPES';
 //export const GET_ALL_CATEGORIES = 'GET_ALL_CATEGORIES';
@@ -212,6 +213,7 @@ export const getUserInfo = (userEmail) => {
         try {
             const url=buildApiUrl(`/user?email=${userEmail}`)   
             const response = await axios.get(url);
+            localStorage.setItem('user', JSON.stringify(response.data));
             return dispatch({
                 type: 'GET_USER_INFO',
                 payload: response.data,
@@ -234,6 +236,23 @@ export const editUserInfo = (userId, updatedUserData) => {
             return response.data;
         } catch (error) {
             console.error('Error posting new property:', error);
+            throw error;
+        }
+    };
+};
+
+export const postNewReview = (payload) => {
+    return async function (dispatch) {
+        try {
+            const url = buildApiUrl('/review');
+            const response = await axios.post(url, payload);
+            dispatch({ 
+                type: 'POST_NEW_REVIEW',
+                payload: response.data
+            });
+            return response.data;
+        } catch (error) {
+            console.error('Error posting new review:', error);
             throw error;
         }
     };

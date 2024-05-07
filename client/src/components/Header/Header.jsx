@@ -7,18 +7,20 @@ import styles from './Header.module.css';
 
 function Header() {
 
-  const auth =getAuth(appFirebase)
-  const navigate =useNavigate()
+  const auth = getAuth(appFirebase)
+  const navigate = useNavigate()
 
   const handleSignOut = async () => {
     try {
       await signOut(auth);
+      localStorage.removeItem('user');
       localStorage.removeItem('userEmail');
       navigate('/');
     } catch (error) {
       console.error('Error al cerrar sesión:', error);
     }
   };
+  
 
   const userEmail=localStorage.getItem('userEmail')
 
