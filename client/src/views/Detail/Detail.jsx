@@ -20,9 +20,14 @@ import swimmingPoolIcon from '../../assets/icons/swimmingPool.png';
 import ImagesSlider from '../../components/ImagesSlider/ImagesSlider.jsx';
 import ReviewForm from '../../components/ReviewForm/ReviewForm.jsx';
 import styles from './Detail.module.css'
+import { initMercadoPago, Wallet } from '@mercadopago/sdk-react'// el wallet es lo que comienza a ser el boton de pagar con mercado pago 
+
 
 function Detail() {
   const dispatch = useDispatch();
+  initMercadoPago('TEST-8d26883a-9e18-4090-8719-2ad0412bee84',{locale:"es-MX"});
+
+
   
   const propertyDetail = useSelector((state) => state.propertyById);
   const propertyImages = useSelector((state) => state.propertyById?.imageDefault);
@@ -85,6 +90,43 @@ function Detail() {
     }
     setIsLoading(false); // Opcional: Si utilizaste setIsLoading(true) anteriormente
   };
+
+  const[preferenceId,setPreferenceId]=useState(null)
+  
+
+  const createPreference=async()=>{
+    try {
+      const userEmail=localStorage.getItem('userEmail')
+      const response=await axios.post("http://localhost:3001/createPreference",{
+        title:`${title}-${propertyDetail.id}-${userEmail}`,
+        type,
+        category,
+        price,
+        quantity:'1'
+        
+      })
+
+      const {id}=response.data;
+      return id;
+      
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
+  const handleBuy=async()=>{
+    const idMercadopago=await createPreference();
+    if(idMercadopago){
+      setPreferenceId(idMercadopago)
+    }
+  }
+
+
+
+
+
+
 
     return (
     <>
@@ -154,6 +196,10 @@ function Detail() {
           <button className={styles.button} onClick={handleReservation} disabled={isLoading}>
             Reservar
           </button>
+          <button onClick={handleBuy}> comprar</button>
+
+          {preferenceId && <Wallet initialization={{ preferenceId: preferenceId }}  />}
+
           </div>
           <div>
           <button className={styles.button} onClick={openReviewPopup} disabled={isLoading}>
