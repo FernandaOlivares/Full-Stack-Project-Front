@@ -1,32 +1,58 @@
 .detailContainer {
-    width: 87vw;
-    height: 75vh;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    align-items: flex-start;
-    align-content: flex-start;
-    margin-top: 5%;
-    border-radius: 10px;
-    z-index: 50;
-    background-color: white;
+  width: 95%;
+  max-width: 1300px;
+  margin: 0 auto;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+  margin-top: 700px;
+  border-radius: 10px;
+  z-index: 50;
+  background-color: white;
+}
+
+
+
+@media (max-width: 1200px) {
+  .detailContainer {
+      width: 95%; /* Reducir el ancho en pantallas más pequeñas */
+  }
+}
+
+@media (max-width: 768px) {
+  .detailContainer {
+      width: 95%; /* Reducir el ancho en pantallas más pequeñas */
+  }
+}
+
+@media (max-width: 480px) {
+  .detailContainer {
+      width: 100%; /* Ancho completo en pantallas muy pequeñas */
+  }
 }
 
 .picturesContainer {
-    width: 87vw;
-    height: 45vh;
-    z-index: 51;
-    position: relative;
-    object-fit: cover;
+  width: 100%;
+  height: auto;
+  z-index: 51;
+  position: relative;
+  object-fit: cover;
+  display: flex;
+  justify-content: space-between;
 }
 
+
 .picturesContainer h2 {
-  position: absolute; /* Establece el posicionamiento absoluto */
-  top: 0; /* Coloca el texto en la parte superior del contenedor */
-  left: 0; /* Coloca el texto en la esquina izquierda del contenedor */
-  margin: 0; /* Elimina los márgenes predeterminados */
-  padding: 10px; /* Agrega un relleno para separar el texto del borde */
+  position: absolute; 
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 10px;
+  z-index: 52;
 }
 
 .picturesContainer h3 {
@@ -35,6 +61,7 @@
     left: 0; /* Coloca el texto en la esquina izquierda del contenedor */
     margin: 0; /* Elimina los márgenes predeterminados */
     padding: 10px; /* Agrega un relleno para separar el texto del borde */
+    z-index: 52;
 }
 
   .principalPicContainer{
@@ -44,6 +71,7 @@
     margin-top: -14.5%;
     overflow: hidden;
     object-fit: cover;
+    border-radius: 10px;
   }
 
   .imageContainer{
@@ -72,16 +100,14 @@
   }
 
   .secondaryPicsContainer {
-    display: flex; /* Usa flexbox para organizar las imágenes */
+    display: flex;
     flex-wrap: wrap;
-    justify-content: space-between; /* Espacio entre las imágenes */
+    justify-content: space-between;
     width: 46.5vw;
     height: 44.5vh;
     z-index: 51;
-    margin-top: -45vh; /* Mover hacia arriba 45% de la altura del contenedor padre */
-    margin-left: auto; /* Mover hacia la derecha, alineándolo con el borde derecho del contenedor padre */
+    margin-left: auto;
     overflow: hidden;
-    gap: 0.2%;
     border-radius: 10px;
   }
 
@@ -296,7 +322,7 @@
   align-items: center; /* Centra verticalmente los elementos */
   color:  #e8e8e8;
   padding: 10px;
-  z-index: 20;
+  z-index: 60;
 }
 
 .secondaryIcon {

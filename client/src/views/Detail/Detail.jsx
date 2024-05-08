@@ -8,12 +8,11 @@ import { getPropertyById } from '../../redux/actions/index.jsx';
 import { formatPrice } from '../../utils/priceFormat.js';
 import { capitalizeFirstLetter } from '../../utils/capitalizeFirstLetter.js';
 import Header from '../../components/Header/Header.jsx';
-import NavBar from '../../components/NavBar/NavBar.jsx';
+import ReviewCards from '../../components/ReviewCards/ReviewCards.jsx';
 import searchIcon from '../../assets/icons/search.png';
 import locationIcon from '../../assets/icons/location.png';
 import priceIcon from '../../assets/icons/price.png';
 import greyLineIcon from '../../assets/icons/greyLine.png';
-//import { updatePropertyStatus } from '../../redux/actions/index.jsx';
 import parkingIcon from '../../assets/icons/parking.png';
 import storageIcon from '../../assets/icons/storage.png';
 import swimmingPoolIcon from '../../assets/icons/swimmingPool.png';
@@ -166,6 +165,10 @@ function Detail() {
             </div>
           )}
           </div>
+          </div>
+          <div>
+            <h1>Reviews:</h1>
+            <ReviewCards/>
           </div>
       </div>
     </>
