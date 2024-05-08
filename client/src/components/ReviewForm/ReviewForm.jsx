@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { postNewReview } from '../../redux/actions/index.jsx'
+import { postNewReview, getAllReviews } from '../../redux/actions/index.jsx'
 
 import ReviewAlert from '../Alerts/ReviewAlert.jsx';
 import ErrorReviewAlert from '../Alerts/ErrorReviewAlert.jsx';
@@ -44,6 +44,7 @@ const ReviewForm = ({propertyId, onClose}) => {
         const inputData = { ...input, score: parseInt(input.score) };
         await dispatch(postNewReview(inputData));
         ReviewAlert(userInfo.name);
+        dispatch(getAllReviews());
         onClose();
       } catch (error) {
         console.error('Error al guardar la reseña de la propiedad:', error);

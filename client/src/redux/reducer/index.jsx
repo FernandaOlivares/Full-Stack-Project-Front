@@ -14,6 +14,7 @@ import {
     GET_USER_INFO,
     EDIT_USER_INFO,
     POST_NEW_REVIEW,
+    GET_ALL_REVIEWS,
     //UPDATE_PROPERTY_STATUS,
     //GET_ALL_TYPES,
 } from '../actions/index.jsx';
@@ -127,11 +128,26 @@ function rootReducer(state = initialState, action){
     case POST_NEW_REVIEW: {
         return {
             ...state,
-              allReviews: action.payload,
+            allReviews: [...state.allReviews, action.payload],
         };
   }
 
-      // case UPDATE_PROPERTY_STATUS:
+    case GET_ALL_REVIEWS:
+        return{
+            ...state,
+            allReviews: action.payload,
+        }
+
+
+      default:
+          return state;
+  }
+
+}
+
+export default rootReducer;
+
+// case UPDATE_PROPERTY_STATUS:
       //   const { propertyId, isActive } = action.payload;
       //       return {
       //           ...state,
@@ -153,11 +169,3 @@ function rootReducer(state = initialState, action){
               allTypes: action.payload,
               allTypesBackup: action.payload,
           };*/
-
-      default:
-          return state;
-  }
-
-}
-
-export default rootReducer;
