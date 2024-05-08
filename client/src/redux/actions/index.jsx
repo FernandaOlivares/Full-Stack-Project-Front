@@ -16,6 +16,7 @@ export const GET_USER_INFO = 'GET_USER_INFO';
 export const EDIT_USER_INFO = 'EDIT_USER_INFO';
 export const POST_NEW_REVIEW = 'POST_NEW_REVIEW';
 export const GET_ALL_REVIEWS = 'GET_ALL_REVIEWS';
+export const GET_ALL_USERS = 'GET_ALL_USERS';
 //export const UPDATE_PROPERTY_STATUS = 'UPDATE_PROPERTY_STATUS';
 //export const GET_ALL_TYPES = 'GET_ALL_TYPES';
 //export const GET_ALL_CATEGORIES = 'GET_ALL_CATEGORIES';
@@ -263,9 +264,24 @@ export const getAllReviews = () => {
         try {
             const url = buildApiUrl('/review');   
             const response = await axios.get(url);
-            console.log('ACTION - Reviews response:', response);
             return dispatch({
                 type: 'GET_ALL_REVIEWS',
+                payload: response.data,
+            });
+        } catch (error) {
+            console.error('Error al obtener los datos de las revisiones:', error);
+        }
+    };
+};
+
+export const getAllUsers = () => {
+    return async function(dispatch) {
+        try {
+            const url = buildApiUrl('/users');   
+            const response = await axios.get(url);
+            console.log('ACTION - getAllUsers response:', response);
+            return dispatch({
+                type: 'GET_ALL_USERS',
                 payload: response.data,
             });
         } catch (error) {

@@ -15,6 +15,7 @@ import {
     EDIT_USER_INFO,
     POST_NEW_REVIEW,
     GET_ALL_REVIEWS,
+    GET_ALL_USERS,
     //UPDATE_PROPERTY_STATUS,
     //GET_ALL_TYPES,
 } from '../actions/index.jsx';
@@ -33,6 +34,7 @@ const initialState = {
     error: null,
     userInfo: [],
     allReviews: [],
+    allUsers: [],
 };
 
 function rootReducer(state = initialState, action){
@@ -136,6 +138,12 @@ function rootReducer(state = initialState, action){
         return{
             ...state,
             allReviews: action.payload,
+        }
+
+        case GET_ALL_USERS:
+        return{
+            ...state,
+            allUsers: action.payload,
         }
 
 

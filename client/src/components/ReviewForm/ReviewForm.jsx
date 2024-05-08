@@ -2,23 +2,23 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { postNewReview, getAllReviews } from '../../redux/actions/index.jsx'
+import { postNewReview, getAllReviews } from '../../redux/actions/index.jsx';
 
 import ReviewAlert from '../Alerts/ReviewAlert.jsx';
 import ErrorReviewAlert from '../Alerts/ErrorReviewAlert.jsx';
+import ReviewFormStars from '../ReviewFormStars/ReviewFormStars.jsx';
 
 import styles from '../ReviewForm/ReviewForm.module.css';
 
-
-const ReviewForm = ({propertyId, onClose}) => {
+const ReviewForm = ({ propertyId, onClose }) => {
   const dispatch = useDispatch();
-  const user = JSON.parse(localStorage.getItem('user'))
-  const userInfo = user.user
+  const user = JSON.parse(localStorage.getItem('user'));
+  const userInfo = user.user;
 
   const [input, setInput] = useState({
     propertyId: parseInt(propertyId),
     UserId: userInfo.id,
-    score: parseInt(5),
+    score: 0,
     description: '',
   });
 
@@ -30,57 +30,52 @@ const ReviewForm = ({propertyId, onClose}) => {
     }));
   };
 
-  const validateFormInput = (userInfo) => {
-    userInfo
-    return true;
-  }
-
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const isValid = validateFormInput(input);
 
-    if (isValid) {
-      try {
-        const inputData = { ...input, score: parseInt(input.score) };
-        await dispatch(postNewReview(inputData));
-        ReviewAlert(userInfo.name);
-        dispatch(getAllReviews());
-        onClose();
-      } catch (error) {
-        console.error('Error al guardar la reseña de la propiedad:', error);
-        ErrorReviewAlert();
-      }
-    } else {
-      console.log('Los datos del formulario no son válidos');
+    try {
+      const inputData = { ...input, score: parseInt(input.score) };
+      await dispatch(postNewReview(inputData));
+      ReviewAlert(userInfo.name);
+      dispatch(getAllReviews());
+      onClose();
+    } catch (error) {
+      console.error('Error al guardar la reseña de la propiedad:', error);
+      ErrorReviewAlert();
     }
   };
 
   return (
     <div className={styles.reviewFormContainer}>
-      <div><h1>Reseña</h1></div>
+      <div>
+        <h1>Reseña</h1>
+      </div>
       <div className={styles.userContainer}>
-        <img
-          className={styles.userImage}
-          src={userInfo.imageDefault}
-          alt="User Avatar"
-        />
+        <img className={styles.userImage} src={userInfo.imageDefault} alt="User Avatar" />
         <p className={styles.userName}>{userInfo.name}</p>
       </div>
-    <form onSubmit={handleSubmit}>
-      <div className={styles.descriptionContainer}>
-        <label htmlFor="score">Estrellas:</label>
-        <select name="score" value={input.score} onChange={handleChange}  className={styles.selectButton}>
-          {[1, 2, 3, 4, 5].map((value) => (
-            <option key={value} value={value}>{value}</option>
-          ))}
-        </select>
-      </div>
-      <div className={styles.descriptionContainer}>
-        <label>Reseña:</label>
-        <textarea name="description" value={input.description} onChange={handleChange}className={styles.textarea}></textarea>
-      </div>
-      <button type="submit" className={styles.submitButton}>Enviar</button>
-    </form>
+      <form onSubmit={handleSubmit}>
+        <div className={styles.descriptionContainer}>
+          <label htmlFor="score">¿Qué te pareció la propiedad?</label>
+          <ReviewFormStars selected={input.score >= 1} onSelect={() => setInput((prevInput) => ({ ...prevInput, score: 1 }))} />
+          <ReviewFormStars selected={input.score >= 2} onSelect={() => setInput((prevInput) => ({ ...prevInput, score: 2 }))} />
+          <ReviewFormStars selected={input.score >= 3} onSelect={() => setInput((prevInput) => ({ ...prevInput, score: 3 }))} />
+          <ReviewFormStars selected={input.score >= 4} onSelect={() => setInput((prevInput) => ({ ...prevInput, score: 4 }))} />
+          <ReviewFormStars selected={input.score >= 5} onSelect={() => setInput((prevInput) => ({ ...prevInput, score: 5 }))} />
+        </div>
+        <div className={styles.descriptionContainer}>
+          <label>Cuéntanos por qué...</label>
+          <textarea
+            name="description"
+            value={input.description}
+            onChange={handleChange}
+            className={styles.textarea}
+          ></textarea>
+        </div>
+        <button type="submit" className={styles.submitButton}>
+          Enviar
+        </button>
+      </form>
     </div>
   );
 };
