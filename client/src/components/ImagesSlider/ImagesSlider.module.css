@@ -64,8 +64,8 @@
 
 
 .arrowContainer {
-  position: absolute; /* Posición absoluta en relación con el contenedor padre */
-  bottom: 0; /* Alinea el contenedor en la parte inferior del contenedor padre */
+  position: absolute;
+  bottom: 0;
   width: 100%;
   height: auto;
   display: flex;
