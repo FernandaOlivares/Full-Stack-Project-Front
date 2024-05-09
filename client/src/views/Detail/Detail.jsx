@@ -67,13 +67,11 @@ function Detail() {
   const handleReservation = async () => {
      // Opcional: Si quieres mostrar un indicador de carga mientras se realiza la solicitud
     try {
-      // const BASE_URL = import.meta.env.VITE_ENV === 'production'
-      // ? import.meta.env.VITE_BACKEND_URL_PRODUCTION
-      // : import.meta.env.VITE_BACKEND_URL_LOCAL;
+      const BASE_URL = import.meta.env.VITE_ENV === 'production'
+      ? import.meta.env.VITE_BACKEND_URL_PRODUCTION
+      : import.meta.env.VITE_BACKEND_URL_LOCAL;
 
 
- const BASE_URL = import.meta.env.VITE_BACKEND_URL_PRODUCTION
-      
 
 
       // Realiza una solicitud HTTP PUT al endpoint correspondiente en tu backend
