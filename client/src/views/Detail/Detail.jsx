@@ -65,12 +65,15 @@ function Detail() {
 
 
   const handleReservation = async () => {
-    setIsLoading(true); // Opcional: Si quieres mostrar un indicador de carga mientras se realiza la solicitud
+     // Opcional: Si quieres mostrar un indicador de carga mientras se realiza la solicitud
     try {
-      const BASE_URL = import.meta.env.VITE_ENV === 'production'
-      ? import.meta.env.VITE_BACKEND_URL_PRODUCTION
-      : import.meta.env.VITE_BACKEND_URL_LOCAL;
+      // const BASE_URL = import.meta.env.VITE_ENV === 'production'
+      // ? import.meta.env.VITE_BACKEND_URL_PRODUCTION
+      // : import.meta.env.VITE_BACKEND_URL_LOCAL;
 
+
+ const BASE_URL = import.meta.env.VITE_BACKEND_URL_PRODUCTION
+      
 
 
       // Realiza una solicitud HTTP PUT al endpoint correspondiente en tu backend
@@ -87,7 +90,7 @@ function Detail() {
       console.log('Error updating property:', error);
       // Aquí puedes manejar el error, como mostrar un mensaje de error al usuario
     }
-    setIsLoading(false); // Opcional: Si utilizaste setIsLoading(true) anteriormente
+     // Opcional: Si utilizaste setIsLoading(true) anteriormente
   };
 
   const[preferenceId,setPreferenceId]=useState(null)
@@ -192,10 +195,16 @@ function Detail() {
           </div>
           </div>
           <div>
-          <button className={styles.button} onClick={handleReservation} disabled={isLoading}>
+          <button className={styles.button} onClick={()=>{
+            setIsLoading(true)
+            handleReservation()
+            handleBuy()
+            setIsLoading(false); 
+            }} disabled={isLoading}>
             Reservar
+
           </button>
-          <button onClick={handleBuy}> comprar</button>
+          
 
           {preferenceId && <Wallet initialization={{ preferenceId: preferenceId }}  />}
 
