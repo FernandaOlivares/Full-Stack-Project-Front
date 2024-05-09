@@ -99,7 +99,7 @@ function Detail() {
   const createPreference=async()=>{
     try {
       const userEmail=localStorage.getItem('userEmail')
-      const response=await axios.post("http://localhost:3001/createPreference",{
+      const response=await axios.post("http://full-stack-proyect-back-production.up.railway.app/createPreference",{
         title:`${title}-${propertyDetail.id}-${userEmail}`,
         type,
         category,
