@@ -26,6 +26,7 @@ const buildApiUrl = (path) => {
       const BASE_URL = import.meta.env.VITE_ENV === 'production'
       ? import.meta.env.VITE_BACKEND_URL_PRODUCTION
       : import.meta.env.VITE_BACKEND_URL_LOCAL;
+            console.log('BASE_URL', BASE_URL);
   return `${BASE_URL}${path}`;
 };
 
