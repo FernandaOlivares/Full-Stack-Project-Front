@@ -23,15 +23,9 @@ export const GET_ALL_USERS = 'GET_ALL_USERS';
 
 
 const buildApiUrl = (path) => {
-  const BASE_URL = import.meta.env.VITE_BACKEND_URL_PRODUCTION
-     console.log('BASE_URL',BASE_URL);
-
-
-
-    //   const BASE_URL = import.meta.env.VITE_ENV === 'production'
-    //   ? import.meta.env.VITE_BACKEND_URL_PRODUCTION
-    //   : import.meta.env.VITE_BACKEND_URL_LOCAL;
-
+      const BASE_URL = import.meta.env.VITE_ENV === 'production'
+      ? import.meta.env.VITE_BACKEND_URL_PRODUCTION
+      : import.meta.env.VITE_BACKEND_URL_LOCAL;
   return `${BASE_URL}${path}`;
 };
 
