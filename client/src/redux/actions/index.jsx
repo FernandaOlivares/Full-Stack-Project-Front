@@ -24,7 +24,7 @@ export const GET_ALL_USERS = 'GET_ALL_USERS';
 
 const buildApiUrl = (path) => {
   const BASE_URL = import.meta.env.VITE_BACKEND_URL_PRODUCTION
-     
+     console.log('BASE_URL',BASE_URL);
 
 
 
@@ -39,7 +39,8 @@ const buildApiUrl = (path) => {
 export const getAllProperties = (page, pageSize) => {
   return async function(dispatch) {
       try {
-          const url=buildApiUrl(`/property/getProperties?page=${page}&pageSize=${pageSize}`)   
+          const url=buildApiUrl(`/property/getProperties?page=${page}&pageSize=${pageSize}`)
+        console.log('URL',url);
           const response = await axios.get(url);
           return dispatch({
               type: 'GET_ALL_PROPERTIES',
