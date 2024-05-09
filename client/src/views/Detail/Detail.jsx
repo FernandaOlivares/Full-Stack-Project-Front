@@ -93,13 +93,29 @@ function Detail() {
      // Opcional: Si utilizaste setIsLoading(true) anteriormente
   };
 
+   const buildApiUrl = (path) => {
+   
+     
+    const BASE_URL = import.meta.env.VITE_ENV === 'production'
+    ? import.meta.env.VITE_BACKEND_URL_PRODUCTION
+    : import.meta.env.VITE_BACKEND_URL_LOCAL;
+
+    return `${BASE_URL}${path}`;
+    };
+
+
+
+
+
+
   const[preferenceId,setPreferenceId]=useState(null)
   
 
   const createPreference=async()=>{
     try {
       const userEmail=localStorage.getItem('userEmail')
-      const response=await axios.post("http://localhost:3001/createPreference",{
+      const url=buildApiUrl(`/createPreference`)   
+      const response=await axios.post(url,{
         title:`${title}-${propertyDetail.id}-${userEmail}`,
         type,
         category,
