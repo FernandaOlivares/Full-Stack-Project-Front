@@ -16,6 +16,7 @@ import {
     POST_NEW_REVIEW,
     GET_ALL_REVIEWS,
     GET_ALL_USERS,
+    GET_ALL_SALES,
     //UPDATE_PROPERTY_STATUS,
     //GET_ALL_TYPES,
 } from '../actions/index.jsx';
@@ -35,6 +36,7 @@ const initialState = {
     userInfo: [],
     allReviews: [],
     allUsers: [],
+    allSales: [],
 };
 
 function rootReducer(state = initialState, action){
@@ -145,7 +147,11 @@ function rootReducer(state = initialState, action){
             ...state,
             allUsers: action.payload,
         }
-
+        case GET_ALL_SALES:
+          return{
+              ...state,
+              allSales: action.payload,
+          }
 
       default:
           return state;

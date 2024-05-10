@@ -29,6 +29,7 @@ function AdminHeader() {
       <div className={styles.navContainer}>
         <Link className={styles.homeButton} to= '/home'> | Inicio | </Link>
         <Link className={styles.administrarButton} to= '/admin/dashboard'> | Administrar | </Link>
+        <Link className={styles.administrarButton} to= '/admin/sales'> | Reservas | </Link>
         <Link className={styles.publicarButton} to= '/create'> | Publicar | </Link>
         <Link className={styles.publicarButton} to= '/user/profile'> | Mi Perfil | </Link>
         <Link className={styles.emailButton} to='/user/profile'>| {userEmail} |</Link>
