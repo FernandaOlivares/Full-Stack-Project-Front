@@ -17,14 +17,14 @@ function UserEditProfileForm() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const userInfo = useSelector((state) => state.userInfo);
-  const {id, name, email, imageDefault } = userInfo || {};
+  const user = JSON.parse(localStorage.getItem('user'));
+  const userInfo = user.user;
   const userEmailLogged = localStorage.getItem('userEmail');
 
+
   const [input, setInput] = useState({
-    id: id,
+    id: userInfo.id,
     name: '',
-    email: '',
     imageDefault: [],
   });
 
@@ -51,20 +51,21 @@ const validateFormInput = (userInfo) => {
   }, [dispatch, userEmailLogged]);
 
   useEffect(() => {
-    if (userInfo) {
-        setInput({
-          name: userInfo.name || '',
-          email: userInfo.email || '',
-          imageDefault: userInfo.imageDefault || [],
-        });
+    if (userInfo && userInfo.name && userInfo.imageDefault) {
+      setInput({
+        name: userInfo.name,
+        imageDefault: userInfo.imageDefault
+      });
     }
-}, [dispatch, userInfo]);
+  }, []); // Esta dependencia vacía indica que este efecto se ejecuta solo una vez al montar el componente
+
+
 
 useEffect(() => {
   if (formSubmitted) {
     navigate('/user/profile');
   }
-}, [userInfo, formSubmitted, isLoading, navigate]);
+}, [formSubmitted, navigate]);
 
 
 const handleImageUpload = (newImageUrl) => {
@@ -79,11 +80,11 @@ const handleSubmit = async (event) => {
   const isValid = validateFormInput(input);
   if (isValid) {
     try {
-      await dispatch(editUserInfo(id, input));
+      await dispatch(editUserInfo(userInfo.id, input));
       UserEditedAlert(input.name);
       setFormSubmitted(true);
     } catch (error) {
-      console.error('Error editing property:', error);
+      console.error('Error editing user:', error);
       ErrorUserEditedAlert();
     }
   }
@@ -98,13 +99,13 @@ const renderProfileImage = () => {
 };
 
 useEffect(() => {
-  if (imageDefault) {
+  if (userInfo.imageDefault) {
     setInput(prevInput => ({
       ...prevInput,
-      imageDefault: imageDefault,
+      imageDefault: userInfo.imageDefault,
     }));
   }
-}, [imageDefault]);
+}, []);
 
 useEffect(() => {
   validateFormInput(input);
@@ -133,7 +134,7 @@ if (['name'].includes(name)) {
             <UploadWidget handleImageUpload={handleImageUpload}/>
             </div>
             <h2>{input.name}</h2>
-            <h3>{email}</h3>
+            <h3>{userInfo.email}</h3>
             <div className={styles.formContainer}>
             <form onSubmit={handleSubmit}>
             <div className={styles.inputField}>
