@@ -9,6 +9,7 @@ import AdminDashboard from '../src/views/AdminDashboard/AdminDashboard.jsx';
 import AdminEditProperty from '../src/views/AdminEditProperty/AdminEditProperty.jsx';
 import UserProfile from '../src/views/UserProfile/UserProfile.jsx';
 import UserEditProfile from '../src/views/UserEditProfile/UserEditProfile.jsx';
+import AdminSalesManagement from './views/AdminSalesManagement/AdminSalesManagement.jsx';
 
 import './App.css'
 
@@ -29,6 +30,7 @@ function App() {
         <Route exact path='/create' element ={<ProtectedRoute Component={Create}/>}/>
         <Route exact path='/admin/dashboard' element ={<ProtectedRoute Component={AdminDashboard}/>}/>
         <Route exact path='/admin/editProperty/:id' element ={<ProtectedRoute Component={AdminEditProperty}/>}/>
+        <Route exact path='/admin/sales' element ={<ProtectedRoute Component={AdminSalesManagement}/>}/>
       </Routes>
       </div>
     </BrowserRouter>

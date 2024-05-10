@@ -1,0 +1,40 @@
+/* Estilo para la tabla */
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  /* Estilo para las celdas de la tabla */
+  th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  /* Estilo para las filas impares */
+  tr:nth-child(odd) {
+    background-color: #f2f2f2;
+  }
+  
+  /* Estilo para las celdas de la primera fila (encabezados) */
+  th {
+    background-color: #ddd;
+  }
+  
+  /* Estilo para las esquinas de la tabla */
+  th:first-child {
+    border-top-left-radius: 8px;
+  }
+  
+  th:last-child {
+    border-top-right-radius: 8px;
+  }
+  
+  tr:last-child td:first-child {
+    border-bottom-left-radius: 8px;
+  }
+  
+  tr:last-child td:last-child {
+    border-bottom-right-radius: 8px;
+  }
+  

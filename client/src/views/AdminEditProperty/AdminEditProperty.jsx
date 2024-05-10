@@ -1,4 +1,3 @@
-
 import AdminHeader from '../../components/Admin/AdminHeader/AdminHeader.jsx';
 import AdminEditPropertyForm from '../../components/Admin/AdminEditPropertyForm/AdminEditPropertyForm.jsx'
 
