@@ -17,6 +17,7 @@ export const EDIT_USER_INFO = 'EDIT_USER_INFO';
 export const POST_NEW_REVIEW = 'POST_NEW_REVIEW';
 export const GET_ALL_REVIEWS = 'GET_ALL_REVIEWS';
 export const GET_ALL_USERS = 'GET_ALL_USERS';
+export const GET_ALL_SALES = 'GET_ALL_SALES';
 //export const UPDATE_PROPERTY_STATUS = 'UPDATE_PROPERTY_STATUS';
 //export const GET_ALL_TYPES = 'GET_ALL_TYPES';
 //export const GET_ALL_CATEGORIES = 'GET_ALL_CATEGORIES';
@@ -285,6 +286,22 @@ export const getAllUsers = () => {
             });
         } catch (error) {
             console.error('Error al obtener los datos de las revisiones:', error);
+        }
+    };
+};
+
+export const getAllSales = () => {
+    return async function(dispatch) {
+        try {
+            const url = buildApiUrl('/sales');
+            const response = await axios.get(url);
+            console.log('response', response);
+            return dispatch({
+                type: 'GET_ALL_SALES',
+                payload: response.data,
+            });
+        } catch (error) {
+            console.error('Error al obtener las reservas:', error);
         }
     };
 };

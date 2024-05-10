@@ -8,7 +8,7 @@ import { getAllUsers } from '../../redux/actions/index.jsx';
 import styles from './ReviewCard.module.css';
 
 function ReviewCard({ review }) {
-  const { score, description, UserId } = review;
+  const { score, description, UserId, createdAt } = review;
   const dispatch = useDispatch();
   const allUsers = useSelector((state) => state.allUsers);
   const [user, setUser] = useState(null);
@@ -38,6 +38,7 @@ function ReviewCard({ review }) {
         </div>
       )}
       <ReviewCardStars score={score} />
+      <p>{createdAt}</p>
       <p>{description}</p>
     </div>
   );
