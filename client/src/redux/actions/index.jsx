@@ -26,7 +26,6 @@ const buildApiUrl = (path) => {
       const BASE_URL = import.meta.env.VITE_ENV === 'production'
       ? import.meta.env.VITE_BACKEND_URL_PRODUCTION
       : import.meta.env.VITE_BACKEND_URL_LOCAL;
-            console.log('BASE_URL', BASE_URL);
   return `${BASE_URL}${path}`;
 };
 
@@ -35,7 +34,6 @@ export const getAllProperties = (page, pageSize) => {
   return async function(dispatch) {
       try {
           const url=buildApiUrl(`/property/getProperties?page=${page}&pageSize=${pageSize}`)
-        console.log('URL',url);
           const response = await axios.get(url);
           return dispatch({
               type: 'GET_ALL_PROPERTIES',
@@ -226,22 +224,23 @@ export const getUserInfo = (userEmail) => {
     };
     };
       
-export const editUserInfo = (userId, updatedUserData) => {
-    return async function (dispatch) {
-        try {
-            const url = buildApiUrl(`/user/${userId}`);
-            const response = await axios.put(url, updatedUserData);
-            dispatch({ 
-                type: 'EDIT_USER_INFO',
-                payload: response.data
-            });
-            return response.data;
-        } catch (error) {
-            console.error('Error posting new property:', error);
-            throw error;
-        }
+    export const editUserInfo = (userId, updatedUserData) => {
+        return async function (dispatch) {
+            try {
+                const url = buildApiUrl(`/user/${userId}`);
+                const response = await axios.put(url, updatedUserData);
+                dispatch({ 
+                    type: 'EDIT_USER_INFO',
+                    payload: response.data
+                });
+                return response.data;
+            } catch (error) {
+                console.error('Error posting new property:', error);
+                throw error;
+            }
+        };
     };
-};
+    
 
 export const postNewReview = (payload) => {
     return async function (dispatch) {
@@ -280,7 +279,6 @@ export const getAllUsers = () => {
         try {
             const url = buildApiUrl('/users');   
             const response = await axios.get(url);
-            console.log('ACTION - getAllUsers response:', response);
             return dispatch({
                 type: 'GET_ALL_USERS',
                 payload: response.data,

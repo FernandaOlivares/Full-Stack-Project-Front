@@ -31,11 +31,8 @@ function ReviewCards() {
   }
 }, [allReviews, id]);*/
 
-
-  console.log('All reviews before filtering:', allReviews);
   const filteredReviews = allReviews?.filter((review) => review.propertyId === parseInt(id)) ?? [];
 
-  console.log('Filtered reviews:', filteredReviews);
   return (
     <div className={styles.reviewCardsContainer}>
       {filteredReviews.map((review) => (
