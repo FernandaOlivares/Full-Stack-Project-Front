@@ -41,10 +41,9 @@ body {
   align-items: center;
   justify-content: right;
   gap: 30px;
-  width: 35%;
+  width: 50%;
   height: 60%;
   margin-right: 210px;
-
 }
 
 .homeButton, .administrarButton, .publicarButton, button {
@@ -72,6 +71,20 @@ body {
     background-color: rgb(113, 107, 107,0.4); 
     border: none;
     color: white;
+  }
+
+  .emailButton {
+    border: none;
+    font-size: 14px;
+    background-color: white;
+    color: rgb(113, 107, 107);
+    margin: 15px;
+  }
+
+  .emailButton:hover {
+    border: none;
+    color: #b70303;
+    font-size: 14px;
   }
 
 

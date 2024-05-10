@@ -9,6 +9,7 @@ function AdminHeader() {
 
   const auth =getAuth(appFirebase)
   const navigate =useNavigate()
+  const userEmail=localStorage.getItem('userEmail')
 
   const handleSignOut = async () => {
     try {
@@ -23,12 +24,14 @@ function AdminHeader() {
     return (
       <header className={styles.headerContainer}>
       <div className={styles.logoContainer}>
-        <Link to="/home"><img src={logo} alt="logo" className={styles.logo}/></Link>
+        <Link to="/"><img src={logo} alt="logo" className={styles.logo}/></Link>
       </div>
       <div className={styles.navContainer}>
-        {/*<Link className={styles.homeButton} to= '/home'> | Home | </Link>*/}
+        <Link className={styles.homeButton} to= '/home'> | Inicio | </Link>
         <Link className={styles.administrarButton} to= '/admin/dashboard'> | Administrar | </Link>
         <Link className={styles.publicarButton} to= '/create'> | Publicar | </Link>
+        <Link className={styles.publicarButton} to= '/user/profile'> | Mi Perfil | </Link>
+        <Link className={styles.emailButton} to='/user/profile'>| {userEmail} |</Link>
         <button onClick={handleSignOut}>Log Out</button>
       </div>
     </header>
