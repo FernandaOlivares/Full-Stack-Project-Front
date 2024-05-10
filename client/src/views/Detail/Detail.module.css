@@ -9,7 +9,7 @@
   justify-content: center;
   align-items: flex-start;
   align-content: flex-start;
-  margin-top: 700px;
+  margin-top: 930px;
   border-radius: 10px;
   z-index: 50;
   background-color: white;
@@ -146,12 +146,26 @@
   
   
 .principalInfoContainer {
-  width: 40vw;
-  height: 16vh;
+  width: 600px;
+  height: 150px;
   z-index: 51;
-  margin-top: -2.5vh;
+  margin-top: 2%;
   background-color: white;
+  border: 2px solid rgba(113, 107, 107, 0.5);
+  border-radius: 25px;
 }
+
+.roomsContainer {
+  display: flex; /* Utiliza flexbox para los elementos secundarios */
+  justify-content: center; /* Centra horizontalmente los elementos secundarios */
+  align-items: center; /* Centra verticalmente los elementos secundarios */
+  width: 10vw;
+  height: 8vh;
+  z-index: 51;
+  margin-top: 0vh;
+  color: black;
+}
+
 
 .secondaryInfoContainer {
   display: flex; /* Utiliza flexbox para los elementos secundarios */
@@ -184,11 +198,11 @@
   max-width: 800px; /* Ancho máximo del contenedor */
   max-width: 800px;
   margin-right: 1.5%;
-  margin-top: -1%;
+  margin-top: 5%;
   padding: 20px; /* Espaciado interno del contenedor */
   background-color: #f0f0f0; /* Color de fondo del contenedor */
   border: 1px solid #ccc; /* Borde del contenedor */
-  border-radius: 8px; /* Radio de borde del contenedor */
+  border-radius: 25px; /* Radio de borde del contenedor */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra del contenedor */
 }
 .textDescriptionContainer h3{
@@ -434,26 +448,47 @@
 
 
 .button {
-  margin-bottom: 10%;
   display: inline-block;
-  background-color: black;
-  color: white;
+  border: 0.5px solid rgba(113, 107, 107);
+  background-color: whitesmoke;
+  color: rgba(113, 107, 107);
   text-decoration: none;
-  padding: 10px 20px;
-  border-radius: 10px;
-  transition: background-color 0.3s, color 0.3s;
+  padding: 15px 25px;
+  border-radius: 5px;
+  transition: color 0.3s;
+  z-index: 10;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.button:not(.disabled):hover,
+.button:focus,
+.button:active
+.active {
+  background-color: rgba(113, 107, 107, 0.4);
+  color: white;
   z-index: 10;
   border: none;
   outline: none;
 }
 
-.button:hover,
-.button:focus,
-.button:active {
-  background-color: rgba(113, 107, 107, 0.7);
-  color: white;
-  z-index: 10;
-  text-decoration: none;
-  border: none;
-  outline: none;
+.disabled {
+  background-color: #e9ecef;
+  color: rgba(113, 107, 107, 0.3);
+  cursor: not-allowed;
+  pointer-events: none;
 }
+
+.detailTextContainer {
+  width: 95%;
+  max-width: 800px;
+  margin-right: 1.5%;
+  margin-top: 5%;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box; /* Incluye el padding y el borde en el ancho y alto total del elemento */
+}
+

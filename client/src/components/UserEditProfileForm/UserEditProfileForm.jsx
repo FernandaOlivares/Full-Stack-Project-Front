@@ -57,7 +57,7 @@ const validateFormInput = (userInfo) => {
         imageDefault: userInfo.imageDefault
       });
     }
-  }, []); // Esta dependencia vacía indica que este efecto se ejecuta solo una vez al montar el componente
+  }, []);
 
 
 
