@@ -27,12 +27,13 @@ function Detail() {
   initMercadoPago('TEST-8d26883a-9e18-4090-8719-2ad0412bee84',{locale:"es-MX"});
 
 
-  
   const propertyDetail = useSelector((state) => state.propertyById);
   const propertyImages = useSelector((state) => state.propertyById?.imageDefault);
   
-  const { title, type, category, zone, price, parking, storage, swimmingPool, description } = propertyDetail;
+  const { title, type, category, zone, price, bedrooms, bathrooms, parking, storage, swimmingPool, description } = propertyDetail;
   const { id } = useParams();
+
+  const userLogged = localStorage.getItem('userEmail');
   
   const [isLoading, setIsLoading] = useState(true);
   const [isPopupOpenImage, setIsPopupOpenImage] = useState(false);
@@ -193,12 +194,19 @@ function Detail() {
                 <img src={greyLineIcon} className={styles.imageLine3} alt="imageLine1" />
               </div>
           </div>
+          <div className={styles.detailTextContainer}>
+            <h3>Detalle Propiedad:</h3>
+              <div className={styles.roomsContainer}>
+                <p className={styles.lineParking}>Dormitorios: {bedrooms}</p>
+                <p className={styles.lineStorage}>Baños: {bathrooms}</p>
+              </div>
           <div className={styles.secondaryInfoContainer}>
               <div className={styles.textContainer}>
                 <p className={styles.lineParking}>Estacionamientos: {parking}</p>
                 <p className={styles.lineStorage}>Bodegas: {storage}</p>
                 <p className={styles.lineSwimmingPool}>Piscina: {swimmingPoolCapitalize}</p>
               </div>
+          </div>
           </div>
         </div>
         <div>
@@ -215,7 +223,7 @@ function Detail() {
             handleBuy()
             setIsLoading(false); 
             }} disabled={isLoading}>
-            Reservar
+            Reservar Propiedad
 
           </button>
           
@@ -224,9 +232,16 @@ function Detail() {
 
           </div>
           <div>
-          <button className={styles.button} onClick={openReviewPopup} disabled={isLoading}>
-            Reseña
+          <button 
+            className={`${styles.button} ${userLogged ? styles.active : styles.disabled}`}
+            onClick={openReviewPopup} 
+            disabled={!userLogged || isLoading}
+          >
+            Publicar Reseña
           </button>
+          {!userLogged && (
+          <p>*Solo usuarios registrados pueden publicar reseñas</p>
+          )}
           {isPopupOpenReview && (
             <div className={styles.popupContainer}>
               <ReviewForm propertyId={id} onClose={closePopup}/>
