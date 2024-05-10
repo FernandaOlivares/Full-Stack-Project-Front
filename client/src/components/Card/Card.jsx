@@ -58,7 +58,7 @@ function Card({ property }) {
           <div className={styles.dot}></div>
           <div className={styles.nextArrow} onClick={nextImage}>&#10095;</div>
         </div>
-        <p>{categoryCapitalize} - {isActive ? "Disponible" : "No Disponible"}</p>
+        <p>{categoryCapitalize}</p>
         <h3>{typeCapitalize} | {zone} | {city}</h3>
         <h3>{bedrooms} Dormitorios - {bathrooms} Baños</h3>
         <h3>{formattedPrice}</h3>
