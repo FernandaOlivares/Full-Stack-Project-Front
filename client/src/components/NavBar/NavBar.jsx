@@ -64,15 +64,15 @@ const NavBar = () => {
         {/* Selector de categoría */}
         <select value={selectedCategory} onChange={handlerCategory} className={styles.selectButton}>
           <option value="all">¿Qué busca?</option>
-          <option value="arriendo">Arriendo</option>
-          <option value="venta">Venta</option>
+          <option value="Arriendo">Arriendo</option>
+          <option value="Venta">Venta</option>
         </select>
 
         {/* Selector de tipo */}
         <select value={selectedType} onChange={handlerType} className={styles.selectButton}>
           <option value="all">¿Tipo de propiedad?</option>
-          <option value="casa">Casa</option>
-          <option value="departamento">Departamento</option>
+          <option value="Casa">Casa</option>
+          <option value="Departamento">Departamento</option>
         </select>
 
         {/* Selector de orden de precio */}
