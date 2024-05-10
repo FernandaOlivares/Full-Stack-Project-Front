@@ -12,6 +12,7 @@ import styles from '../ReviewForm/ReviewForm.module.css';
 
 const ReviewForm = ({ propertyId, onClose }) => {
   const dispatch = useDispatch();
+  const [validationMessage, setValidationMessage] = useState('');
   const user = JSON.parse(localStorage.getItem('user'));
   const userInfo = user.user;
 
@@ -32,7 +33,10 @@ const ReviewForm = ({ propertyId, onClose }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    if (input.score === 0) {
+      setValidationMessage('*Por favor, selecciona una puntuación antes de enviar la reseña.');
+      return;
+    }
     try {
       const inputData = { ...input, score: parseInt(input.score) };
       await dispatch(postNewReview(inputData));
@@ -51,7 +55,7 @@ const ReviewForm = ({ propertyId, onClose }) => {
         <h1>Reseña</h1>
       </div>
       <div className={styles.userContainer}>
-        <img className={styles.userImage} src={userInfo.imageDefault} alt="User Avatar" />
+       {/*<img className={styles.userImage} src={userInfo.imageDefault} alt="User Avatar" />*/}
         <p className={styles.userName}>{userInfo.name}</p>
       </div>
       <form onSubmit={handleSubmit}>
@@ -62,6 +66,7 @@ const ReviewForm = ({ propertyId, onClose }) => {
           <ReviewFormStars selected={input.score >= 3} onSelect={() => setInput((prevInput) => ({ ...prevInput, score: 3 }))} />
           <ReviewFormStars selected={input.score >= 4} onSelect={() => setInput((prevInput) => ({ ...prevInput, score: 4 }))} />
           <ReviewFormStars selected={input.score >= 5} onSelect={() => setInput((prevInput) => ({ ...prevInput, score: 5 }))} />
+          <div className={styles.validationMessage}>{validationMessage}</div>
         </div>
         <div className={styles.descriptionContainer}>
           <label>Cuéntanos por qué...</label>

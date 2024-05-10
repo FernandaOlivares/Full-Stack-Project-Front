@@ -31,9 +31,9 @@ function ReviewCard({ review }) {
     <div className={styles.card}>
       {user && (
         <div className={styles.userContainer}>
-          {user.imageDefault && user.imageDefault.length > 0 && (
+          {/*user.imageDefault && user.imageDefault.length > 0 && (
             <img src={user.imageDefault[0]} alt={user.name} className={styles.userImage}/>
-          )}
+          )*/}
           <h4>{user.name}</h4>
         </div>
       )}
