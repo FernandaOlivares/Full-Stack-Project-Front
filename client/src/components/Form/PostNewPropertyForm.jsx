@@ -41,11 +41,16 @@ function PostNewPropertyForm() {
   
 
   useEffect(() => {
+    console.log("newPropertyId:", newPropertyId);
+    console.log("formSubmitted:", formSubmitted);
+  
     // Redirigir solo si el formulario se ha enviado con éxito
     if (newPropertyId && formSubmitted) {
+      console.log("Redirigiendo a la propiedad:", newPropertyId);
       navigate(`/home/${newPropertyId}`);
     }
   }, [newPropertyId, formSubmitted, navigate]);
+  
 
 
   const [input, setInput] = useState({
