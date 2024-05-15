@@ -4,7 +4,7 @@ import styles from './NavBar.module.css';
 import { useDispatch } from 'react-redux';
 import { filterCombined } from '../../redux/actions';
 
-const NavBar = () => {
+const NavBar = ({currentPage,setCurrentPage}) => {
   const location = useLocation();
   const dispatch = useDispatch();
 
@@ -30,8 +30,8 @@ const NavBar = () => {
     localStorage.setItem('selectedZone', selectedZone);
 
     // Aplicar los filtros combinados cada vez que cambie alguno de los estados de los filtros
-    dispatch(filterCombined(selectedType, selectedCategory, selectedPriceOrder, selectedZone));
-  }, [selectedType, selectedCategory, selectedPriceOrder, selectedZone, dispatch]);
+    dispatch(filterCombined(selectedType, selectedCategory, selectedPriceOrder, selectedZone,currentPage));
+  }, [selectedType, selectedCategory, selectedPriceOrder, selectedZone, currentPage,dispatch]);
 
   // Funciones para manejar cambios en los filtros
   const handlerType = (e) => {
@@ -55,6 +55,7 @@ const NavBar = () => {
     setSelectedCategory('all');
     setSelectedPriceOrder('default');
     setSelectedZone('');
+    setCurrentPage(1)
   };
 
   return (
@@ -64,15 +65,15 @@ const NavBar = () => {
         {/* Selector de categoría */}
         <select value={selectedCategory} onChange={handlerCategory} className={styles.selectButton}>
           <option value="all">¿Qué busca?</option>
-          <option value="arriendo">Arriendo</option>
-          <option value="venta">Venta</option>
+          <option value="Arriendo">Arriendo</option>
+          <option value="Venta">Venta</option>
         </select>
 
         {/* Selector de tipo */}
         <select value={selectedType} onChange={handlerType} className={styles.selectButton}>
           <option value="all">¿Tipo de propiedad?</option>
-          <option value="casa">Casa</option>
-          <option value="departamento">Departamento</option>
+          <option value="Casa">Casa</option>
+          <option value="Departamento">Departamento</option>
         </select>
 
         {/* Selector de orden de precio */}

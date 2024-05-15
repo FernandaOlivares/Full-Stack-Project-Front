@@ -18,6 +18,8 @@ export const POST_NEW_REVIEW = 'POST_NEW_REVIEW';
 export const GET_ALL_REVIEWS = 'GET_ALL_REVIEWS';
 export const GET_ALL_USERS = 'GET_ALL_USERS';
 export const GET_ALL_SALES = 'GET_ALL_SALES';
+export const FILTER_DASHBOARD='FILTER_DASHBOARD';
+export const RESET_PROPERTY = 'RESET_PROPERTY';
 //export const UPDATE_PROPERTY_STATUS = 'UPDATE_PROPERTY_STATUS';
 //export const GET_ALL_TYPES = 'GET_ALL_TYPES';
 //export const GET_ALL_CATEGORIES = 'GET_ALL_CATEGORIES';
@@ -169,7 +171,7 @@ export const editProperty = (propertyId, updatedProperty) => {
 };
 
 
-export const filterCombined = (type, category, priceOrder, zone) => {
+export const filterCombined = (type, category, priceOrder, zone,page) => {
   return async (dispatch) => {
       try {
           // Construir la URL base
@@ -188,7 +190,12 @@ export const filterCombined = (type, category, priceOrder, zone) => {
           }
           if (zone !== 'default') {
               queryParams.push(`zone=${zone}`);
+            
           }
+          if (page) {
+            queryParams.push(`page=${page}`);
+          }
+
 
           // Si hay parámetros, agregarlos a la URL
           if (queryParams.length > 0) {
@@ -196,10 +203,15 @@ export const filterCombined = (type, category, priceOrder, zone) => {
           }
 
           // Realizar la solicitud GET con la URL construida
-          const response = await axios.get(url);
+          const {data} = await axios.get(url);
+          const properties=data.properties
+          
+          const filterProperties=properties.filter(property => property.isActive );
+       
+          const meta=data.meta
           dispatch({
               type: 'FILTER_TYPE',
-              payload: response.data
+              payload: {properties,meta}
           });
       } catch (error) {
           console.error(error);
@@ -207,6 +219,56 @@ export const filterCombined = (type, category, priceOrder, zone) => {
       }
   };
 };
+
+
+
+
+export const filterDashboard = (type, category, priceOrder, zone,page) => {
+    return async (dispatch) => {
+        try {
+            // Construir la URL base
+            let url = buildApiUrl('/property/notIs');
+  
+            // Construir los parámetros de la URL basados en los filtros seleccionados
+            const queryParams = [];
+            if (type !== 'all') {
+                queryParams.push(`type=${type}`);
+            }
+            if (category !== 'all') {
+                queryParams.push(`category=${category}`);
+            }
+            if (priceOrder !== 'default') {
+                queryParams.push(`priceOrder=${priceOrder}`);
+            }
+            if (zone !== 'default') {
+                queryParams.push(`zone=${zone}`);
+              
+            }
+            if (page) {
+              queryParams.push(`page=${page}`);
+            }
+  
+  
+            // Si hay parámetros, agregarlos a la URL
+            if (queryParams.length > 0) {
+                url += '?' + queryParams.join('&');
+            }
+  
+            // Realizar la solicitud GET con la URL construida
+            const {data} = await axios.get(url);
+            const properties=data.properties
+            const meta=data.meta
+            console.log(meta);
+            dispatch({
+                type: 'FILTER_DASHBOARD',
+                payload: {properties,meta}
+            });
+        } catch (error) {
+            console.error(error);
+            throw error;
+        }
+    };
+  };
 
 
 export const getUserInfo = (userEmail) => {
@@ -305,6 +367,10 @@ export const getAllSales = () => {
         }
     };
 };
+
+export const resetProperty = () => ({
+    type: RESET_PROPERTY,
+  });
 
 // export function updatePropertyStatus(propertyId, isActive) {
 //   return async function(dispatch) {

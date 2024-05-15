@@ -17,7 +17,15 @@
   border-radius: 10px;
   z-index: 1;
   gap: 12px;
+}
+.cardsContainer::-webkit-scrollbar {
+  width: 0px; /* Ancho del scroll */
+  background-color: transparent; /* Fondo transparente */
+}
 
+.cardsContainer::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.5); /* Color del scroll */
+  border-radius: 0px; /* Borde redondeado */
 }
 
 @media screen and (max-width: 768px) {
