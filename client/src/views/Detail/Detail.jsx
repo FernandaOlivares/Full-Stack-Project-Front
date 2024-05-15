@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getPropertyById } from '../../redux/actions/index.jsx';
+import { getPropertyById, resetProperty } from '../../redux/actions/index.jsx';
 import { formatPrice } from '../../utils/priceFormat.js';
 import { capitalizeFirstLetter } from '../../utils/capitalizeFirstLetter.js';
 import Header from '../../components/Header/Header.jsx';
@@ -48,6 +48,9 @@ function Detail() {
     dispatch(getPropertyById(id)).then(() => {
       setIsLoading(false);
     });
+    return () => {
+      dispatch(resetProperty());
+    };
   }, [dispatch, id]);
 
   const openImagePopup = () => {
@@ -140,7 +143,9 @@ function Detail() {
   }
 
 
-
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
 
 

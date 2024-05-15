@@ -19,6 +19,7 @@ export const GET_ALL_REVIEWS = 'GET_ALL_REVIEWS';
 export const GET_ALL_USERS = 'GET_ALL_USERS';
 export const GET_ALL_SALES = 'GET_ALL_SALES';
 export const FILTER_DASHBOARD='FILTER_DASHBOARD';
+export const RESET_PROPERTY = 'RESET_PROPERTY';
 //export const UPDATE_PROPERTY_STATUS = 'UPDATE_PROPERTY_STATUS';
 //export const GET_ALL_TYPES = 'GET_ALL_TYPES';
 //export const GET_ALL_CATEGORIES = 'GET_ALL_CATEGORIES';
@@ -208,7 +209,6 @@ export const filterCombined = (type, category, priceOrder, zone,page) => {
           const filterProperties=properties.filter(property => property.isActive );
        
           const meta=data.meta
-          console.log(meta);
           dispatch({
               type: 'FILTER_TYPE',
               payload: {properties,meta}
@@ -367,6 +367,10 @@ export const getAllSales = () => {
         }
     };
 };
+
+export const resetProperty = () => ({
+    type: RESET_PROPERTY,
+  });
 
 // export function updatePropertyStatus(propertyId, isActive) {
 //   return async function(dispatch) {
