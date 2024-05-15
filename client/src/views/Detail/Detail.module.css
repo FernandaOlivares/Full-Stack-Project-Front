@@ -154,12 +154,24 @@
   border: 2px solid rgba(113, 107, 107, 0.5);
   border-radius: 25px;
 }
+.borderContainer{
+  display: flex;
+  flex-wrap: wrap;
+  border: 2px solid rgba(113, 107, 107, 0.5);
+  border-radius: 25px;
+  background-color: whitesmoke;
+}
+.item {
+  width: 50%; /* Para que cada elemento ocupe la mitad del contenedor */
+  box-sizing: border-box; /* Para que el borde no aumente el ancho del elemento */
+  padding: 10px; /* Espacio entre los elementos */
+}
 
 .roomsContainer {
   display: flex; /* Utiliza flexbox para los elementos secundarios */
   justify-content: center; /* Centra horizontalmente los elementos secundarios */
   align-items: center; /* Centra verticalmente los elementos secundarios */
-  width: 10vw;
+  width: 5vh;
   height: 8vh;
   z-index: 51;
   margin-top: 0vh;
@@ -326,7 +338,6 @@
 .titleContainer {
   position: absolute;
   background-color: rgba(113, 107, 107, 0.5);
-  width: 44%;
   max-width: 44%;
   height: 10%;
   left: 0%;
@@ -480,7 +491,7 @@
 }
 
 .detailTextContainer {
-  width: 95%;
+  width: 100%;
   max-width: 800px;
   margin-right: 1.5%;
   margin-top: 5%;

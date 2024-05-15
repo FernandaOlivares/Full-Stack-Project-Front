@@ -201,17 +201,13 @@ function Detail() {
           </div>
           <div className={styles.detailTextContainer}>
             <h3>Detalle Propiedad:</h3>
-              <div className={styles.roomsContainer}>
-                <p className={styles.lineParking}>Dormitorios: {bedrooms}</p>
-                <p className={styles.lineStorage}>Baños: {bathrooms}</p>
-              </div>
-          <div className={styles.secondaryInfoContainer}>
-              <div className={styles.textContainer}>
-                <p className={styles.lineParking}>Estacionamientos: {parking}</p>
-                <p className={styles.lineStorage}>Bodegas: {storage}</p>
-                <p className={styles.lineSwimmingPool}>Piscina: {swimmingPoolCapitalize}</p>
-              </div>
-          </div>
+            <div className={styles.borderContainer}>
+                <p className={styles.item}>Dormitorios: {bedrooms}</p>
+                <p className={styles.item}>Baños: {bathrooms}</p>
+                <p className={styles.item}>Estacionamientos: {parking}</p>
+                <p className={styles.item}>Bodegas: {storage}</p>
+                <p className={styles.item}>Piscina: {swimmingPoolCapitalize}</p>
+            </div>
           </div>
         </div>
         <div>
