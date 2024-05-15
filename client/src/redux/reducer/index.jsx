@@ -18,7 +18,7 @@ import {
     GET_ALL_USERS,
     GET_ALL_SALES,
     FILTER_DASHBOARD,
-
+    RESET_PROPERTY
     //UPDATE_PROPERTY_STATUS,
     //GET_ALL_TYPES,
 } from '../actions/index.jsx';
@@ -42,7 +42,8 @@ const initialState = {
     pages:1,
     pagesDashboard:1,
     withoutfilter:[],
-    allPropertiesDashboard:[]
+    allPropertiesDashboard:[],
+    resetProperty: null,
 };
 
 function rootReducer(state = initialState, action){
@@ -58,8 +59,15 @@ function rootReducer(state = initialState, action){
             return {
               ...state,
               propertyById: action.payload,
+              resetProperty: action.payload,
             };
           }
+
+          case RESET_PROPERTY:
+        return {
+            ...state,
+            resetProperty: null,
+        };
 
       case GET_PROPERTY_ZONE:
             return {

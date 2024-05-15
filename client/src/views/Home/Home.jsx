@@ -10,7 +10,6 @@ import NavBar from '../../components/NavBar/NavBar.jsx'
 function Home() {
   const dispatch = useDispatch();
   const allProperties = useSelector((state)=> state.allProperties);
-  console.log(allProperties);
  const pages=useSelector((state)=> state.pages);
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 8;

@@ -264,7 +264,6 @@ return (
   <div className={styles.bodyContainer}>
     <div className={styles.pageTitle}>
       <h2>Publicar Nueva Propiedad</h2>
-      <p className={styles.formInstructions}>Rellenar toda la información solicitada para publicar una nueva propiedad:</p>
     </div>
   <div className={styles.formContainer}>
     <form onSubmit={handleSubmit}>
