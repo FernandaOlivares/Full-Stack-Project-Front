@@ -17,6 +17,8 @@ import {
     GET_ALL_REVIEWS,
     GET_ALL_USERS,
     GET_ALL_SALES,
+    FILTER_DASHBOARD,
+
     //UPDATE_PROPERTY_STATUS,
     //GET_ALL_TYPES,
 } from '../actions/index.jsx';
@@ -37,6 +39,10 @@ const initialState = {
     allReviews: [],
     allUsers: [],
     allSales: [],
+    pages:1,
+    pagesDashboard:1,
+    withoutfilter:[],
+    allPropertiesDashboard:[]
 };
 
 function rootReducer(state = initialState, action){
@@ -44,7 +50,7 @@ function rootReducer(state = initialState, action){
       case GET_ALL_PROPERTIES:
           return{
               ...state,
-              allProperties: action.payload,
+              withoutfilter: action.payload,
               allPropertiesBackup: action.payload,
           }
 
@@ -76,15 +82,25 @@ function rootReducer(state = initialState, action){
       case FILTER_TYPE: 
             return {
                 ...state,
-                allProperties: action.payload,
-                propertiesFiltered:action.payload
+                allProperties: action.payload.properties,
+                propertiesFiltered:action.payload,
+                pages:action.payload.meta.totalPages,
+                
+
+            };
+            case FILTER_DASHBOARD: 
+            return {
+                ...state,
+                allPropertiesDashboard: action.payload.properties,
+                pagesDashboard:action.payload.meta.totalPages,
+                
 
             };
 
       case FILTER_CATEGORY: {
             return {
                 ...state,
-                allProperties: action.payload,
+                allProperties: action.payload.properties
             };
       }
   
