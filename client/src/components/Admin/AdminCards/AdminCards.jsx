@@ -10,7 +10,7 @@ function AdminCards({ allProperties, currentPage, pageSize }) {
     return (
       <>
         <div className={styles.adminCardsContainer}>
-          {propertiesToShow.map((property) => (
+          {allProperties.map((property) => (
             <AdminCard key={property.id} property={property} />
           ))}
         </div>
